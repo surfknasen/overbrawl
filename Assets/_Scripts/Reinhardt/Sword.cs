@@ -4,16 +4,21 @@ using UnityEngine;
 
 public class Sword : MonoBehaviour 
 {
+	public Reinhardt_Abilities reinhardtAbilities;
+
 	void OnTriggerEnter2D(Collider2D otherCol)
 	{
 		Health health = otherCol.gameObject.GetComponent<Health>();
-		if(health == null) return;
-
-		if(gameObject.transform.parent.GetComponent<Animation>().isPlaying) 
+		if(health != null)
 		{
-			print(gameObject.transform.parent);
-			health.TakeDamage(15);
+			if(reinhardtAbilities.AnimatorIsPlaying()) 
+			{
+				print(gameObject.transform.parent);
+				health.TakeDamage(15);
+			}
 		}
+
+		
 
 	}
 }

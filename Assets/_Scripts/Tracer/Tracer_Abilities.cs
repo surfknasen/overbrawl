@@ -49,7 +49,6 @@ public class Tracer_Abilities : NetworkBehaviour
 			NetworkServer.Spawn (b);
 			Destroy (b, 1f);
 		}
-		
 	}
 
 	void OnMouseEnter()

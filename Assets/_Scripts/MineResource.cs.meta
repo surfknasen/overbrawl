@@ -1,10 +1,13 @@
 fileFormatVersion: 2
 guid: 49424787fadda084680e43741990200a
-timeCreated: 1494146330
+timeCreated: 1494850944
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - healthBar: {instanceID: 0}
+  - reinhardtAbilities: {fileID: 114885207025250288, guid: fbabd5cc29bfd044281718ad583cae7d,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

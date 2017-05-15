@@ -15,15 +15,15 @@ Platform assembly: C:\Users\Casper\Documents\overbrawl.io\TestBuild_Data\Managed
 Loading C:\Users\Casper\Documents\overbrawl.io\TestBuild_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
 Platform assembly: C:\Users\Casper\Documents\overbrawl.io\TestBuild_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
 Loading C:\Users\Casper\Documents\overbrawl.io\TestBuild_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-- Completed reload, in  0.060 seconds
+- Completed reload, in  0.050 seconds
 Platform assembly: C:\Users\Casper\Documents\overbrawl.io\TestBuild_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Casper\Documents\overbrawl.io\TestBuild_Data\Managed\System.dll (this message is harmless)
-desktop: 1366x768 59Hz; virtual: 1366x768 at 0,0
+desktop: 1440x900 60Hz; virtual: 1440x900 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 2.155516 ms
-TakeDamage
+UnloadTime: 1.485309 ms
+ReinhardtBody (UnityEngine.Transform)
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
@@ -31,7 +31,7 @@ TakeDamage
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-TakeDamage
+ReinhardtBody (UnityEngine.Transform)
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
@@ -39,35 +39,7 @@ TakeDamage
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-TakeDamage
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-TakeDamage
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-TakeDamage
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-TakeDamage
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-TakeDamage
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-TakeDamage
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-TakeDamage
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-TakeDamage
+ReinhardtBody (UnityEngine.Transform)
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
@@ -76,5 +48,5 @@ TakeDamage
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 1a1c -> priority: 1 
-  Thread -> id: 1aec -> priority: 1 
+  Thread -> id: 1950 -> priority: 1 
+  Thread -> id: 1904 -> priority: 1 

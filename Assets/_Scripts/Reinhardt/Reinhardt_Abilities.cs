@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 public class Reinhardt_Abilities : NetworkBehaviour 
 {
 	private bool buttonPressed;
-	public Animation swordAttackAnim;
+	public Animator swordAttackAnim;
 	private bool teleporting;
 	public GameObject reinhardtProjectile;
 	private bool projectileShooting;
@@ -15,7 +15,7 @@ public class Reinhardt_Abilities : NetworkBehaviour
 	{
 		if(Input.GetMouseButton(0))
 		{
-			SwordAttack();
+			Cmd_SwordAttack();
 		}
 		else if(Input.GetMouseButton(1) && !projectileShooting)
 		{
@@ -27,10 +27,28 @@ public class Reinhardt_Abilities : NetworkBehaviour
 		}
 	}
 
-	void SwordAttack()
+	[Command]
+	void Cmd_SwordAttack()
 	{
-		swordAttackAnim.Play();
+		if(!AnimatorIsPlaying())
+		{
+			Rpc_SwordAttack();
+		}
 	}
+
+	[ClientRpc]
+	void Rpc_SwordAttack()
+	{
+		swordAttackAnim.SetTrigger("Attack");
+		swordAttackAnim.ResetTrigger("Attack");
+	}
+ 
+	 public bool AnimatorIsPlaying()
+	 {
+         return swordAttackAnim.GetCurrentAnimatorStateInfo(0).length >
+                swordAttackAnim.GetCurrentAnimatorStateInfo(0).normalizedTime;
+     }
+	
 	IEnumerator ProjectileCooldown()
 	{
 		projectileShooting = true;

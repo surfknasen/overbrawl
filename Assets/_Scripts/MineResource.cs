@@ -7,7 +7,7 @@ public class MineResource : MonoBehaviour {
 
 	[SerializeField]
 	private Slider healthBar;
-	private int dmg;
+	public Reinhardt_Abilities reinhardtAbilities;
 
 	void Start()
 	{
@@ -16,28 +16,28 @@ public class MineResource : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D otherCol)
 	{
+		
 		switch(otherCol.gameObject.tag)
 		{
 			case "Sword":
-				if(otherCol.gameObject.transform.parent.GetComponent<Animation>().isPlaying)
-				{
-					dmg = 25;
-					ResourceHealth();
-				}
+			//	if(reinhardtAbilities.AnimatorIsPlaying())
+			//	{
+					print("Sword");
+					ResourceHealth(25);
+			//	}
+					
 			break;
 			case "TracerProjectile":
-				dmg = 20;
-				ResourceHealth();
+				ResourceHealth(20);
 			break;
 			case "ReinhardtProjectile":
-				dmg = 80;
-				ResourceHealth();
+				ResourceHealth(80);
 			break;
 		}
 		
 	}
 	
-	void ResourceHealth () 
+	void ResourceHealth (int dmg) 
 	{
 		healthBar.gameObject.SetActive (true);
 		healthBar.value -= dmg;

@@ -9,18 +9,25 @@ public class SetupLocalPlayer_Reinhardt : NetworkBehaviour {
 	public Image fillColor;
 	public GameObject body;
 	public Sprite thisSprite;
+	public NetworkAnimator networkAnimatorReinhardt;
 
 	public void Start () 
 	{
 		if (isLocalPlayer) 
 		{
 			Cmd_SetupSprite();
+			networkAnimatorReinhardt.SetParameterAutoSend(0,true);
 			GetComponent<PlayerMovement> ().enabled = true;
 			GetComponent<Reinhardt_Abilities> ().enabled = true;
 			GetComponent<Health> ().enabled = true;
 			fillColor.color = new Color32(0,255, 0, 255); // green
 		}
 
+	}
+
+	public override void PreStartClient()
+	{
+		networkAnimatorReinhardt.SetParameterAutoSend(0,true);
 	}
 
 	void Update()
@@ -41,4 +48,5 @@ public class SetupLocalPlayer_Reinhardt : NetworkBehaviour {
 		body.SetActive(true);
 		gameObject.GetComponent<SpriteRenderer>().sprite = thisSprite;
 	}
+
 }
