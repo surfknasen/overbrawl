@@ -6,32 +6,27 @@ using UnityEngine.Networking;
 
 public class Projectile : NetworkBehaviour, Attack
 {
-	private GameObject player;
+	public GameObject owner;
 
 	[HideInInspector]
-	public int projectileDmg;
+	public int damage;
 
-	public void ProjectileOwner(GameObject g) // make this a gameobject instead and return the player
+	void OnTriggerEnter2D(Collider2D other)
 	{
-		player = g;
-	}
-
-	void OnTriggerEnter2D(Collider2D col)
-	{
-	 	if(col.gameObject != player && !col.transform.IsChildOf(player.transform) && !col.gameObject.CompareTag("Enemy"))
+	 	if(other.gameObject != owner && !other.transform.IsChildOf(owner.transform) && !other.gameObject.CompareTag("Enemy"))
 		{
 			Destroy(gameObject);
-			Health health = col.gameObject.GetComponent<Health> ();
-			if(health != null)
+			Health health = other.gameObject.GetComponent<Health> ();
+			if(health != null) 
 			{
-				health.TakeDamage (projectileDmg);
+				health.TakeDamage (damage);
 			}
 		}
 	}
 
     public int getDamage()
     {
-        return projectileDmg;
+        return damage;
     }
 
     public bool isActive()

@@ -48,8 +48,8 @@ public class Gunslinger_Abilities : NetworkBehaviour
 			GameObject b = Instantiate (bullet, bulletSpawnPositions[i].transform.position, bullet.transform.rotation);	
 			Rigidbody2D r = b.GetComponent<Rigidbody2D> ();
 			r.velocity = dir * 30;
-			b.GetComponent<Projectile> ().ProjectileOwner (gameObject);
-			b.GetComponent<Projectile> ().projectileDmg = 8;
+			b.GetComponent<Projectile> ().owner = gameObject;
+			b.GetComponent<Projectile> ().damage = 8;
 			NetworkServer.Spawn (b);
 			Destroy (b, 1f);
 		}
