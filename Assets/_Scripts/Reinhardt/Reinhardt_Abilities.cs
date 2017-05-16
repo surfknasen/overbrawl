@@ -6,14 +6,15 @@ using UnityEngine.Networking;
 public class Reinhardt_Abilities : NetworkBehaviour 
 {
 	private bool buttonPressed;
-	public Animator swordAttackAnim;
+	public Animator swordAttackController;
 	private bool teleporting;
 	public GameObject reinhardtProjectile;
 	private bool projectileShooting;
+	private bool animationPlaying;
 
 	void Update () 
 	{
-		if(Input.GetMouseButton(0))
+		if(Input.GetMouseButton(0) && !animationPlaying)
 		{
 			Cmd_SwordAttack();
 		}
@@ -32,6 +33,7 @@ public class Reinhardt_Abilities : NetworkBehaviour
 	{
 		if(!AnimatorIsPlaying())
 		{
+			animationPlaying = true;
 			Rpc_SwordAttack();
 		}
 	}
@@ -39,14 +41,20 @@ public class Reinhardt_Abilities : NetworkBehaviour
 	[ClientRpc]
 	void Rpc_SwordAttack()
 	{
-		swordAttackAnim.SetTrigger("Attack");
-		swordAttackAnim.ResetTrigger("Attack");
+		swordAttackController.SetTrigger("Attack");
+		StartCoroutine("AnimationPlayingNumerator");
+	}
+
+	IEnumerator AnimationPlayingNumerator()
+	{
+		yield return new WaitForSeconds(0.1f);
+		animationPlaying = false;
 	}
  
 	 public bool AnimatorIsPlaying()
 	 {
-         return swordAttackAnim.GetCurrentAnimatorStateInfo(0).length >
-                swordAttackAnim.GetCurrentAnimatorStateInfo(0).normalizedTime;
+         return swordAttackController.GetCurrentAnimatorStateInfo(0).length >
+                swordAttackController.GetCurrentAnimatorStateInfo(0).normalizedTime;
      }
 	
 	IEnumerator ProjectileCooldown()

@@ -9,17 +9,25 @@ public class SetupLocalPlayer_Tracer : NetworkBehaviour {
 	public Image fillColor;
 	public GameObject body;
 	public Sprite thisSprite;
+	public NetworkAnimator networkAnimatorTracer;
+	
 	public void Start () 
 	{
 		if (isLocalPlayer) 
 		{
 			Cmd_SetupSprite();
+			networkAnimatorTracer.SetParameterAutoSend(0,true);
 			GetComponent<PlayerMovement> ().enabled = true;
 			GetComponent<Tracer_Abilities> ().enabled = true;
 			GetComponent<Health> ().enabled = true;
 			fillColor.color = new Color32(0,255, 0, 255); // green
 		}
 
+	}
+
+	public override void PreStartClient()
+	{
+		networkAnimatorTracer.SetParameterAutoSend(0,true);
 	}
 	void Update()
 	{

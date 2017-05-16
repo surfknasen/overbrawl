@@ -13,15 +13,19 @@ public class Tracer_Abilities : NetworkBehaviour
 	[SerializeField]
 	private GameObject[] bulletSpawnPositions;
 	private int bulletsFired;
-	public Animation gunAnim;
+	public Animator tracerGunsController;
 
 	void Update () 
 	{
-		if (Input.GetMouseButton (0) && !shootingBullet && !mouseOverPlayer) 
+		
+		if (Input.GetMouseButton (0) && !mouseOverPlayer) 
 		{
-			gunAnim.Play();
-			StartCoroutine ("ShootBulletNumerator");
-			Cmd_ShootBullet (GetMouseDirection());
+			if(!shootingBullet)
+			{
+				StartCoroutine ("ShootBulletNumerator");
+				Cmd_ShootBullet (GetMouseDirection());
+				Cmd_GunAnimation();	
+			}
 
 		} else if (Input.GetMouseButton (1) && !teleporting) 
 		{
@@ -49,8 +53,29 @@ public class Tracer_Abilities : NetworkBehaviour
 			NetworkServer.Spawn (b);
 			Destroy (b, 1f);
 		}
+
+		
+	}
+	[Command]
+	void Cmd_GunAnimation()
+	{
+		if(!AnimatorIsPlaying()) 
+		{
+			Rpc_GunAnimation();
+		}
 	}
 
+	[ClientRpc]
+	void Rpc_GunAnimation()
+	{
+		tracerGunsController.SetTrigger("Shoot");
+	}
+
+	 public bool AnimatorIsPlaying()
+	 {
+         return tracerGunsController.GetCurrentAnimatorStateInfo(0).length >
+                tracerGunsController.GetCurrentAnimatorStateInfo(0).normalizedTime;
+     }
 	void OnMouseEnter()
 	{
 		mouseOverPlayer = true;
