@@ -9,10 +9,6 @@ public class CharacterSelection : NetworkBehaviour {
 	private GameObject menuCanvas;
 	private Camera_Movement cameraMovement;
 
-	[SerializeField]
-	private GameObject tracerPrefab;
-	private SetupLocalPlayer_Gunslinger tracerSetup;
-
 	void Start()
 	{
 		cameraMovement = Camera.main.GetComponent<Camera_Movement> ();

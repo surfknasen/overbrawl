@@ -14,7 +14,7 @@ public class Vanguard_Abilities : NetworkBehaviour
 
 	void Update () 
 	{
-		if(Input.GetMouseButton(0) && !animationPlaying)
+		if(Input.GetMouseButton(0))
 		{
 			Cmd_SwordAttack();
 		}
@@ -33,7 +33,6 @@ public class Vanguard_Abilities : NetworkBehaviour
 	{
 		if(!AnimatorIsPlaying())
 		{
-			animationPlaying = true;
 			Rpc_SwordAttack();
 		}
 	}
@@ -42,21 +41,21 @@ public class Vanguard_Abilities : NetworkBehaviour
 	void Rpc_SwordAttack()
 	{
 		swordAttackController.SetTrigger("Attack");
-		StartCoroutine("AnimationPlayingNumerator");
+	//	StartCoroutine("AnimationPlayingNumerator");
 	}
 
-	IEnumerator AnimationPlayingNumerator()
+/*	IEnumerator AnimationPlayingNumerator()
 	{
 		yield return new WaitForSeconds(0.1f);
 		animationPlaying = false;
 	}
+*/
+	public bool AnimatorIsPlaying()
+	{
+		return swordAttackController.GetCurrentAnimatorStateInfo(0).IsName("VanguardDefaultAttack");
+	}
  
-	 public bool AnimatorIsPlaying()
-	 {
-         return swordAttackController.GetCurrentAnimatorStateInfo(0).length >
-                swordAttackController.GetCurrentAnimatorStateInfo(0).normalizedTime;
-     }
-	
+
 	IEnumerator ProjectileCooldown()
 	{
 		shieldProjectileShooting = true;

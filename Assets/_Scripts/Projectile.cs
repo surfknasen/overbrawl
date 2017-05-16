@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class Projectile : NetworkBehaviour 
+public class Projectile : NetworkBehaviour, Attack
 {
 	private GameObject player;
 
@@ -27,4 +28,14 @@ public class Projectile : NetworkBehaviour
 			}
 		}
 	}
+
+    public int getDamage()
+    {
+        return projectileDmg;
+    }
+
+    public bool isActive()
+    {
+        return true;
+    }
 }

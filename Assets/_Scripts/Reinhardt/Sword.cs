@@ -1,19 +1,24 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sword : MonoBehaviour 
+public class Sword : MonoBehaviour, Attack 
 {
-	public Vanguard_Abilities reinhardtAbilities;
+	private Vanguard_Abilities vanguardAbilities;
+
+	void Start()
+	{
+		vanguardAbilities = GetComponentInParent<Vanguard_Abilities>();
+	}
 
 	void OnTriggerEnter2D(Collider2D otherCol)
 	{
 		Health health = otherCol.gameObject.GetComponent<Health>();
 		if(health != null)
 		{
-			if(reinhardtAbilities.AnimatorIsPlaying()) 
+			if(vanguardAbilities.AnimatorIsPlaying()) 
 			{
-				print(gameObject.transform.parent);
 				health.TakeDamage(15);
 			}
 		}
@@ -21,4 +26,14 @@ public class Sword : MonoBehaviour
 		
 
 	}
+
+    int Attack.getDamage()
+    {
+        return 20;
+    }
+
+    bool Attack.isActive()
+    {
+        return vanguardAbilities.AnimatorIsPlaying();
+    }
 }
