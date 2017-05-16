@@ -69,8 +69,8 @@ public class Vanguard_Abilities : NetworkBehaviour
 		GameObject p = Instantiate (vanguardShieldProjectile, transform.position, transform.rotation);
 		Rigidbody2D r = p.GetComponent<Rigidbody2D> ();
 		r.velocity = dir * 5;
-		p.GetComponent<Projectile> ().owner = gameObject;
-		p.GetComponent<Projectile> ().damage = 30;
+		p.GetComponent<Projectile> ().SetProjectileOwner(gameObject);
+		p.GetComponent<Projectile> ().damage = 40;
 		NetworkServer.Spawn (p);
 		Destroy (p, 4f);
 	}

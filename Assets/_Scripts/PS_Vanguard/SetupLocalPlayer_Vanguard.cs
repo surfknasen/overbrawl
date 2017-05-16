@@ -20,6 +20,7 @@ public class SetupLocalPlayer_Vanguard : NetworkBehaviour {
 			GetComponent<PlayerMovement> ().enabled = true;
 			GetComponent<Vanguard_Abilities> ().enabled = true;
 			GetComponent<Health> ().enabled = true;
+			GetComponent<Health>().healthBar.value = 150;
 			fillColor.color = new Color32(0,255, 0, 255); // green
 		}
 

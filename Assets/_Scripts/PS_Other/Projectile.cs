@@ -4,12 +4,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class Projectile : NetworkBehaviour, Attack
+public class Projectile : NetworkBehaviour, IAttack
 {
-	public GameObject owner;
-
+	private GameObject owner;
 	[HideInInspector]
 	public int damage;
+
+	public void SetProjectileOwner(GameObject obj)
+	{
+		owner = obj;
+	}
 
 	void OnTriggerEnter2D(Collider2D other)
 	{

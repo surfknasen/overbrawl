@@ -15,19 +15,19 @@ public class MineResource : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D otherCol)
 	{
-		var attack = otherCol.gameObject.GetComponent<Attack>();
-		if(attack != null)
+		IAttack iAttack = otherCol.gameObject.GetComponent<IAttack>();
+		if(iAttack != null)
 		{
-			if(attack.isActive())
+			if(iAttack.isActive())
 			{
-				Damage(attack.getDamage());
+				TakeDamage(iAttack.getDamage());
 			}
 				
 		} 
 		
 	}
 	
-	void Damage (int dmg) 
+	void TakeDamage (int dmg) 
 	{
 		healthBar.gameObject.SetActive (true);
 		healthBar.value -= dmg;

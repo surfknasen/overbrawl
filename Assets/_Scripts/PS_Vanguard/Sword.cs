@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sword : MonoBehaviour, Attack 
+public class Sword : MonoBehaviour, IAttack 
 {
 	private Vanguard_Abilities vanguardAbilities;
 
@@ -27,12 +27,12 @@ public class Sword : MonoBehaviour, Attack
 
 	}
 
-    int Attack.getDamage()
+    int IAttack.getDamage()
     {
         return 20;
     }
 
-    bool Attack.isActive()
+    bool IAttack.isActive()
     {
         return vanguardAbilities.AnimatorIsPlaying();
     }

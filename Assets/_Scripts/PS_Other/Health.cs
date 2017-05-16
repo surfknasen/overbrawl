@@ -6,12 +6,30 @@ using UnityEngine.Networking;
 
 public class Health : NetworkBehaviour {
 
-	[SerializeField]
-	private Slider healthBar;
-	private const int maxHealth = 100;
+	public Slider healthBar;
+	
+	public int maxHealth;
 	[SyncVar (hook = "OnChangeHealth")] 
-	private int currentHealth = maxHealth;
+	private int currentHealth;
 
+	void Start()
+	{
+		maxHealth = (int)healthBar.value;
+		currentHealth = maxHealth;
+	}
+/*  ------------------------------------------------------------ THIS DOES NOT WORK -- ADD PROJECTILE OWNER
+	void OnTriggerEnter2D(Collider2D otherCol)
+	{
+		Attack attack = otherCol.gameObject.GetComponent<Attack>();
+		if(attack != null)
+		{
+			if(attack.isActive())
+			{
+				TakeDamage(attack.getDamage());
+			}
+		} 
+	}
+*/
 	public void TakeDamage(int amount)
 	{
 		if (!isServer)
