@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Sword : MonoBehaviour 
 {
-	public Reinhardt_Abilities reinhardtAbilities;
+	public Vanguard_Abilities reinhardtAbilities;
 
 	void OnTriggerEnter2D(Collider2D otherCol)
 	{

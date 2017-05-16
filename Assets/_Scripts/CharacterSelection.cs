@@ -11,7 +11,7 @@ public class CharacterSelection : NetworkBehaviour {
 
 	[SerializeField]
 	private GameObject tracerPrefab;
-	private SetupLocalPlayer_Tracer tracerSetup;
+	private SetupLocalPlayer_Gunslinger tracerSetup;
 
 	void Start()
 	{

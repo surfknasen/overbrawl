@@ -7,7 +7,7 @@ public class MineResource : MonoBehaviour {
 
 	[SerializeField]
 	private Slider healthBar;
-	public Reinhardt_Abilities reinhardtAbilities;
+	public Vanguard_Abilities reinhardtAbilities;
 
 	void Start()
 	{

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
-public class SetupLocalPlayer_Reinhardt : NetworkBehaviour {
+public class SetupLocalPlayer_Vanguard : NetworkBehaviour {
 
 	public Image fillColor;
 	public GameObject body;
@@ -18,7 +18,7 @@ public class SetupLocalPlayer_Reinhardt : NetworkBehaviour {
 			Cmd_SetupSprite();
 			networkAnimatorReinhardt.SetParameterAutoSend(0,true);
 			GetComponent<PlayerMovement> ().enabled = true;
-			GetComponent<Reinhardt_Abilities> ().enabled = true;
+			GetComponent<Vanguard_Abilities> ().enabled = true;
 			GetComponent<Health> ().enabled = true;
 			fillColor.color = new Color32(0,255, 0, 255); // green
 		}

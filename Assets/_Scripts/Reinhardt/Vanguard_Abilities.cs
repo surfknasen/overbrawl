@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class Reinhardt_Abilities : NetworkBehaviour 
+public class Vanguard_Abilities : NetworkBehaviour 
 {
 	private bool buttonPressed;
 	public Animator swordAttackController;
 	private bool teleporting;
-	public GameObject reinhardtProjectile;
-	private bool projectileShooting;
+	public GameObject vanguardShieldProjectile;
+	private bool shieldProjectileShooting;
 	private bool animationPlaying;
 
 	void Update () 
@@ -18,7 +18,7 @@ public class Reinhardt_Abilities : NetworkBehaviour
 		{
 			Cmd_SwordAttack();
 		}
-		else if(Input.GetMouseButton(1) && !projectileShooting)
+		else if(Input.GetMouseButton(1) && !shieldProjectileShooting)
 		{
 			Cmd_ShootProjectile(GetMouseDirection());
 			StartCoroutine("ProjectileCooldown");
@@ -59,15 +59,15 @@ public class Reinhardt_Abilities : NetworkBehaviour
 	
 	IEnumerator ProjectileCooldown()
 	{
-		projectileShooting = true;
+		shieldProjectileShooting = true;
 		yield return new WaitForSeconds(6f);
-		projectileShooting = false;
+		shieldProjectileShooting = false;
 	}
 
 	[Command]
 	public void Cmd_ShootProjectile(Vector3 dir)
 	{
-		GameObject p = Instantiate (reinhardtProjectile, transform.position, transform.rotation);
+		GameObject p = Instantiate (vanguardShieldProjectile, transform.position, transform.rotation);
 		Rigidbody2D r = p.GetComponent<Rigidbody2D> ();
 		r.velocity = dir * 5;
 		p.GetComponent<Projectile> ().ProjectileOwner (gameObject);

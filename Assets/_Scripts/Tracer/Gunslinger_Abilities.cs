@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class Tracer_Abilities : NetworkBehaviour 
+public class Gunslinger_Abilities : NetworkBehaviour 
 {
 	[SerializeField]
 	private GameObject bullet;
@@ -13,7 +13,7 @@ public class Tracer_Abilities : NetworkBehaviour
 	[SerializeField]
 	private GameObject[] bulletSpawnPositions;
 	private int bulletsFired;
-	public Animator tracerGunsController;
+	public Animator gunslingerGunsController;
 
 	void Update () 
 	{
@@ -68,13 +68,13 @@ public class Tracer_Abilities : NetworkBehaviour
 	[ClientRpc]
 	void Rpc_GunAnimation()
 	{
-		tracerGunsController.SetTrigger("Shoot");
+		gunslingerGunsController.SetTrigger("Shoot");
 	}
 
 	 public bool AnimatorIsPlaying()
 	 {
-         return tracerGunsController.GetCurrentAnimatorStateInfo(0).length >
-                tracerGunsController.GetCurrentAnimatorStateInfo(0).normalizedTime;
+         return gunslingerGunsController.GetCurrentAnimatorStateInfo(0).length >
+                gunslingerGunsController.GetCurrentAnimatorStateInfo(0).normalizedTime;
      }
 	void OnMouseEnter()
 	{
