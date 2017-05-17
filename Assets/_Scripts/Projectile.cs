@@ -18,7 +18,7 @@ public class Projectile : NetworkBehaviour, IAttack
 	void OnTriggerEnter2D(Collider2D other)
 	{
 		if(owner != null){
-			if(other.gameObject != owner && !other.transform.IsChildOf(owner.transform) && !other.gameObject.CompareTag("Enemy"))
+			if(other.gameObject != owner && !other.transform.IsChildOf(owner.transform) && !other.gameObject.CompareTag("Enemy") && !other.gameObject.CompareTag("Currency")) // FIX
 			{
 				Destroy(gameObject);
 				Health health = other.gameObject.GetComponent<Health> ();
