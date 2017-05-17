@@ -20,6 +20,7 @@ public class SetupLocalPlayer_Gunslinger : NetworkBehaviour {
 			GetComponent<PlayerMovement> ().enabled = true;
 			GetComponent<Gunslinger_Abilities> ().enabled = true;
 			GetComponent<Health> ().enabled = true;
+			GetComponent<Health>().maxHealth = 150;
 			fillColor.color = new Color32(0,255, 0, 255); // green
 		}
 

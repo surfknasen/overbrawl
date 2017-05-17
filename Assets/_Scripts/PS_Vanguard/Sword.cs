@@ -22,16 +22,12 @@ public class Sword : MonoBehaviour, IAttack
 				health.TakeDamage(15);
 			}
 		}
-
-		
-
 	}
 
     int IAttack.getDamage()
     {
         return 20;
     }
-
     bool IAttack.isActive()
     {
         return vanguardAbilities.AnimatorIsPlaying();

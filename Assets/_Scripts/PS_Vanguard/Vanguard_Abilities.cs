@@ -41,15 +41,8 @@ public class Vanguard_Abilities : NetworkBehaviour
 	void Rpc_SwordAttack()
 	{
 		swordAttackController.SetTrigger("Attack");
-	//	StartCoroutine("AnimationPlayingNumerator");
 	}
 
-/*	IEnumerator AnimationPlayingNumerator()
-	{
-		yield return new WaitForSeconds(0.1f);
-		animationPlaying = false;
-	}
-*/
 	public bool AnimatorIsPlaying()
 	{
 		return swordAttackController.GetCurrentAnimatorStateInfo(0).IsName("VanguardDefaultAttack");
@@ -69,9 +62,9 @@ public class Vanguard_Abilities : NetworkBehaviour
 		GameObject p = Instantiate (vanguardShieldProjectile, transform.position, transform.rotation);
 		Rigidbody2D r = p.GetComponent<Rigidbody2D> ();
 		r.velocity = dir * 5;
+		NetworkServer.Spawn (p);
 		p.GetComponent<Projectile> ().SetProjectileOwner(gameObject);
 		p.GetComponent<Projectile> ().damage = 40;
-		NetworkServer.Spawn (p);
 		Destroy (p, 4f);
 	}
 
