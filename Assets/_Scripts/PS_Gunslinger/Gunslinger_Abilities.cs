@@ -14,10 +14,15 @@ public class Gunslinger_Abilities : NetworkBehaviour
 	private GameObject[] bulletSpawnPositions;
 	private int bulletsFired;
 	public Animator gunslingerGunsController;
+	public int bulletDamage;
+
+	void Start()
+	{
+		bulletDamage = 10;
+	}
 
 	void Update () 
 	{
-		
 		if (Input.GetMouseButton (0) && !mouseOverPlayer) 
 		{
 			if(!shootingBullet)
@@ -50,7 +55,7 @@ public class Gunslinger_Abilities : NetworkBehaviour
 			r.velocity = dir * 30;
 			NetworkServer.Spawn (b);
 			b.GetComponent<Projectile>().SetProjectileOwner(gameObject);
-			b.GetComponent<Projectile> ().damage = 10;
+			b.GetComponent<Projectile> ().damage = bulletDamage;
 			Destroy (b, 1f);
 		}
 	}

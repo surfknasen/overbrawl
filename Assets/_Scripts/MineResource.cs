@@ -19,7 +19,7 @@ public class MineResource : NetworkBehaviour {
 
 	void OnTriggerEnter2D(Collider2D otherCol)
 	{
-		IAttack iAttack = otherCol.gameObject.GetComponent<IAttack>();
+		Interface_Attack iAttack = otherCol.gameObject.GetComponent<Interface_Attack>();
 		if(iAttack != null)
 		{
 			if(iAttack.isActive())
@@ -48,7 +48,7 @@ public class MineResource : NetworkBehaviour {
 
 	void DropCurrency()
 	{
-		for(int i = 0; i < 3; i++) // comment the shit below
+		for(int i = 0; i < Random.Range(2,8); i++) // comment the code below
 		{
 			Vector3 spawnBox = transform.localScale;
 			Vector3 position = new Vector3(Random.value * spawnBox.x, Random.value * spawnBox.y, Random.value * spawnBox.z);

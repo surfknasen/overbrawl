@@ -10,7 +10,8 @@ public class SetupLocalPlayer_Gunslinger : NetworkBehaviour {
 	public GameObject body;
 	public Sprite thisSprite;
 	public NetworkAnimator networkAnimatorGunslinger;
-	
+//	private string activeClass = "Gunslinger";
+
 	public void Start () 
 	{
 		if (isLocalPlayer) 
@@ -21,6 +22,7 @@ public class SetupLocalPlayer_Gunslinger : NetworkBehaviour {
 			GetComponent<Gunslinger_Abilities> ().enabled = true;
 			GetComponent<Health> ().enabled = true;
 			GetComponent<Health>().maxHealth = 150;
+		//	GameObject.Find("UpgradeShopHandler").GetComponent<Upgrades>().activeClass = activeClass;
 			fillColor.color = new Color32(0,255, 0, 255); // green
 		}
 

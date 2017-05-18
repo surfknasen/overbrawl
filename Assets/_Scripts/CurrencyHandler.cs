@@ -31,7 +31,7 @@ public class CurrencyHandler : NetworkBehaviour
 			{
 				hitColliders[i].isTrigger = true;
 				Vector3 dir = transform.position - hitColliders[i].transform.position;
-				hitColliders[i].transform.Translate(dir * Time.deltaTime * 7);
+				hitColliders[i].transform.Translate(dir * Time.deltaTime * 5);
 			}
 		}
 	}

@@ -3,9 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Sword : MonoBehaviour, IAttack 
+public class Sword : MonoBehaviour, Interface_Attack 
 {
 	private Vanguard_Abilities vanguardAbilities;
+	public int swordDamage = 20;
 
 	void Start()
 	{
@@ -24,11 +25,11 @@ public class Sword : MonoBehaviour, IAttack
 		}
 	}
 
-    int IAttack.getDamage()
+    int Interface_Attack.getDamage()
     {
-        return 20;
+        return swordDamage;
     }
-    bool IAttack.isActive()
+    bool Interface_Attack.isActive()
     {
         return vanguardAbilities.AnimatorIsPlaying();
     }

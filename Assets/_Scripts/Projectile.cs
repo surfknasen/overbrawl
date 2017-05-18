@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class Projectile : NetworkBehaviour, IAttack
+public class Projectile : NetworkBehaviour, Interface_Attack
 {
 	private GameObject owner;
 	[HideInInspector]

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IAttack {
+public interface Interface_Attack {
 	int getDamage();
 	bool isActive();
 }
