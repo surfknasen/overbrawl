@@ -11,7 +11,12 @@ public class Vanguard_Abilities : NetworkBehaviour
 	public GameObject vanguardShieldProjectile;
 	private bool shieldProjectileShooting;
 	private bool animationPlaying;
-	public int shieldProjectileDamage = 40;
+	public int shieldProjectileDamage;
+
+	void Start()
+	{
+		shieldProjectileDamage = 40;
+	}
 
 	void Update () 
 	{
