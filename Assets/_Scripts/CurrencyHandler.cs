@@ -31,12 +31,12 @@ public class CurrencyHandler : NetworkBehaviour
 			{
 				hitColliders[i].isTrigger = true;
 				Vector3 dir = transform.position - hitColliders[i].transform.position;
-				hitColliders[i].transform.Translate(dir * Time.deltaTime * 4);
+				hitColliders[i].transform.Translate(dir * Time.deltaTime * 5);
 			}
 		}
 	}
 
-	void OnTriggerStay2D(Collider2D otherCol)
+	void OnTriggerEnter2D(Collider2D otherCol)
 	{
 		if(!isLocalPlayer) return;
 

@@ -6,12 +6,11 @@ using UnityEngine;
 public class Sword : MonoBehaviour, Interface_Attack 
 {
 	private Vanguard_Abilities vanguardAbilities;
-	public int swordDamage;
+	public int swordDamage = 20;
 
 	void Start()
 	{
 		vanguardAbilities = GetComponentInParent<Vanguard_Abilities>();
-		swordDamage = 20;
 	}
 
 	void OnTriggerEnter2D(Collider2D otherCol)
@@ -21,7 +20,7 @@ public class Sword : MonoBehaviour, Interface_Attack
 		{
 			if(vanguardAbilities.AnimatorIsPlaying()) 
 			{
-				health.TakeDamage(swordDamage);
+				health.TakeDamage(15);
 			}
 		}
 	}

@@ -1,4 +1,4 @@
-Initialize engine version: 5.6.1f1 (2860b30f0b54)
+Initialize engine version: 5.6.0f3 (497a0f351392)
 GfxDevice: creating device client; threaded=1
 Direct3D:
     Version:  Direct3D 11.0 [level 11.1]
@@ -17,14 +17,14 @@ Platform assembly: C:\Users\Casper\Documents\overbrawl.io\TestBuild_Data\Managed
 Loading C:\Users\Casper\Documents\overbrawl.io\TestBuild_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
 Platform assembly: C:\Users\Casper\Documents\overbrawl.io\TestBuild_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
 Loading C:\Users\Casper\Documents\overbrawl.io\TestBuild_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-- Completed reload, in  0.023 seconds
+- Completed reload, in  0.059 seconds
 Platform assembly: C:\Users\Casper\Documents\overbrawl.io\TestBuild_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Casper\Documents\overbrawl.io\TestBuild_Data\Managed\System.dll (this message is harmless)
 desktop: 1440x900 60Hz; virtual: 1440x900 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 2.603516 ms
+UnloadTime: 37.716934 ms
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 256c -> priority: 1 
-  Thread -> id: 1a9c -> priority: 1 
+  Thread -> id: 1dfc -> priority: 1 
+  Thread -> id: 11bc -> priority: 1 
