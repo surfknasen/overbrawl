@@ -56,7 +56,7 @@ public class Gunslinger_Abilities : NetworkBehaviour
 			NetworkServer.Spawn (b);
 			b.GetComponent<Projectile>().SetProjectileOwner(gameObject);
 			b.GetComponent<Projectile> ().damage = bulletDamage;
-			Destroy (b, 1f);
+			Destroy (b, 0.7f);
 		}
 	}
 	[Command]
