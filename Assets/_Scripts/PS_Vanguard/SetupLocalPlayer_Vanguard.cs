@@ -10,7 +10,7 @@ public class SetupLocalPlayer_Vanguard : NetworkBehaviour {
 	public GameObject body;
 	public Sprite thisSprite;
 	public NetworkAnimator networkAnimatorReinhardt;
-//	private string activeClass = "Vanguard";
+	private string activeClass = "Vanguard";
 
 	public void Start () 
 	{
@@ -22,7 +22,7 @@ public class SetupLocalPlayer_Vanguard : NetworkBehaviour {
 			GetComponent<Vanguard_Abilities> ().enabled = true;
 			GetComponent<Health> ().enabled = true;
 			GetComponent<Health>().maxHealth = 200;
-		//	GameObject.Find("UpgradeShopHandler").GetComponent<Upgrades>().activeClass = activeClass;
+			GetComponent<LevelHandler>().activeClass = this.activeClass;
 			fillColor.color = new Color32(0,255, 0, 255); // green
 		}
 

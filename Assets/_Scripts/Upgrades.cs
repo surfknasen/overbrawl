@@ -7,10 +7,10 @@ using UnityEngine.UI;
 public class Upgrades : NetworkBehaviour 
 {
 	public GameObject upgradeShopCanvas;
-	public GameObject player;
+	private GameObject player;
 	private Health health;
-	private CurrencyHandler currencyHandler;
-//	public string activeClass;
+	private LevelHandler currencyHandler;
+	public string activeClass;
 
 	void Start()
 	{
@@ -20,48 +20,10 @@ public class Upgrades : NetworkBehaviour
 	IEnumerator LateStart()
 	{
 		yield return new WaitForSeconds(0.1f);
+		player = GameObject.FindGameObjectWithTag("Player");
 		health = player.GetComponent<Health>();
-		currencyHandler = player.GetComponent<CurrencyHandler>();
-
+		currencyHandler = player.GetComponent<LevelHandler>();
 	}
 
-
-
-	void Update () 
-	{
-		// show upgrade menu on escape button
-		if(Input.GetKeyDown(KeyCode.Escape))
-		{
-			upgradeShopCanvas.SetActive(true);
-		}
-	}
-
-
-	public void Upgrade_IncreaseHealth(int amount)
-	{
-		if(currencyHandler.balance >= 40)
-		{
-			health.maxHealth += amount;
-			health.healthBar.maxValue += amount;
-		}
-	}
-
-	public void Upgrade_Attack(int amount)
-	{
-		if(currencyHandler.balance >= 0)
-		{
-		/*	switch(activeClass)
-			{
-				case "Vanguard":
-				print(activeClass);
-				player.GetComponent<Vanguard_Abilities>().shieldProjectileDamage += amount;
-				player.GetComponentInChildren<Sword>().swordDamage += amount;
-				break;
-				case "Gunslinger":
-				player.GetComponent<Gunslinger_Abilities>().bulletDamage += amount;
-				break;
-			}
-			*/
-		}
-	}
+	
 }
