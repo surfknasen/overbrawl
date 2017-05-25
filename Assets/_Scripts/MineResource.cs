@@ -48,7 +48,7 @@ public class MineResource : NetworkBehaviour {
 
 	void DropCurrency()
 	{
-		for(int i = 0; i < Random.Range(5,10); i++) // comment the code below
+		for(int i = 0; i < Random.Range(20,80); i++) // comment the code below
 		{
 			Vector3 spawnBox = transform.localScale;
 			Vector3 position = new Vector3(Random.value * spawnBox.x, Random.value * spawnBox.y, Random.value * spawnBox.z);

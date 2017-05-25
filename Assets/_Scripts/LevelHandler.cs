@@ -20,6 +20,8 @@ public class LevelHandler : NetworkBehaviour
 	private Text levelText;
 	private int upgradeBaseInt;
 
+	// for the randomized upgrades
+	
 
 	void Start()
 	{
@@ -79,6 +81,7 @@ public class LevelHandler : NetworkBehaviour
 			UpgradeStats();
 			currentLevel++;
 			levelText.text = "LEVEL " + currentLevel.ToString();
+			GetComponent<Upgrades>().ChooseRandomUpgrades();
 			expSlider.value = 0;
 			balance = 0;
 		} else
@@ -122,4 +125,8 @@ public class LevelHandler : NetworkBehaviour
 			
 		}
 	}
+
+	// randomized upgrades
+
+	
 }
