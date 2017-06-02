@@ -8,14 +8,14 @@ public class Upgrades : NetworkBehaviour
 {
 	public GameObject upgradeCanvas;
 	private Health health;
-	private LevelHandler currencyHandler;
 	[HideInInspector]
 	public string activeClass;
 	public Button[] buttons;
 	private PlayerMovement playerMovement;
+	private LevelHandler levelHandler;
 	private Dictionary<string, int> tiers = new Dictionary<string, int>()
 	{
-		{"IncreasedMoveSpeed", 1}
+		{"IncreaseMoveSpeed", 1}
 	};
 
 	void Start()
@@ -28,7 +28,7 @@ public class Upgrades : NetworkBehaviour
 		yield return new WaitForSeconds(0.1f);
 		playerMovement = GetComponent<PlayerMovement>();
 		health = GetComponent<Health>();
-		currencyHandler = GetComponent<LevelHandler>();
+		levelHandler = GetComponent<LevelHandler>();
 	}
 
 	public void ChooseRandomUpgrades()
@@ -38,21 +38,54 @@ public class Upgrades : NetworkBehaviour
 
 	void RandomNumber()
 	{
+		List<int> generatedNumbers = new List<int>();
+		generatedNumbers.Add(-1); // need four slots for when I check if a slot already contains random number
+		generatedNumbers.Add(-1);
+		generatedNumbers.Add(-1);
+		generatedNumbers.Add(-1);
+
 		// generate 4 unique random numbers between a certain range
-		for(int i = 0; i < 4; i++)
+		int i = 0;
+		while(i < 4)
 		{
+			print("Inside while loop");
 			int randomNumber = (int)Random.Range(0,4);
-			SelectUpgrades(randomNumber, i);
+			if(!generatedNumbers.Contains(randomNumber))
+			{
+				generatedNumbers[i] = randomNumber;	
+				SelectUpgrades(randomNumber, i);
+				i++;
+			}
 		}
 		upgradeCanvas.SetActive(true);
+		generatedNumbers.Clear();
 	}
 
-	void SelectUpgrades(int randomNumber, int buttonIndex)
+	void SelectUpgrades(int randomNumber, int buttonIndex) // This selects the upgrade with the random number generated above
 	{
 		switch(randomNumber)
 		{
-			case 0:
-			buttons[buttonIndex].onClick.AddListener(UG_IncreasedMoveSpeed);
+			case 0:  // ERROR: THE GIVEN KEY WAS NOT PRESENT IN THE DICTIONARY
+			switch(tiers["IncreaseMoveSpeed"])
+			{											// check if the required level is met, if so then this upgrade can be selected
+				case 2:
+					if(levelHandler.currentLevel >= 5)
+					{
+						SelectUpgrades(Random.Range(0,4), buttonIndex);
+						return;
+					}
+				break;
+				case 3:
+					if(levelHandler.currentLevel >= 10)
+					{
+						SelectUpgrades(Random.Range(0,4), buttonIndex);
+						return;
+					}
+				break;
+				default:
+				break;
+			}
+			buttons[buttonIndex].onClick.AddListener(UG_IncreaseMoveSpeed);
 			break;
 			case 1:
 			buttons[buttonIndex].onClick.AddListener(UG_IncreasedDamage);
@@ -66,9 +99,9 @@ public class Upgrades : NetworkBehaviour
 		}
 	}
 
-	void UG_IncreasedMoveSpeed() // Increased movement speed 	
+	void UG_IncreaseMoveSpeed() // Increased movement speed 	
 	{
-		switch(tiers["IncreasedMoveSpeed"])
+		switch(tiers["IncreaseMoveSpeed"])
 		{
 			case 1:
 			playerMovement.moveSpeed += playerMovement.moveSpeed / 100 * 5;
@@ -87,8 +120,8 @@ public class Upgrades : NetworkBehaviour
 		}
 		print("Increased movespeed");
 	//	upgradeCanvas.SetActive(false);
-		tiers["IncreasedMoveSpeed"] += 1;
-		print(tiers["IncreasedMoveSpeed"]);
+		tiers["IncreaseMoveSpeed"] += 1;
+		print(tiers["IncreaseMoveSpeed"]);
 	}
 
 	void UG_IncreasedDamage() // Extra damage
@@ -100,7 +133,7 @@ public class Upgrades : NetworkBehaviour
 	void UG_AttackTransfer() // Transfer an attack's damage to another attack		
 	{
 		print("Transfered attack damage");
-	//	upgradeCanvas.SetActive(false);
+		//upgradeCanvas.SetActive(false);
 	}
 
 	void UG_Freeze() // Hits slow down target	

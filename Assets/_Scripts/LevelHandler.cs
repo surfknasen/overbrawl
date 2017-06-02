@@ -9,7 +9,7 @@ public class LevelHandler : NetworkBehaviour
 
 	public int balance;
 	private int requiredExp;
-	private int currentLevel;
+	public int currentLevel;
 	private Text balanceText;
 	private Upgrades upgrades;
 	Collider2D[] hitColliders;
