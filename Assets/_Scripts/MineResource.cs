@@ -9,7 +9,7 @@ public class MineResource : NetworkBehaviour {
 	[SerializeField]
 	private Slider healthBar;
 	[SyncVar(hook = "OnChangeHealth")]
-	private int currentHealth;
+	private float currentHealth;
 	public GameObject currency;
 	
 	void Start()
@@ -29,11 +29,11 @@ public class MineResource : NetworkBehaviour {
 		} 
 	}
 	
-	void TakeDamage (int dmg) 
+	void TakeDamage (float dmg) 
 	{
 		healthBar.gameObject.SetActive (true);
 		healthBar.value -= dmg;
-		currentHealth = (int)healthBar.value;
+		currentHealth = healthBar.value;
 
 		if (healthBar.value > 0) return;
 
@@ -41,7 +41,7 @@ public class MineResource : NetworkBehaviour {
 		
 	}
 
-	void OnChangeHealth(int health)
+	void OnChangeHealth(float health)
 	{
 		healthBar.value = health;
 	}

@@ -3,6 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public interface Interface_Attack {
-	int getDamage();
+	float getDamage();
 	bool isActive();
 }

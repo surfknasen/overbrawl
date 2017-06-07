@@ -7,9 +7,9 @@ using UnityEngine.Networking;
 public class Health : NetworkBehaviour {
 
 	public Slider healthBar;
-	public int maxHealth;
+	public float maxHealth;
 	[SyncVar (hook = "OnChangeHealth")] 
-	private int currentHealth;
+	private float currentHealth;
 
 	void Start()
 	{
@@ -18,24 +18,25 @@ public class Health : NetworkBehaviour {
 		healthBar.value = currentHealth;
 	}
 
-	public void TakeDamage(int amount)
+	public void TakeDamage(float amount)
 	{
 		if (!isServer)
 			return;
 
 		currentHealth -= amount;
+		print(currentHealth);
 		if (currentHealth <= 0) 
 		{
 			currentHealth = 0;
-
 			Destroy (gameObject);
 		}
 		
 	}
 
-	void OnChangeHealth(int health)
+	void OnChangeHealth(float health)
 	{
 		healthBar.value = health;
+		print(healthBar.value);
 	}
 
 }

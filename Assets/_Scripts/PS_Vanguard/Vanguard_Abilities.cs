@@ -11,7 +11,12 @@ public class Vanguard_Abilities : NetworkBehaviour
 	public GameObject vanguardShieldProjectile;
 	private bool shieldProjectileShooting;
 	private bool animationPlaying;
-	public int shieldProjectileDamage = 40;
+	public float shieldDamage;
+
+	void Start()
+	{
+		shieldDamage = 40;
+	}
 
 	void Update () 
 	{
@@ -65,7 +70,7 @@ public class Vanguard_Abilities : NetworkBehaviour
 		r.velocity = dir * 5;
 		NetworkServer.Spawn (p);
 		p.GetComponent<Projectile> ().SetProjectileOwner(gameObject);
-		p.GetComponent<Projectile> ().damage = shieldProjectileDamage;
+		p.GetComponent<Projectile> ().damage = shieldDamage;
 		Destroy (p, 4f);
 	}
 

@@ -6,11 +6,12 @@ using UnityEngine;
 public class Sword : MonoBehaviour, Interface_Attack 
 {
 	private Vanguard_Abilities vanguardAbilities;
-	public int swordDamage = 20;
+	public float damage;
 
 	void Start()
 	{
 		vanguardAbilities = GetComponentInParent<Vanguard_Abilities>();
+		damage = 20;
 	}
 
 	void OnTriggerEnter2D(Collider2D otherCol)
@@ -25,9 +26,9 @@ public class Sword : MonoBehaviour, Interface_Attack
 		}
 	}
 
-    int Interface_Attack.getDamage()
+    float Interface_Attack.getDamage()
     {
-        return swordDamage;
+        return damage;
     }
     bool Interface_Attack.isActive()
     {

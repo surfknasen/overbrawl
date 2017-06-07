@@ -8,7 +8,7 @@ public class Projectile : NetworkBehaviour, Interface_Attack
 {
 	private GameObject owner;
 	[HideInInspector]
-	public int damage;
+	public float damage;
 
 	public void SetProjectileOwner(GameObject obj)
 	{
@@ -31,7 +31,7 @@ public class Projectile : NetworkBehaviour, Interface_Attack
 	 	
 	}
 
-    public int getDamage()
+    public float getDamage()
     {
         return damage;
     }

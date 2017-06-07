@@ -98,31 +98,32 @@ public class LevelHandler : NetworkBehaviour
 	void UpgradeStats()
 	{
 		IncreaseHealth(health.maxHealth / 5);
-		IncreaseAttackDamage(requiredExp / 50);
+		IncreaseAttackDamage();
 	}
 
-	public void IncreaseHealth(int amount)
+	public void IncreaseHealth(float amount)
 	{
 		health.maxHealth += amount;
 		health.healthBar.maxValue += amount;
 	}
 
-	public void IncreaseAttackDamage(int amount)
+	public void IncreaseAttackDamage()
 	{
 		if(balance >= 0)
 		{
 			switch(activeClass)
 			{
-				case "Vanguard":
-				print(activeClass);
-				player.GetComponent<Vanguard_Abilities>().shieldProjectileDamage += amount;
-				player.GetComponentInChildren<Sword>().swordDamage += amount;
-				break;
-				case "Gunslinger":
-				player.GetComponent<Gunslinger_Abilities>().bulletDamage += amount;
-				break;
+			case "Vanguard":
+				Vanguard_Abilities vanguard = GetComponent<Vanguard_Abilities>();					// shield projectile damage
+				Sword sword = GetComponentInChildren<Sword>(); 										// sword damage
+				vanguard.shieldDamage += vanguard.shieldDamage / 100 * 3;
+				sword.damage += sword.damage / 100 * 3;
+			break;
+			case "Gunslinger":
+				Gunslinger_Abilities gunslinger = GetComponent<Gunslinger_Abilities>();
+				gunslinger.damage += gunslinger.damage / 100 * 3;
+			break;
 			}
-			
 		}
 	}
 
