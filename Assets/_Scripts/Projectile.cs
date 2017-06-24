@@ -9,10 +9,12 @@ public class Projectile : NetworkBehaviour, Interface_Attack
 	private GameObject owner;
 	[HideInInspector]
 	public float damage;
+	private float lifeSteal;
 
-	public void SetProjectileOwner(GameObject obj)
+	public void SetProjectileProperties(GameObject obj, float lS)
 	{
 		owner = obj;
+		lifeSteal = lS;
 	}
 
 	void OnTriggerEnter2D(Collider2D other)
@@ -25,6 +27,7 @@ public class Projectile : NetworkBehaviour, Interface_Attack
 				if(health != null) 
 				{
 					health.TakeDamage (damage);
+					owner.GetComponent<Health>().AddDamage(lifeSteal);
 				}
 			}
 		} 

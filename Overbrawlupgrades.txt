@@ -1,8 +1,13 @@
 UPGRADEABLE UPGRADES!
 POWER-UPS!
+CLASS UPGRADES!
 
 UPGRADE									{Tier 1}{Tier 2}{Tier 3}
-- Higher movement speed 						: +5%   : +10%  : +15%
-- Extra damage after hit 						: 15% 	: 30%	: 50%
-- Transfer an attack's damage to another attack				: 10%	: 20%	: 30%
+- Increased movement speed 						: +5%   : +10%  : +15%
+- Extra damage after hit (bleed)	 					: 15% 	: 30%	: 50%
 - Hits slow down target							: 0.2s	: 0.6s	: 1s
+- Lifesteal								: 2%	: 8%	: 16%
+- Increased damage
+- Increased health
+- Increased attackspeed
+- Increased health regen

@@ -7,21 +7,23 @@ public class Sword : MonoBehaviour, Interface_Attack
 {
 	private Vanguard_Abilities vanguardAbilities;
 	public float damage;
+	public float lifeSteal;
 
 	void Start()
 	{
 		vanguardAbilities = GetComponentInParent<Vanguard_Abilities>();
-		damage = 20;
+		damage = 15;
 	}
 
-	void OnTriggerEnter2D(Collider2D otherCol)
+	void OnTriggerEnter2D(Collider2D otherCol) // bug
 	{
 		Health health = otherCol.gameObject.GetComponent<Health>();
 		if(health != null)
 		{
 			if(vanguardAbilities.AnimatorIsPlaying()) 
 			{
-				health.TakeDamage(15);
+				health.TakeDamage(damage);
+				GetComponentInParent<Health>().AddDamage(lifeSteal);
 			}
 		}
 	}
