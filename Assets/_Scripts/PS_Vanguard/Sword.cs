@@ -15,7 +15,7 @@ public class Sword : MonoBehaviour, Interface_Attack
 		damage = 15;
 	}
 
-	void OnTriggerEnter2D(Collider2D otherCol) // bug
+	void OnTriggerEnter2D(Collider2D otherCol) 
 	{
 		Health health = otherCol.gameObject.GetComponent<Health>();
 		if(health != null)

@@ -14,11 +14,13 @@ public class Vanguard_Abilities : NetworkBehaviour
 	public float shieldDamage;
 	public float attackSpeed;
 
+
 	void Start()
 	{
 		shieldDamage = 40;
 		attackSpeed = 0.8f;
 		swordAttackController.speed = attackSpeed;
+
 	}
 
 	void Update () 

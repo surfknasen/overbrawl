@@ -37,6 +37,7 @@ public class SetupLocalPlayer_Vanguard : NetworkBehaviour {
 	void Update()
 	{
 		if(!isLocalPlayer) return;
+		
 		Cmd_SetupSprite();
 	}
 

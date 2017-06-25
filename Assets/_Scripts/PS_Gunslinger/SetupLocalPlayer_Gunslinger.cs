@@ -37,6 +37,8 @@ public class SetupLocalPlayer_Gunslinger : NetworkBehaviour {
 	{
 		if(!isLocalPlayer) return;
 		Cmd_SetupSprite();
+
+		
 	}
 
 	[Command]

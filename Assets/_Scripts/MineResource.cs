@@ -31,14 +31,23 @@ public class MineResource : NetworkBehaviour {
 	
 	void TakeDamage (float dmg) 
 	{
-		healthBar.gameObject.SetActive (true);
+		
+		if(!isServer) return;
+
+		Rpc_ShowHealthbar();
+
 		healthBar.value -= dmg;
 		currentHealth = healthBar.value;
 
 		if (healthBar.value > 0) return;
 
-		DropCurrency();
-		
+		DropCurrency();	
+	}
+
+	[ClientRpc]
+	void Rpc_ShowHealthbar()
+	{
+		healthBar.gameObject.SetActive (true);				
 	}
 
 	void OnChangeHealth(float health)
