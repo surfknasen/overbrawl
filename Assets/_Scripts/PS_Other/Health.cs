@@ -7,25 +7,24 @@ using UnityEngine.Networking;
 public class Health : NetworkBehaviour { // TODO: ADD ATTACK INTERFACE
 
 	public Slider healthBar;
+	[SyncVar (hook = "OnChangeMaxHealth")] 
 	public float maxHealth;
-	[SyncVar (hook = "OnChangeHealth")] 
+	[SyncVar (hook = "OnChangeCurrentHealth")] 
 	public float currentHealth;
 	public int regenDelay = 15;
 	private float regenValue;
 
 	
-
 	void Start()
 	{
 		currentHealth = maxHealth;
-		healthBar.maxValue = currentHealth;
-		healthBar.value = currentHealth;
+		healthBar.maxValue = maxHealth;
+		healthBar.value = maxHealth;
 		regenValue = maxHealth / 10;
 
 		StartCoroutine("RegenerateHealth");;
 	}
-
-
+	
 	IEnumerator RegenerateHealth()
 	{
 		if(currentHealth < maxHealth){
@@ -44,11 +43,9 @@ public class Health : NetworkBehaviour { // TODO: ADD ATTACK INTERFACE
 
 	public void TakeDamage(float amount)
 	{
-		if (!isServer)
-			return;
+		if (!isServer) return;
 
 		currentHealth -= amount;
-		print(currentHealth);
 		if (currentHealth <= 0) 
 		{
 			currentHealth = 0;
@@ -58,8 +55,7 @@ public class Health : NetworkBehaviour { // TODO: ADD ATTACK INTERFACE
 
 	public void AddDamage(float amount)
 	{
-		if(!isServer)
-			return;
+		if(!isServer) return;
 
 		if(currentHealth < maxHealth)
 		{
@@ -67,10 +63,15 @@ public class Health : NetworkBehaviour { // TODO: ADD ATTACK INTERFACE
 		}	
 	}
 
-	void OnChangeHealth(float health)
+	void OnChangeCurrentHealth(float health)
 	{
 		healthBar.value = health;
-		print(healthBar.value);
 	}
+
+	void OnChangeMaxHealth(float health)
+	{
+		healthBar.maxValue = maxHealth;
+	}
+
 
 }

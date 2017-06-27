@@ -20,6 +20,7 @@ public class MineResource : NetworkBehaviour {
 	void OnTriggerEnter2D(Collider2D otherCol)
 	{
 		Interface_Attack iAttack = otherCol.gameObject.GetComponent<Interface_Attack>();
+
 		if(iAttack != null)
 		{
 			if(iAttack.isActive())
@@ -31,7 +32,6 @@ public class MineResource : NetworkBehaviour {
 	
 	void TakeDamage (float dmg) 
 	{
-		
 		if(!isServer) return;
 
 		Rpc_ShowHealthbar();

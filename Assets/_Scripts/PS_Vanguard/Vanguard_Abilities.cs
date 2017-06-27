@@ -75,7 +75,7 @@ public class Vanguard_Abilities : NetworkBehaviour
 		r.velocity = dir * 5;
 		NetworkServer.Spawn (p);
 		p.GetComponent<Projectile> ().SetProjectileProperties(gameObject, 0);
-		p.GetComponent<Projectile> ().damage = shieldDamage;
+		p.GetComponent<Projectile>().damage = shieldDamage;
 		Destroy (p, 4f);
 	}
 

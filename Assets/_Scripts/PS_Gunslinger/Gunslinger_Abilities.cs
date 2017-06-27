@@ -15,7 +15,8 @@ public class Gunslinger_Abilities : NetworkBehaviour
 	private int bulletsFired;
 	public Animator gunslingerGunsController;
 	public float damage;
-	public float attackSpeed;
+	[SyncVar]	
+	public float attackSpeed;	
 	public float lifeSteal;
 
 	void Start()
@@ -56,9 +57,9 @@ public class Gunslinger_Abilities : NetworkBehaviour
 			GameObject b = Instantiate (bullet, bulletSpawnPositions[i].transform.position, bullet.transform.rotation);	
 			Rigidbody2D r = b.GetComponent<Rigidbody2D> ();
 			r.velocity = dir * 30;
-			NetworkServer.Spawn (b);
 			b.GetComponent<Projectile>().SetProjectileProperties(gameObject, lifeSteal);
-			b.GetComponent<Projectile> ().damage = damage;
+			b.GetComponent<Projectile>().damage = damage;
+			NetworkServer.Spawn (b);
 			Destroy (b, 0.7f);
 		}
 	}

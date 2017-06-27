@@ -20,14 +20,16 @@ public class SetupLocalPlayer_Gunslinger : NetworkBehaviour {
 			networkAnimatorGunslinger.SetParameterAutoSend(0,true);
 			GetComponent<PlayerMovement> ().enabled = true;
 			GetComponent<Gunslinger_Abilities> ().enabled = true;
-			GetComponent<Health> ().enabled = true;
+			GetComponent<Health>().enabled = true;
 			GetComponent<Health>().maxHealth = 150;
+			GetComponent<LevelHandler>().enabled = true; // ADDED RECENTLY 
+			GetComponent<Upgrades>().enabled = true; // ADDED RECENTLY
 			GetComponent<LevelHandler>().activeClass = this.activeClass;
 			GetComponent<Upgrades>().activeClass = this.activeClass;
 			fillColor.color = new Color32(0,255, 0, 255); // green
 		}
-
 	}
+
 
 	public override void PreStartClient()
 	{
@@ -36,9 +38,7 @@ public class SetupLocalPlayer_Gunslinger : NetworkBehaviour {
 	void Update()
 	{
 		if(!isLocalPlayer) return;
-		Cmd_SetupSprite();
-
-		
+		Cmd_SetupSprite();	
 	}
 
 	[Command]

@@ -11,6 +11,11 @@ public class Projectile : NetworkBehaviour, Interface_Attack
 	public float damage;
 	private float lifeSteal;
 
+	void Start()
+	{
+		damage = 10;
+	}
+
 	public void SetProjectileProperties(GameObject obj, float lS)
 	{
 		owner = obj;
@@ -22,13 +27,13 @@ public class Projectile : NetworkBehaviour, Interface_Attack
 		if(owner != null){
 			if(other.gameObject != owner && !other.transform.IsChildOf(owner.transform) && !other.gameObject.CompareTag("Enemy") && !other.gameObject.CompareTag("Currency")) // FIX
 			{
-				Destroy(gameObject);
 				Health health = other.gameObject.GetComponent<Health> ();
 				if(health != null) 
 				{
 					health.TakeDamage (damage);
 					owner.GetComponent<Health>().AddDamage(lifeSteal);
 				}
+				Destroy(gameObject);
 			}
 		} 
 	 	
