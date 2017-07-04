@@ -1,0 +1,480 @@
+===============================================================================
+EXTENSION NAME : linecount
+EXTENSION VERSION : 0.1.7
+-------------------------------------------------------------------------------
+count time : 2017-07-02 10:03:27
+count workspace : c:\Users\Casper\Documents\Overbrawl.io git
+total files : 228
+total code lines : 66805
+total comment lines : 3165
+total blank lines : 15657
+
+.travis.yml, code is 9, comment is 1, blank is 1.
+Assembly-CSharp-Editor-firstpass.csproj, code is 201, comment is 0, blank is 1.
+Assembly-CSharp-Editor.csproj, code is 192, comment is 0, blank is 1.
+Assembly-CSharp-firstpass.csproj, code is 185, comment is 0, blank is 1.
+Assembly-CSharp.csproj, code is 174, comment is 0, blank is 1.
+Assets\_Scripts\Camera_Movement.cs, code is 19, comment is 1, blank is 6.
+Assets\_Scripts\ClassSelection.cs, code is 54, comment is 2, blank is 8.
+Assets\_Scripts\FixTransform.cs, code is 19, comment is 0, blank is 5.
+Assets\_Scripts\Interface_Attack.cs, code is 7, comment is 0, blank is 1.
+Assets\_Scripts\MineResource.cs, code is 57, comment is 1, blank is 15.
+Assets\_Scripts\Projectile.cs, code is 44, comment is 1, blank is 7.
+Assets\_Scripts\PS_Gunslinger\Gunslinger_Abilities.cs, code is 103, comment is 0, blank is 14.
+Assets\_Scripts\PS_Gunslinger\SetupLocalPlayer_Gunslinger.cs, code is 49, comment is 3, blank is 7.
+Assets\_Scripts\PS_Other\Health.cs, code is 63, comment is 1, blank is 14.
+Assets\_Scripts\PS_Other\LevelHandler.cs, code is 111, comment is 4, blank is 20.
+Assets\_Scripts\PS_Other\PlayerMovement.cs, code is 36, comment is 1, blank is 7.
+Assets\_Scripts\PS_Other\Upgrades.cs, code is 402, comment is 30, blank is 33.
+Assets\_Scripts\PS_Vanguard\SetupLocalPlayer_Vanguard.cs, code is 49, comment is 1, blank is 10.
+Assets\_Scripts\PS_Vanguard\Sword.cs, code is 35, comment is 0, blank is 4.
+Assets\_Scripts\PS_Vanguard\Vanguard_Abilities.cs, code is 87, comment is 0, blank is 17.
+Assets\_Scripts\SpawnResources.cs, code is 31, comment is 0, blank is 7.
+Assets\Animations\GunslingerDefaultGun.anim, it is a binary file.
+Assets\Animations\GunslingerGunsController.controller, it is a binary file.
+Assets\Animations\VanguardDefaultAttack.anim, it is a binary file.
+Assets\Animations\VanguardSwordController.controller, it is a binary file.
+Assets\Mesh Explosion\Demo\ClickOrTapToExplode.cs, code is 30, comment is 3, blank is 8.
+Assets\Mesh Explosion\Demo\ReloadScene.cs, code is 34, comment is 1, blank is 7.
+Assets\Mesh Explosion\Editor\MeshExploderEditor.cs, code is 121, comment is 0, blank is 16.
+Assets\Mesh Explosion\Internal\DestroyAfterTime.cs, code is 9, comment is 0, blank is 5.
+Assets\Mesh Explosion\Internal\DestroyOnFadeCompletion.cs, code is 6, comment is 0, blank is 3.
+Assets\Mesh Explosion\Internal\Fade.cs, code is 107, comment is 2, blank is 29.
+Assets\Mesh Explosion\Internal\MeshExplosion.cs, code is 117, comment is 7, blank is 31.
+Assets\Mesh Explosion\MeshExploder.cs, code is 442, comment is 27, blank is 98.
+Assets\Mesh Explosion\Read Me.txt, code is 17, comment is 0, blank is 15.
+Assets\Standard Assets\Editor\ImageEffects\AntialiasingEditor.cs, code is 59, comment is 0, blank is 16.
+Assets\Standard Assets\Editor\ImageEffects\BloomAndFlaresEditor.cs, code is 121, comment is 6, blank is 35.
+Assets\Standard Assets\Editor\ImageEffects\BloomEditor.cs, code is 127, comment is 5, blank is 34.
+Assets\Standard Assets\Editor\ImageEffects\CameraMotionBlurEditor.cs, code is 76, comment is 3, blank is 21.
+Assets\Standard Assets\Editor\ImageEffects\ColorCorrectionCurvesEditor.cs, code is 87, comment is 2, blank is 35.
+Assets\Standard Assets\Editor\ImageEffects\ColorCorrectionLookupEditor.cs, code is 68, comment is 6, blank is 16.
+Assets\Standard Assets\Editor\ImageEffects\CreaseShadingEditor.cs, code is 47, comment is 0, blank is 13.
+Assets\Standard Assets\Editor\ImageEffects\DepthOfFieldDeprecatedEditor.cs, code is 110, comment is 2, blank is 37.
+Assets\Standard Assets\Editor\ImageEffects\DepthOfFieldEditor.cs, code is 123, comment is 0, blank is 38.
+Assets\Standard Assets\Editor\ImageEffects\EdgeDetectionEditor.cs, code is 51, comment is 1, blank is 20.
+Assets\Standard Assets\Editor\ImageEffects\NoiseAndGrainEditor.cs, code is 87, comment is 0, blank is 24.
+Assets\Standard Assets\Editor\ImageEffects\SunShaftsEditor.cs, code is 67, comment is 10, blank is 28.
+Assets\Standard Assets\Editor\ImageEffects\TonemappingEditor.cs, code is 68, comment is 2, blank is 15.
+Assets\Standard Assets\Editor\ImageEffects\VignetteAndChromaticAberrationEditor.cs, code is 52, comment is 2, blank is 10.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\Antialiasing.cs, code is 144, comment is 9, blank is 24.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\Bloom.cs, code is 278, comment is 31, blank is 62.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\BloomAndFlares.cs, code is 232, comment is 20, blank is 68.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\BloomOptimized.cs, code is 81, comment is 3, blank is 25.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\Blur.cs, code is 76, comment is 17, blank is 15.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\BlurOptimized.cs, code is 66, comment is 3, blank is 24.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\CameraMotionBlur.cs, code is 290, comment is 68, blank is 72.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\ColorCorrectionCurves.cs, code is 139, comment is 1, blank is 42.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\ColorCorrectionLookup.cs, code is 103, comment is 4, blank is 23.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\ColorCorrectionRamp.cs, code is 14, comment is 1, blank is 2.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\ContrastEnhance.cs, code is 58, comment is 3, blank is 19.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\ContrastStretch.cs, code is 143, comment is 33, blank is 26.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\CreaseShading.cs, code is 65, comment is 0, blank is 17.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\DepthOfField.cs, code is 261, comment is 46, blank is 84.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\DepthOfFieldDeprecated.cs, code is 310, comment is 36, blank is 85.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\EdgeDetection.cs, code is 73, comment is 0, blank is 16.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\Fisheye.cs, code is 37, comment is 1, blank is 9.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\GlobalFog.cs, code is 87, comment is 5, blank is 13.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\Grayscale.cs, code is 17, comment is 1, blank is 3.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\ImageEffectBase.cs, code is 41, comment is 5, blank is 9.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\ImageEffects.cs, code is 33, comment is 1, blank is 8.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\MotionBlur.cs, code is 48, comment is 13, blank is 10.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\NoiseAndGrain.cs, code is 137, comment is 8, blank is 36.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\NoiseAndScratches.cs, code is 116, comment is 14, blank is 16.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\PostEffectsBase.cs, code is 204, comment is 7, blank is 51.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\PostEffectsHelper.cs, code is 149, comment is 15, blank is 28.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\Quads.cs, code is 95, comment is 2, blank is 28.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\ScreenOverlay.cs, code is 56, comment is 2, blank is 11.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\ScreenSpaceAmbientObscurance.cs, code is 98, comment is 7, blank is 23.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\ScreenSpaceAmbientOcclusion.cs, code is 137, comment is 47, blank is 24.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\SepiaTone.cs, code is 14, comment is 1, blank is 1.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\SunShafts.cs, code is 109, comment is 9, blank is 34.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\TiltShift.cs, code is 60, comment is 0, blank is 16.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\Tonemapping.cs, code is 216, comment is 18, blank is 43.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\Triangles.cs, code is 89, comment is 0, blank is 23.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\Twirl.cs, code is 18, comment is 1, blank is 3.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\VignetteAndChromaticAberration.cs, code is 88, comment is 8, blank is 25.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\Vortex.cs, code is 17, comment is 1, blank is 2.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\DLAA.shader, code is 205, comment is 54, blank is 90.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAA2.shader, code is 136, comment is 40, blank is 18.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAA3Console.shader, code is 111, comment is 28, blank is 34.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAAPreset2.shader, code is 440, comment is 356, blank is 33.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAAPreset3.shader, code is 440, comment is 356, blank is 32.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\NFAA.shader, code is 106, comment is 10, blank is 33.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\SSAA.shader, code is 59, comment is 1, blank is 26.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\Blend.shader, code is 89, comment is 5, blank is 23.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendForBloom.shader, code is 171, comment is 12, blank is 40.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader, code is 36, comment is 0, blank is 13.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlurAndFlares.shader, code is 160, comment is 5, blank is 40.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BrightPassFilter.shader, code is 45, comment is 1, blank is 12.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BrightPassFilter2.shader, code is 58, comment is 0, blank is 17.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\LensFlareCreate.shader, code is 46, comment is 1, blank is 15.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\MobileBloom.shader, code is 201, comment is 9, blank is 78.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\MobileBlur.shader, code is 162, comment is 8, blank is 65.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\MultiPassHollywoodFlares.shader, code is 119, comment is 2, blank is 35.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\SeparableBlurPlus.shader, code is 53, comment is 1, blank is 17.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\VignetteShader.shader, code is 40, comment is 1, blank is 17.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\Bokeh34.shader, code is 55, comment is 2, blank is 24.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\DepthOfField34.shader, code is 308, comment is 54, blank is 120.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\DepthOfFieldDX11.shader, code is 182, comment is 21, blank is 59.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\DepthOfFieldScatter.shader, code is 671, comment is 36, blank is 239.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\SeparableBlur.shader, code is 48, comment is 1, blank is 19.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\SeparableWeightedBlurDof34.shader, code is 166, comment is 15, blank is 62.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\TiltShiftHdrLensBlur.shader, code is 289, comment is 9, blank is 91.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader, code is 94, comment is 10, blank is 35.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\BlurEffectConeTaps.shader, code is 49, comment is 2, blank is 2.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\CameraMotionBlur.shader, code is 359, comment is 76, blank is 113.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\CameraMotionBlurDX11.shader, code is 154, comment is 29, blank is 51.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\ChromaticAberrationShader.shader, code is 108, comment is 15, blank is 35.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrection3DLut.shader, code is 61, comment is 0, blank is 16.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionCurves.shader, code is 64, comment is 5, blank is 26.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionCurvesSimple.shader, code is 45, comment is 2, blank is 15.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionEffect.shader, code is 29, comment is 0, blank is 11.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionSelective.shader, code is 38, comment is 0, blank is 15.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\Adaptation.shader, code is 39, comment is 21, blank is 13.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\Apply.shader, code is 43, comment is 3, blank is 10.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\Luminance.shader, code is 26, comment is 1, blank is 9.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\MinMaxReduction.shader, code is 46, comment is 7, blank is 13.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\ContrastComposite.shader, code is 51, comment is 2, blank is 18.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\ConvertDepth.shader, code is 41, comment is 2, blank is 14.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\CreaseApply.shader, code is 46, comment is 0, blank is 17.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\EdgeDetectNormals.shader, code is 230, comment is 37, blank is 79.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\FisheyeShader.shader, code is 42, comment is 2, blank is 16.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\frag_ao.cginc, code is 31, comment is 11, blank is 7.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\GlobalFog.shader, code is 139, comment is 30, blank is 27.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\GrayscaleEffect.shader, code is 30, comment is 0, blank is 7.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\MotionBlur.shader, code is 97, comment is 0, blank is 23.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\MotionBlurClear.shader, code is 39, comment is 5, blank is 16.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseAndGrain.shader, code is 108, comment is 9, blank is 45.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseAndGrainDX11.shader, code is 163, comment is 16, blank is 68.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader, code is 49, comment is 5, blank is 13.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderYUV.shader, code is 56, comment is 7, blank is 15.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\PrepareSunShaftsBlur.shader, code is 65, comment is 4, blank is 29.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\RadialBlur.shader, code is 50, comment is 4, blank is 20.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\ScreenSpaceAmbientObscurance.shader, code is 234, comment is 83, blank is 104.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\ScreenSpaceRaytrace.cginc, code is 149, comment is 59, blank is 58.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\SepiaToneEffect.shader, code is 27, comment is 2, blank is 10.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\ShowAlphaChannel.shader, code is 38, comment is 0, blank is 16.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\SimpleClear.shader, code is 31, comment is 0, blank is 10.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\SSAOShader.shader, code is 227, comment is 10, blank is 47.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\SunShaftsComposite.shader, code is 164, comment is 7, blank is 58.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\Tonemapper.shader, code is 232, comment is 41, blank is 85.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\TwirlEffect.shader, code is 42, comment is 0, blank is 11.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\VignettingShader.shader, code is 53, comment is 0, blank is 18.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\VortexEffect.shader, code is 51, comment is 1, blank is 14.
+Game_Data\app.info, code is 2, comment is 0, blank is 0.
+Game_Data\globalgamemanagers, it is a binary file.
+Game_Data\globalgamemanagers.assets, it is a binary file.
+Game_Data\level0, it is a binary file.
+Game_Data\Managed\UnityEngine.dll.mdb, it is a binary file.
+Game_Data\Mono\etc\mono\1.0\DefaultWsdlHelpGenerator.aspx, code is 1517, comment is 41, blank is 262.
+Game_Data\Mono\etc\mono\1.0\machine.config, code is 235, comment is 0, blank is 8.
+Game_Data\Mono\etc\mono\2.0\Browsers\Compat.browser, code is 4, comment is 35, blank is 0.
+Game_Data\Mono\etc\mono\2.0\DefaultWsdlHelpGenerator.aspx, code is 1578, comment is 42, blank is 277.
+Game_Data\Mono\etc\mono\2.0\machine.config, code is 256, comment is 0, blank is 17.
+Game_Data\Mono\etc\mono\2.0\settings.map, code is 43, comment is 0, blank is 5.
+Game_Data\Mono\etc\mono\2.0\web.config, code is 149, comment is 0, blank is 5.
+Game_Data\Mono\etc\mono\browscap.ini, code is 12363, comment is 204, blank is 3170.
+Game_Data\Mono\etc\mono\config, code is 27, comment is 0, blank is 0.
+Game_Data\Mono\etc\mono\mconfig\config.xml, code is 525, comment is 30, blank is 61.
+Game_Data\output_log.txt, code is 211, comment is 0, blank is 18.
+Game_Data\Resources\unity default resources, it is a binary file.
+Game_Data\Resources\unity_builtin_extra, it is a binary file.
+Game_Data\sharedassets0.assets, it is a binary file.
+Game_Data\sharedassets0.assets.resS, it is a binary file.
+Overbrawl.io git.sln, code is 41, comment is 0, blank is 0.
+Scripts\build.sh, code is 30, comment is 3, blank is 6.
+Scripts\install.sh, code is 4, comment is 4, blank is 3.
+TestBuild_Data.app\Contents\Data\Managed\etc\mono\1.0\DefaultWsdlHelpGenerator.aspx, code is 1517, comment is 41, blank is 262.
+TestBuild_Data.app\Contents\Data\Managed\etc\mono\1.0\machine.config, code is 235, comment is 0, blank is 8.
+TestBuild_Data.app\Contents\Data\Managed\etc\mono\2.0\Browsers\Compat.browser, code is 4, comment is 35, blank is 0.
+TestBuild_Data.app\Contents\Data\Managed\etc\mono\2.0\DefaultWsdlHelpGenerator.aspx, code is 1578, comment is 42, blank is 277.
+TestBuild_Data.app\Contents\Data\Managed\etc\mono\2.0\machine.config, code is 256, comment is 0, blank is 17.
+TestBuild_Data.app\Contents\Data\Managed\etc\mono\2.0\settings.map, code is 43, comment is 0, blank is 5.
+TestBuild_Data.app\Contents\Data\Managed\etc\mono\2.0\web.config, code is 149, comment is 0, blank is 5.
+TestBuild_Data.app\Contents\Data\Managed\etc\mono\browscap.ini, code is 12363, comment is 204, blank is 3170.
+TestBuild_Data.app\Contents\Data\Managed\etc\mono\config, code is 27, comment is 0, blank is 0.
+TestBuild_Data.app\Contents\Data\Managed\etc\mono\mconfig\config.xml, code is 525, comment is 30, blank is 61.
+TestBuild_Data.app\Contents\Frameworks\MonoEmbedRuntime\osx\libmono.0.dylib, it is a binary file.
+TestBuild_Data.app\Contents\Frameworks\MonoEmbedRuntime\osx\libMonoPosixHelper.dylib, it is a binary file.
+TestBuild_Data.app\Contents\Info.plist, code is 39, comment is 0, blank is 0.
+TestBuild_Data.app\Contents\MacOS\TestBuild_Data, it is a binary file.
+TestBuild_Data.app\Contents\Resources\Data\globalgamemanagers, it is a binary file.
+TestBuild_Data.app\Contents\Resources\Data\globalgamemanagers.assets, it is a binary file.
+TestBuild_Data.app\Contents\Resources\Data\level0, it is a binary file.
+TestBuild_Data.app\Contents\Resources\Data\Managed\UnityEngine.dll.mdb, it is a binary file.
+TestBuild_Data.app\Contents\Resources\Data\Resources\unity_builtin_extra, it is a binary file.
+TestBuild_Data.app\Contents\Resources\Data\sharedassets0.assets, it is a binary file.
+TestBuild_Data.app\Contents\Resources\Data\sharedassets0.assets.resS, it is a binary file.
+TestBuild_Data.app\Contents\Resources\DefaultPreferences.plist, code is 10, comment is 0, blank is 0.
+TestBuild_Data.app\Contents\Resources\KeyConfig.nib\classes.nib, code is 12, comment is 0, blank is 0.
+TestBuild_Data.app\Contents\Resources\KeyConfig.nib\info.nib, code is 16, comment is 0, blank is 0.
+TestBuild_Data.app\Contents\Resources\KeyConfig.nib\keyedobjects.nib, it is a binary file.
+TestBuild_Data.app\Contents\Resources\MainMenu.nib\classes.nib, code is 30, comment is 0, blank is 0.
+TestBuild_Data.app\Contents\Resources\MainMenu.nib\info.nib, code is 24, comment is 0, blank is 0.
+TestBuild_Data.app\Contents\Resources\MainMenu.nib\keyedobjects.nib, it is a binary file.
+TestBuild_Data.app\Contents\Resources\ScreenSelector.nib\classes.nib, code is 57, comment is 0, blank is 0.
+TestBuild_Data.app\Contents\Resources\ScreenSelector.nib\info.nib, code is 18, comment is 0, blank is 0.
+TestBuild_Data.app\Contents\Resources\ScreenSelector.nib\keyedobjects.nib, it is a binary file.
+TestBuild_Data.app\Contents\Resources\unity default resources, it is a binary file.
+TestBuild_Data\app.info, code is 2, comment is 0, blank is 0.
+TestBuild_Data\globalgamemanagers, it is a binary file.
+TestBuild_Data\globalgamemanagers.assets, it is a binary file.
+TestBuild_Data\level0, it is a binary file.
+TestBuild_Data\Managed\UnityEngine.dll.mdb, it is a binary file.
+TestBuild_Data\Mono\etc\mono\1.0\DefaultWsdlHelpGenerator.aspx, code is 1517, comment is 41, blank is 262.
+TestBuild_Data\Mono\etc\mono\1.0\machine.config, code is 235, comment is 0, blank is 8.
+TestBuild_Data\Mono\etc\mono\2.0\Browsers\Compat.browser, code is 4, comment is 35, blank is 0.
+TestBuild_Data\Mono\etc\mono\2.0\DefaultWsdlHelpGenerator.aspx, code is 1578, comment is 42, blank is 277.
+TestBuild_Data\Mono\etc\mono\2.0\machine.config, code is 256, comment is 0, blank is 17.
+TestBuild_Data\Mono\etc\mono\2.0\settings.map, code is 43, comment is 0, blank is 5.
+TestBuild_Data\Mono\etc\mono\2.0\web.config, code is 149, comment is 0, blank is 5.
+TestBuild_Data\Mono\etc\mono\browscap.ini, code is 12363, comment is 204, blank is 3170.
+TestBuild_Data\Mono\etc\mono\config, code is 27, comment is 0, blank is 0.
+TestBuild_Data\Mono\etc\mono\mconfig\config.xml, code is 525, comment is 30, blank is 61.
+TestBuild_Data\output_log.txt, code is 30, comment is 0, blank is 0.
+TestBuild_Data\Resources\unity default resources, it is a binary file.
+TestBuild_Data\Resources\unity_builtin_extra, it is a binary file.
+TestBuild_Data\sharedassets0.assets, it is a binary file.
+TestBuild_Data\sharedassets0.assets.resS, it is a binary file.
+===============================================================================
+===============================================================================
+EXTENSION NAME : linecount
+EXTENSION VERSION : 0.1.7
+-------------------------------------------------------------------------------
+count time : 2017-07-02 10:04:10
+count workspace : c:\Users\Casper\Documents\Overbrawl.io git
+total files : 228
+total code lines : 66805
+total comment lines : 3165
+total blank lines : 15657
+
+.travis.yml, code is 9, comment is 1, blank is 1.
+Assembly-CSharp-Editor-firstpass.csproj, code is 201, comment is 0, blank is 1.
+Assembly-CSharp-Editor.csproj, code is 192, comment is 0, blank is 1.
+Assembly-CSharp-firstpass.csproj, code is 185, comment is 0, blank is 1.
+Assembly-CSharp.csproj, code is 174, comment is 0, blank is 1.
+Assets\_Scripts\Camera_Movement.cs, code is 19, comment is 1, blank is 6.
+Assets\_Scripts\ClassSelection.cs, code is 54, comment is 2, blank is 8.
+Assets\_Scripts\FixTransform.cs, code is 19, comment is 0, blank is 5.
+Assets\_Scripts\Interface_Attack.cs, code is 7, comment is 0, blank is 1.
+Assets\_Scripts\MineResource.cs, code is 57, comment is 1, blank is 15.
+Assets\_Scripts\Projectile.cs, code is 44, comment is 1, blank is 7.
+Assets\_Scripts\PS_Gunslinger\Gunslinger_Abilities.cs, code is 103, comment is 0, blank is 14.
+Assets\_Scripts\PS_Gunslinger\SetupLocalPlayer_Gunslinger.cs, code is 49, comment is 3, blank is 7.
+Assets\_Scripts\PS_Other\Health.cs, code is 63, comment is 1, blank is 14.
+Assets\_Scripts\PS_Other\LevelHandler.cs, code is 111, comment is 4, blank is 20.
+Assets\_Scripts\PS_Other\PlayerMovement.cs, code is 36, comment is 1, blank is 7.
+Assets\_Scripts\PS_Other\Upgrades.cs, code is 402, comment is 30, blank is 33.
+Assets\_Scripts\PS_Vanguard\SetupLocalPlayer_Vanguard.cs, code is 49, comment is 1, blank is 10.
+Assets\_Scripts\PS_Vanguard\Sword.cs, code is 35, comment is 0, blank is 4.
+Assets\_Scripts\PS_Vanguard\Vanguard_Abilities.cs, code is 87, comment is 0, blank is 17.
+Assets\_Scripts\SpawnResources.cs, code is 31, comment is 0, blank is 7.
+Assets\Animations\GunslingerDefaultGun.anim, it is a binary file.
+Assets\Animations\GunslingerGunsController.controller, it is a binary file.
+Assets\Animations\VanguardDefaultAttack.anim, it is a binary file.
+Assets\Animations\VanguardSwordController.controller, it is a binary file.
+Assets\Mesh Explosion\Demo\ClickOrTapToExplode.cs, code is 30, comment is 3, blank is 8.
+Assets\Mesh Explosion\Demo\ReloadScene.cs, code is 34, comment is 1, blank is 7.
+Assets\Mesh Explosion\Editor\MeshExploderEditor.cs, code is 121, comment is 0, blank is 16.
+Assets\Mesh Explosion\Internal\DestroyAfterTime.cs, code is 9, comment is 0, blank is 5.
+Assets\Mesh Explosion\Internal\DestroyOnFadeCompletion.cs, code is 6, comment is 0, blank is 3.
+Assets\Mesh Explosion\Internal\Fade.cs, code is 107, comment is 2, blank is 29.
+Assets\Mesh Explosion\Internal\MeshExplosion.cs, code is 117, comment is 7, blank is 31.
+Assets\Mesh Explosion\MeshExploder.cs, code is 442, comment is 27, blank is 98.
+Assets\Mesh Explosion\Read Me.txt, code is 17, comment is 0, blank is 15.
+Assets\Standard Assets\Editor\ImageEffects\AntialiasingEditor.cs, code is 59, comment is 0, blank is 16.
+Assets\Standard Assets\Editor\ImageEffects\BloomAndFlaresEditor.cs, code is 121, comment is 6, blank is 35.
+Assets\Standard Assets\Editor\ImageEffects\BloomEditor.cs, code is 127, comment is 5, blank is 34.
+Assets\Standard Assets\Editor\ImageEffects\CameraMotionBlurEditor.cs, code is 76, comment is 3, blank is 21.
+Assets\Standard Assets\Editor\ImageEffects\ColorCorrectionCurvesEditor.cs, code is 87, comment is 2, blank is 35.
+Assets\Standard Assets\Editor\ImageEffects\ColorCorrectionLookupEditor.cs, code is 68, comment is 6, blank is 16.
+Assets\Standard Assets\Editor\ImageEffects\CreaseShadingEditor.cs, code is 47, comment is 0, blank is 13.
+Assets\Standard Assets\Editor\ImageEffects\DepthOfFieldDeprecatedEditor.cs, code is 110, comment is 2, blank is 37.
+Assets\Standard Assets\Editor\ImageEffects\DepthOfFieldEditor.cs, code is 123, comment is 0, blank is 38.
+Assets\Standard Assets\Editor\ImageEffects\EdgeDetectionEditor.cs, code is 51, comment is 1, blank is 20.
+Assets\Standard Assets\Editor\ImageEffects\NoiseAndGrainEditor.cs, code is 87, comment is 0, blank is 24.
+Assets\Standard Assets\Editor\ImageEffects\SunShaftsEditor.cs, code is 67, comment is 10, blank is 28.
+Assets\Standard Assets\Editor\ImageEffects\TonemappingEditor.cs, code is 68, comment is 2, blank is 15.
+Assets\Standard Assets\Editor\ImageEffects\VignetteAndChromaticAberrationEditor.cs, code is 52, comment is 2, blank is 10.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\Antialiasing.cs, code is 144, comment is 9, blank is 24.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\Bloom.cs, code is 278, comment is 31, blank is 62.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\BloomAndFlares.cs, code is 232, comment is 20, blank is 68.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\BloomOptimized.cs, code is 81, comment is 3, blank is 25.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\Blur.cs, code is 76, comment is 17, blank is 15.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\BlurOptimized.cs, code is 66, comment is 3, blank is 24.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\CameraMotionBlur.cs, code is 290, comment is 68, blank is 72.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\ColorCorrectionCurves.cs, code is 139, comment is 1, blank is 42.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\ColorCorrectionLookup.cs, code is 103, comment is 4, blank is 23.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\ColorCorrectionRamp.cs, code is 14, comment is 1, blank is 2.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\ContrastEnhance.cs, code is 58, comment is 3, blank is 19.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\ContrastStretch.cs, code is 143, comment is 33, blank is 26.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\CreaseShading.cs, code is 65, comment is 0, blank is 17.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\DepthOfField.cs, code is 261, comment is 46, blank is 84.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\DepthOfFieldDeprecated.cs, code is 310, comment is 36, blank is 85.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\EdgeDetection.cs, code is 73, comment is 0, blank is 16.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\Fisheye.cs, code is 37, comment is 1, blank is 9.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\GlobalFog.cs, code is 87, comment is 5, blank is 13.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\Grayscale.cs, code is 17, comment is 1, blank is 3.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\ImageEffectBase.cs, code is 41, comment is 5, blank is 9.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\ImageEffects.cs, code is 33, comment is 1, blank is 8.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\MotionBlur.cs, code is 48, comment is 13, blank is 10.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\NoiseAndGrain.cs, code is 137, comment is 8, blank is 36.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\NoiseAndScratches.cs, code is 116, comment is 14, blank is 16.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\PostEffectsBase.cs, code is 204, comment is 7, blank is 51.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\PostEffectsHelper.cs, code is 149, comment is 15, blank is 28.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\Quads.cs, code is 95, comment is 2, blank is 28.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\ScreenOverlay.cs, code is 56, comment is 2, blank is 11.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\ScreenSpaceAmbientObscurance.cs, code is 98, comment is 7, blank is 23.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\ScreenSpaceAmbientOcclusion.cs, code is 137, comment is 47, blank is 24.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\SepiaTone.cs, code is 14, comment is 1, blank is 1.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\SunShafts.cs, code is 109, comment is 9, blank is 34.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\TiltShift.cs, code is 60, comment is 0, blank is 16.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\Tonemapping.cs, code is 216, comment is 18, blank is 43.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\Triangles.cs, code is 89, comment is 0, blank is 23.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\Twirl.cs, code is 18, comment is 1, blank is 3.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\VignetteAndChromaticAberration.cs, code is 88, comment is 8, blank is 25.
+Assets\Standard Assets\Effects\ImageEffects\Scripts\Vortex.cs, code is 17, comment is 1, blank is 2.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\DLAA.shader, code is 205, comment is 54, blank is 90.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAA2.shader, code is 136, comment is 40, blank is 18.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAA3Console.shader, code is 111, comment is 28, blank is 34.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAAPreset2.shader, code is 440, comment is 356, blank is 33.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAAPreset3.shader, code is 440, comment is 356, blank is 32.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\NFAA.shader, code is 106, comment is 10, blank is 33.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\SSAA.shader, code is 59, comment is 1, blank is 26.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\Blend.shader, code is 89, comment is 5, blank is 23.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendForBloom.shader, code is 171, comment is 12, blank is 40.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader, code is 36, comment is 0, blank is 13.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlurAndFlares.shader, code is 160, comment is 5, blank is 40.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BrightPassFilter.shader, code is 45, comment is 1, blank is 12.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BrightPassFilter2.shader, code is 58, comment is 0, blank is 17.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\LensFlareCreate.shader, code is 46, comment is 1, blank is 15.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\MobileBloom.shader, code is 201, comment is 9, blank is 78.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\MobileBlur.shader, code is 162, comment is 8, blank is 65.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\MultiPassHollywoodFlares.shader, code is 119, comment is 2, blank is 35.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\SeparableBlurPlus.shader, code is 53, comment is 1, blank is 17.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\VignetteShader.shader, code is 40, comment is 1, blank is 17.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\Bokeh34.shader, code is 55, comment is 2, blank is 24.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\DepthOfField34.shader, code is 308, comment is 54, blank is 120.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\DepthOfFieldDX11.shader, code is 182, comment is 21, blank is 59.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\DepthOfFieldScatter.shader, code is 671, comment is 36, blank is 239.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\SeparableBlur.shader, code is 48, comment is 1, blank is 19.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\SeparableWeightedBlurDof34.shader, code is 166, comment is 15, blank is 62.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\TiltShiftHdrLensBlur.shader, code is 289, comment is 9, blank is 91.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader, code is 94, comment is 10, blank is 35.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\BlurEffectConeTaps.shader, code is 49, comment is 2, blank is 2.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\CameraMotionBlur.shader, code is 359, comment is 76, blank is 113.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\CameraMotionBlurDX11.shader, code is 154, comment is 29, blank is 51.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\ChromaticAberrationShader.shader, code is 108, comment is 15, blank is 35.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrection3DLut.shader, code is 61, comment is 0, blank is 16.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionCurves.shader, code is 64, comment is 5, blank is 26.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionCurvesSimple.shader, code is 45, comment is 2, blank is 15.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionEffect.shader, code is 29, comment is 0, blank is 11.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrectionSelective.shader, code is 38, comment is 0, blank is 15.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\Adaptation.shader, code is 39, comment is 21, blank is 13.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\Apply.shader, code is 43, comment is 3, blank is 10.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\Luminance.shader, code is 26, comment is 1, blank is 9.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\MinMaxReduction.shader, code is 46, comment is 7, blank is 13.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\ContrastComposite.shader, code is 51, comment is 2, blank is 18.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\ConvertDepth.shader, code is 41, comment is 2, blank is 14.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\CreaseApply.shader, code is 46, comment is 0, blank is 17.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\EdgeDetectNormals.shader, code is 230, comment is 37, blank is 79.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\FisheyeShader.shader, code is 42, comment is 2, blank is 16.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\frag_ao.cginc, code is 31, comment is 11, blank is 7.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\GlobalFog.shader, code is 139, comment is 30, blank is 27.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\GrayscaleEffect.shader, code is 30, comment is 0, blank is 7.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\MotionBlur.shader, code is 97, comment is 0, blank is 23.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\MotionBlurClear.shader, code is 39, comment is 5, blank is 16.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseAndGrain.shader, code is 108, comment is 9, blank is 45.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseAndGrainDX11.shader, code is 163, comment is 16, blank is 68.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader, code is 49, comment is 5, blank is 13.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderYUV.shader, code is 56, comment is 7, blank is 15.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\PrepareSunShaftsBlur.shader, code is 65, comment is 4, blank is 29.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\RadialBlur.shader, code is 50, comment is 4, blank is 20.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\ScreenSpaceAmbientObscurance.shader, code is 234, comment is 83, blank is 104.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\ScreenSpaceRaytrace.cginc, code is 149, comment is 59, blank is 58.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\SepiaToneEffect.shader, code is 27, comment is 2, blank is 10.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\ShowAlphaChannel.shader, code is 38, comment is 0, blank is 16.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\SimpleClear.shader, code is 31, comment is 0, blank is 10.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\SSAOShader.shader, code is 227, comment is 10, blank is 47.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\SunShaftsComposite.shader, code is 164, comment is 7, blank is 58.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\Tonemapper.shader, code is 232, comment is 41, blank is 85.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\TwirlEffect.shader, code is 42, comment is 0, blank is 11.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\VignettingShader.shader, code is 53, comment is 0, blank is 18.
+Assets\Standard Assets\Effects\ImageEffects\Shaders\VortexEffect.shader, code is 51, comment is 1, blank is 14.
+Game_Data\app.info, code is 2, comment is 0, blank is 0.
+Game_Data\globalgamemanagers, it is a binary file.
+Game_Data\globalgamemanagers.assets, it is a binary file.
+Game_Data\level0, it is a binary file.
+Game_Data\Managed\UnityEngine.dll.mdb, it is a binary file.
+Game_Data\Mono\etc\mono\1.0\DefaultWsdlHelpGenerator.aspx, code is 1517, comment is 41, blank is 262.
+Game_Data\Mono\etc\mono\1.0\machine.config, code is 235, comment is 0, blank is 8.
+Game_Data\Mono\etc\mono\2.0\Browsers\Compat.browser, code is 4, comment is 35, blank is 0.
+Game_Data\Mono\etc\mono\2.0\DefaultWsdlHelpGenerator.aspx, code is 1578, comment is 42, blank is 277.
+Game_Data\Mono\etc\mono\2.0\machine.config, code is 256, comment is 0, blank is 17.
+Game_Data\Mono\etc\mono\2.0\settings.map, code is 43, comment is 0, blank is 5.
+Game_Data\Mono\etc\mono\2.0\web.config, code is 149, comment is 0, blank is 5.
+Game_Data\Mono\etc\mono\browscap.ini, code is 12363, comment is 204, blank is 3170.
+Game_Data\Mono\etc\mono\config, code is 27, comment is 0, blank is 0.
+Game_Data\Mono\etc\mono\mconfig\config.xml, code is 525, comment is 30, blank is 61.
+Game_Data\output_log.txt, code is 211, comment is 0, blank is 18.
+Game_Data\Resources\unity default resources, it is a binary file.
+Game_Data\Resources\unity_builtin_extra, it is a binary file.
+Game_Data\sharedassets0.assets, it is a binary file.
+Game_Data\sharedassets0.assets.resS, it is a binary file.
+Overbrawl.io git.sln, code is 41, comment is 0, blank is 0.
+Scripts\build.sh, code is 30, comment is 3, blank is 6.
+Scripts\install.sh, code is 4, comment is 4, blank is 3.
+TestBuild_Data.app\Contents\Data\Managed\etc\mono\1.0\DefaultWsdlHelpGenerator.aspx, code is 1517, comment is 41, blank is 262.
+TestBuild_Data.app\Contents\Data\Managed\etc\mono\1.0\machine.config, code is 235, comment is 0, blank is 8.
+TestBuild_Data.app\Contents\Data\Managed\etc\mono\2.0\Browsers\Compat.browser, code is 4, comment is 35, blank is 0.
+TestBuild_Data.app\Contents\Data\Managed\etc\mono\2.0\DefaultWsdlHelpGenerator.aspx, code is 1578, comment is 42, blank is 277.
+TestBuild_Data.app\Contents\Data\Managed\etc\mono\2.0\machine.config, code is 256, comment is 0, blank is 17.
+TestBuild_Data.app\Contents\Data\Managed\etc\mono\2.0\settings.map, code is 43, comment is 0, blank is 5.
+TestBuild_Data.app\Contents\Data\Managed\etc\mono\2.0\web.config, code is 149, comment is 0, blank is 5.
+TestBuild_Data.app\Contents\Data\Managed\etc\mono\browscap.ini, code is 12363, comment is 204, blank is 3170.
+TestBuild_Data.app\Contents\Data\Managed\etc\mono\config, code is 27, comment is 0, blank is 0.
+TestBuild_Data.app\Contents\Data\Managed\etc\mono\mconfig\config.xml, code is 525, comment is 30, blank is 61.
+TestBuild_Data.app\Contents\Frameworks\MonoEmbedRuntime\osx\libmono.0.dylib, it is a binary file.
+TestBuild_Data.app\Contents\Frameworks\MonoEmbedRuntime\osx\libMonoPosixHelper.dylib, it is a binary file.
+TestBuild_Data.app\Contents\Info.plist, code is 39, comment is 0, blank is 0.
+TestBuild_Data.app\Contents\MacOS\TestBuild_Data, it is a binary file.
+TestBuild_Data.app\Contents\Resources\Data\globalgamemanagers, it is a binary file.
+TestBuild_Data.app\Contents\Resources\Data\globalgamemanagers.assets, it is a binary file.
+TestBuild_Data.app\Contents\Resources\Data\level0, it is a binary file.
+TestBuild_Data.app\Contents\Resources\Data\Managed\UnityEngine.dll.mdb, it is a binary file.
+TestBuild_Data.app\Contents\Resources\Data\Resources\unity_builtin_extra, it is a binary file.
+TestBuild_Data.app\Contents\Resources\Data\sharedassets0.assets, it is a binary file.
+TestBuild_Data.app\Contents\Resources\Data\sharedassets0.assets.resS, it is a binary file.
+TestBuild_Data.app\Contents\Resources\DefaultPreferences.plist, code is 10, comment is 0, blank is 0.
+TestBuild_Data.app\Contents\Resources\KeyConfig.nib\classes.nib, code is 12, comment is 0, blank is 0.
+TestBuild_Data.app\Contents\Resources\KeyConfig.nib\info.nib, code is 16, comment is 0, blank is 0.
+TestBuild_Data.app\Contents\Resources\KeyConfig.nib\keyedobjects.nib, it is a binary file.
+TestBuild_Data.app\Contents\Resources\MainMenu.nib\classes.nib, code is 30, comment is 0, blank is 0.
+TestBuild_Data.app\Contents\Resources\MainMenu.nib\info.nib, code is 24, comment is 0, blank is 0.
+TestBuild_Data.app\Contents\Resources\MainMenu.nib\keyedobjects.nib, it is a binary file.
+TestBuild_Data.app\Contents\Resources\ScreenSelector.nib\classes.nib, code is 57, comment is 0, blank is 0.
+TestBuild_Data.app\Contents\Resources\ScreenSelector.nib\info.nib, code is 18, comment is 0, blank is 0.
+TestBuild_Data.app\Contents\Resources\ScreenSelector.nib\keyedobjects.nib, it is a binary file.
+TestBuild_Data.app\Contents\Resources\unity default resources, it is a binary file.
+TestBuild_Data\app.info, code is 2, comment is 0, blank is 0.
+TestBuild_Data\globalgamemanagers, it is a binary file.
+TestBuild_Data\globalgamemanagers.assets, it is a binary file.
+TestBuild_Data\level0, it is a binary file.
+TestBuild_Data\Managed\UnityEngine.dll.mdb, it is a binary file.
+TestBuild_Data\Mono\etc\mono\1.0\DefaultWsdlHelpGenerator.aspx, code is 1517, comment is 41, blank is 262.
+TestBuild_Data\Mono\etc\mono\1.0\machine.config, code is 235, comment is 0, blank is 8.
+TestBuild_Data\Mono\etc\mono\2.0\Browsers\Compat.browser, code is 4, comment is 35, blank is 0.
+TestBuild_Data\Mono\etc\mono\2.0\DefaultWsdlHelpGenerator.aspx, code is 1578, comment is 42, blank is 277.
+TestBuild_Data\Mono\etc\mono\2.0\machine.config, code is 256, comment is 0, blank is 17.
+TestBuild_Data\Mono\etc\mono\2.0\settings.map, code is 43, comment is 0, blank is 5.
+TestBuild_Data\Mono\etc\mono\2.0\web.config, code is 149, comment is 0, blank is 5.
+TestBuild_Data\Mono\etc\mono\browscap.ini, code is 12363, comment is 204, blank is 3170.
+TestBuild_Data\Mono\etc\mono\config, code is 27, comment is 0, blank is 0.
+TestBuild_Data\Mono\etc\mono\mconfig\config.xml, code is 525, comment is 30, blank is 61.
+TestBuild_Data\output_log.txt, code is 30, comment is 0, blank is 0.
+TestBuild_Data\Resources\unity default resources, it is a binary file.
+TestBuild_Data\Resources\unity_builtin_extra, it is a binary file.
+TestBuild_Data\sharedassets0.assets, it is a binary file.
+TestBuild_Data\sharedassets0.assets.resS, it is a binary file.
+===============================================================================

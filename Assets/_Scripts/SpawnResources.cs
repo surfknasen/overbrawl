@@ -25,7 +25,7 @@ public class SpawnResources : NetworkBehaviour {
 
 	void SpawningResources()
 	{
-		spawnPosition = new Vector2 (Random.Range(-50,50), Random.Range(-50, 50));
+		spawnPosition = new Vector2 (Random.Range(-100,100), Random.Range(-100, 100));
 		GameObject g = Instantiate (resourceObject);
 		g.transform.position = spawnPosition;
 

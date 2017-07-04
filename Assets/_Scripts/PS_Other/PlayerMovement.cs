@@ -13,7 +13,7 @@ public class PlayerMovement : NetworkBehaviour
 		cameraMovement.CameraStart (gameObject);
 	}
 
-	void Update () 
+	void FixedUpdate () 
 	{
 		MovePlayer ();
 		RotatePlayer (GetMouseDirection());
