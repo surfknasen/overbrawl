@@ -17,213 +17,54 @@ Platform assembly: C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\
 Loading C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
 Platform assembly: C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
 Loading C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-- Completed reload, in  0.047 seconds
+- Completed reload, in  0.122 seconds
 Platform assembly: C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\System.dll (this message is harmless)
 desktop: 1440x900 60Hz; virtual: 1440x900 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 4.446208 ms
-Initialize engine version: 5.6.1f1 (2860b30f0b54)
-GfxDevice: creating device client; threaded=1
-Direct3D:
-    Version:  Direct3D 11.0 [level 11.1]
-    Renderer: Intel(R) HD Graphics 5000 (ID=0xa26)
-    Vendor:   Intel
-    VRAM:     1792 MB
-    Driver:   10.18.10.3345
-Begin MonoManager ReloadAssembly
-Platform assembly: C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
-Loading C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
-Platform assembly: C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-Platform assembly: C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
-Loading C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-- Completed reload, in  0.035 seconds
-Platform assembly: C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\System.Core.dll (this message is harmless)
-Platform assembly: C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\System.dll (this message is harmless)
-desktop: 1440x900 60Hz; virtual: 1440x900 at 0,0
-<RI> Initializing input.
-<RI> Input initialized.
-<RI> Initialized touch support.
-UnloadTime: 3.968000 ms
-Initialize engine version: 5.6.1f1 (2860b30f0b54)
-GfxDevice: creating device client; threaded=1
-Direct3D:
-    Version:  Direct3D 11.0 [level 11.1]
-    Renderer: Intel(R) HD Graphics 5000 (ID=0xa26)
-    Vendor:   Intel
-    VRAM:     1792 MB
-    Driver:   10.18.10.3345
-Begin MonoManager ReloadAssembly
-Platform assembly: C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\UnityEngine.dll (this message is harmless)
-Loading C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\UnityEngine.dll into Unity Child Domain
-Platform assembly: C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
-Loading C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
-Platform assembly: C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\Assembly-CSharp.dll (this message is harmless)
-Loading C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
-Platform assembly: C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\UnityEngine.UI.dll (this message is harmless)
-Loading C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
-Platform assembly: C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
-Loading C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-- Completed reload, in  0.031 seconds
-Platform assembly: C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\System.Core.dll (this message is harmless)
-Platform assembly: C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\System.dll (this message is harmless)
-desktop: 1440x900 60Hz; virtual: 1440x900 at 0,0
-<RI> Initializing input.
-<RI> Input initialized.
-<RI> Initialized touch support.
-UnloadTime: 4.454912 ms
-Could not find target object with netId:5 for RPC call ClientRpc:InvokeRpcRpc_ShowHealthbar
+UnloadTime: 4.220418 ms
+Failed to spawn server object, did you forget to add it to the NetworkManager? assetId=1d6773d66f94f414592ccb5c9c564cc6 netId=114
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-Could not find target object with netId:83 for RPC call ClientRpc:InvokeRpcRpc_ShowHealthbar
+Failed to spawn server object, did you forget to add it to the NetworkManager? assetId=1d6773d66f94f414592ccb5c9c564cc6 netId=115
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-Could not find target object with netId:40 for RPC call ClientRpc:InvokeRpcRpc_ShowHealthbar
+Failed to spawn server object, did you forget to add it to the NetworkManager? assetId=1d6773d66f94f414592ccb5c9c564cc6 netId=119
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-Could not find target object with netId:46 for RPC call ClientRpc:InvokeRpcRpc_ShowHealthbar
+Failed to spawn server object, did you forget to add it to the NetworkManager? assetId=1d6773d66f94f414592ccb5c9c564cc6 netId=120
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-Could not find target object with netId:60 for RPC call ClientRpc:InvokeRpcRpc_ShowHealthbar
+Failed to spawn server object, did you forget to add it to the NetworkManager? assetId=1d6773d66f94f414592ccb5c9c564cc6 netId=123
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-Instance not found when handling Command message [netId=61]
+Failed to spawn server object, did you forget to add it to the NetworkManager? assetId=1d6773d66f94f414592ccb5c9c564cc6 netId=124
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-Instance not found when handling Command message [netId=61]
+Failed to spawn server object, did you forget to add it to the NetworkManager? assetId=1d6773d66f94f414592ccb5c9c564cc6 netId=128
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-HandleTransform no gameObject
+Failed to spawn server object, did you forget to add it to the NetworkManager? assetId=1d6773d66f94f414592ccb5c9c564cc6 netId=129
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-Instance not found when handling Command message [netId=61]
+Failed to spawn server object, did you forget to add it to the NetworkManager? assetId=1d6773d66f94f414592ccb5c9c564cc6 netId=133
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Failed to spawn server object, did you forget to add it to the NetworkManager? assetId=1d6773d66f94f414592ccb5c9c564cc6 netId=134
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 1dc0 -> priority: 1 
-  Thread -> id: 12a4 -> priority: 1 
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-Setting up 2 worker threads for Enlighten.
-  Thread -> id: 1f84 -> priority: 1 
-  Thread -> id: 231c -> priority: 1 
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-Setting up 2 worker threads for Enlighten.
-  Thread -> id: 2398 -> priority: 1 
-  Thread -> id: dbc -> priority: 1 
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-Log: connection {1} has been disconnected by timeout; address {::ffff:127.0.0.1:49878}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
-reactor filed to acomplish request with code {1234}, bytesReceived {0}
+  Thread -> id: d2c -> priority: 1 
+  Thread -> id: 1370 -> priority: 1 

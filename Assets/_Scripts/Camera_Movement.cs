@@ -18,7 +18,7 @@ public class Camera_Movement : NetworkBehaviour {
 	void FixedUpdate () // late update causes jitter in the movement
 	{
 		if (player != null) {
-			transform.position = Vector3.SmoothDamp(transform.position, player.transform.position + offset, ref velocity, 0.05f);
+			transform.position = Vector3.SmoothDamp(transform.position, player.transform.position + offset, ref velocity, 0.1f);
 		//	transform.position = player.transform.position + offset;
 		}
 	}

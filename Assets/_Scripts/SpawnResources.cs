@@ -10,7 +10,7 @@ public class SpawnResources : NetworkBehaviour {
 	private GameObject resourceObject;
 
 	void Start () {
-		for (int i = 0; i < 50; i++) {
+		for (int i = 0; i < 100; i++) {
 			SpawningResources ();
 		}
 		StartCoroutine ("SpawningResourcesNumerator");

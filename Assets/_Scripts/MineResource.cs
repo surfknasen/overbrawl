@@ -10,7 +10,10 @@ public class MineResource : NetworkBehaviour {
 	private Slider healthBar;
 	[SyncVar(hook = "OnChangeHealth")]
 	private float currentHealth;
+
 	public GameObject currency;
+	public bool specialDrop = false;
+	public GameObject powerupObject;
 	
 	void Start()
 	{
@@ -41,7 +44,13 @@ public class MineResource : NetworkBehaviour {
 
 		if (healthBar.value > 0) return;
 
-		DropCurrency();	
+		if(!specialDrop)
+		{
+			DropCurrency();				
+		} else
+		{
+			DropPowerup();
+		}
 	}
 
 	[ClientRpc]
@@ -57,16 +66,26 @@ public class MineResource : NetworkBehaviour {
 
 	void DropCurrency()
 	{
-		for(int i = 0; i < Random.Range(20,80); i++) // comment the code below
+		for(int i = 0; i < Random.Range(5,16); i++) // comment the code below
 		{
 			Vector3 spawnBox = transform.localScale;
 			Vector3 position = new Vector3(Random.value * spawnBox.x, Random.value * spawnBox.y, Random.value * spawnBox.z);
 			position = transform.TransformPoint(position-spawnBox/2);
-			GameObject cur = Instantiate(currency, position,transform.rotation);
+			
+			GameObject cur = Instantiate(currency, position, transform.rotation);
+			cur.transform.position = new Vector3(position.x, position.y, 0);
 			NetworkServer.Spawn(cur);
 		}
 		Destroy(gameObject);
 	}
+
+	void DropPowerup()
+	{
+		GameObject obj = Instantiate(powerupObject, transform.position, transform.rotation);
+		NetworkServer.Spawn(obj);
+		Destroy(gameObject);
+	}
+
 }
 
 

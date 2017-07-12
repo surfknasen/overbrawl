@@ -86,9 +86,9 @@ public class Vanguard_Abilities : NetworkBehaviour
 		for (int i = 0; i < 4; i++) 
 		{
 			transform.position += dir * 2;
+			transform.position = new Vector3(transform.position.x, transform.position.y, 0);			
 			yield return new WaitForSeconds (0.01f);
 		}
-
 		yield return new WaitForSeconds(2f);
 		teleporting = false;
 	}
