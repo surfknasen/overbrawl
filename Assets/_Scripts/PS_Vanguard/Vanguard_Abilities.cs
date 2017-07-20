@@ -13,25 +13,29 @@ public class Vanguard_Abilities : NetworkBehaviour
 	private bool animationPlaying;
 	public float shieldDamage;
 	public float attackSpeed;
+	public Sword sword;
+	public float swordDamage;
 
 
 	void Start()
 	{
-		shieldDamage = 40;
-		attackSpeed = 0.8f;
+		shieldDamage = 100f;
+		swordDamage = 25f;
+		attackSpeed = 0.9f;
 		swordAttackController.speed = attackSpeed;
-
 	}
 
 	void Update () 
 	{
+		if(!isLocalPlayer) return;
+
 		if(Input.GetMouseButton(0))
 		{
-			Cmd_SwordAttack();
+			Cmd_SwordAttack(swordDamage, AnimatorIsPlaying());
 		}
 		else if(Input.GetMouseButton(1) && !shieldProjectileShooting)
 		{
-			Cmd_ShootProjectile(GetMouseDirection());
+			Cmd_ShootProjectile(GetMouseDirection(), shieldDamage);
 			StartCoroutine("ProjectileCooldown");
 		} else if(Input.GetMouseButton(2) && !teleporting)
 		{
@@ -40,10 +44,19 @@ public class Vanguard_Abilities : NetworkBehaviour
 	}
 
 	[Command]
-	void Cmd_SwordAttack()
+	public void Cmd_ChangeAttackSpeed(float newSpeed)
 	{
-		if(!AnimatorIsPlaying())
+		attackSpeed = newSpeed;
+		swordAttackController.speed = attackSpeed;
+	}
+
+	[Command]
+	void Cmd_SwordAttack(float damage, bool attack)
+	{
+		if(!attack)
 		{
+			sword.damage = damage;
+			swordAttackController.SetTrigger("Attack");
 			Rpc_SwordAttack();
 		}
 	}
@@ -63,19 +76,18 @@ public class Vanguard_Abilities : NetworkBehaviour
 	IEnumerator ProjectileCooldown()
 	{
 		shieldProjectileShooting = true;
-		yield return new WaitForSeconds(6f);
+		yield return new WaitForSeconds(1f);
 		shieldProjectileShooting = false;
 	}
 
 	[Command]
-	public void Cmd_ShootProjectile(Vector3 dir)
+	public void Cmd_ShootProjectile(Vector3 dir, float dmg)
 	{
 		GameObject p = Instantiate (vanguardShieldProjectile, transform.position, transform.rotation);
+		p.GetComponent<Projectile> ().SetProjectileProperties(gameObject, 0, dmg);
 		Rigidbody2D r = p.GetComponent<Rigidbody2D> ();
-		r.velocity = dir * 5;
+		r.velocity = dir * 7;
 		NetworkServer.Spawn (p);
-		p.GetComponent<Projectile> ().SetProjectileProperties(gameObject, 0);
-		p.GetComponent<Projectile>().damage = shieldDamage;
 		Destroy (p, 4f);
 	}
 

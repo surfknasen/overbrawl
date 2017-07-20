@@ -21,20 +21,24 @@ public class SetupLocalPlayer_Vanguard : NetworkBehaviour {
 			GetComponent<PlayerMovement> ().enabled = true;
 			GetComponent<Vanguard_Abilities> ().enabled = true;
 			GetComponent<Health> ().enabled = true;
+
+			Health health = GetComponent<Health>();
+			health.Cmd_ChangeMaxHealth(200);
+			health.Cmd_ChangeCurrentHealth(200);
+
 			GetComponent<LevelHandler>().enabled = true;
 			GetComponent<Upgrades>().enabled = true;
-			GetComponent<Health>().maxHealth = 200;
 			GetComponent<LevelHandler>().activeClass = this.activeClass;
 			GetComponent<Upgrades>().activeClass = this.activeClass;
-			fillColor.color = new Color32(0,255, 0, 255); // green
-		}
+			fillColor.color = new Color32(0,255, 0, 255); // green		
 
+		}
 	}
 
 
 	public override void PreStartClient()
 	{
-		networkAnimatorReinhardt.SetParameterAutoSend(0,true);
+		networkAnimatorReinhardt.SetParameterAutoSend(0, true);
 	}
 
 	void Update()

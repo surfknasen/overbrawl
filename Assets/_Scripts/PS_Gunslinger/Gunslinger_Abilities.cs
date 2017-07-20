@@ -15,24 +15,26 @@ public class Gunslinger_Abilities : NetworkBehaviour
 	private int bulletsFired;
 	public Animator gunslingerGunsController;
 	public float damage;
-	[SyncVar]	
 	public float attackSpeed;	
 	public float lifeSteal;
-
+	
 	void Start()
 	{
 		damage = 10;
 		attackSpeed = 0.2f;
+		gunslingerGunsController.speed = attackSpeed * 2;
 	}
 
 	void Update () 
 	{
+		if(!isLocalPlayer) return;
+
 		if (Input.GetMouseButton (0) && !mouseOverPlayer) 
 		{
 			if(!shootingBullet)
 			{
 				StartCoroutine ("ShootBulletNumerator");
-				Cmd_ShootBullet (GetMouseDirection());
+				Cmd_ShootBullet (GetMouseDirection(), damage);
 				Cmd_GunAnimation();	
 			}
 
@@ -41,6 +43,7 @@ public class Gunslinger_Abilities : NetworkBehaviour
 			StartCoroutine (Teleport(GetMouseDirection()));
 		}
 	}
+	
 
 	IEnumerator ShootBulletNumerator()
 	{
@@ -50,19 +53,28 @@ public class Gunslinger_Abilities : NetworkBehaviour
 	}
 
 	[Command]
-	public void Cmd_ShootBullet(Vector3 dir)
+	public void Cmd_ShootBullet(Vector3 dir, float dmg)
 	{
 		for(int i = 0; i < 2; i++)
 		{
 			GameObject b = Instantiate (bullet, bulletSpawnPositions[i].transform.position, bullet.transform.rotation);	
+			b.GetComponent<Projectile>().SetProjectileProperties(gameObject, lifeSteal, dmg);		
 			Rigidbody2D r = b.GetComponent<Rigidbody2D> ();
 			r.velocity = dir * 30;
-			b.GetComponent<Projectile>().SetProjectileProperties(gameObject, lifeSteal);
-			b.GetComponent<Projectile>().damage = damage;
 			NetworkServer.Spawn (b);
-			Destroy (b, 0.7f);
+			Destroy (b, 1f);
+
 		}
 	}
+
+	[Command]
+	public void Cmd_ChangeAttackSpeed(float newSpeed)
+	{
+		attackSpeed = newSpeed;
+		gunslingerGunsController.speed = attackSpeed * 2;
+	}
+
+
 	[Command]
 	void Cmd_GunAnimation()
 	{

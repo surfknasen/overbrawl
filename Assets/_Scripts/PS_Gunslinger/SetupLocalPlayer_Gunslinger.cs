@@ -12,7 +12,7 @@ public class SetupLocalPlayer_Gunslinger : NetworkBehaviour {
 	public NetworkAnimator networkAnimatorGunslinger;
 	private string activeClass = "Gunslinger";
 
-	public void Start () 
+	public void Start () // Setup the local player
 	{
 		if (isLocalPlayer) 
 		{
@@ -21,7 +21,11 @@ public class SetupLocalPlayer_Gunslinger : NetworkBehaviour {
 			GetComponent<PlayerMovement> ().enabled = true;
 			GetComponent<Gunslinger_Abilities> ().enabled = true;
 			GetComponent<Health>().enabled = true;
-			GetComponent<Health>().maxHealth = 150;
+
+			Health health = GetComponent<Health>();
+			health.Cmd_ChangeMaxHealth(150);
+			health.Cmd_ChangeCurrentHealth(150);
+
 			GetComponent<LevelHandler>().enabled = true; // ADDED RECENTLY 
 			GetComponent<Upgrades>().enabled = true; // ADDED RECENTLY
 			GetComponent<LevelHandler>().activeClass = this.activeClass;
@@ -30,11 +34,41 @@ public class SetupLocalPlayer_Gunslinger : NetworkBehaviour {
 		}
 	}
 
-
 	public override void PreStartClient()
 	{
 		networkAnimatorGunslinger.SetParameterAutoSend(0,true);
 	}
+
+	/* 
+	public override void OnStartClient() // so that the health text and health bar is correct for all clients and server
+	{
+		GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+		for(int i = 0; i < players.Length; i++)
+		{
+			SetupLocalPlayer_Gunslinger gunslinger = players[i].GetComponent<SetupLocalPlayer_Gunslinger>();
+			if(gunslinger != null)
+			{
+				Health health = players[i].GetComponent<Health>();
+				health.healthText.text = 150 + " / " + 150;
+				health.healthBar.maxValue = 150;
+				health.healthBar.value = 150;
+			} else
+			{
+				SetupLocalPlayer_Vanguard vanguard = players[i].GetComponent<SetupLocalPlayer_Vanguard>();
+				if(vanguard != null)
+				{
+					Health health = players[i].GetComponent<Health>();
+					health.healthText.text = 200 + " / " + 200;
+					health.healthBar.maxValue = 200;
+					health.healthBar.value = 200;
+				}
+				
+			}
+		}
+	}
+	*/
+	
+
 	void Update()
 	{
 		if(!isLocalPlayer) return;

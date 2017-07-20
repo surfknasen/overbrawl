@@ -8,8 +8,8 @@ public class LevelHandler : NetworkBehaviour
 {
 
 	public int balance;
+	public int currentLevel;	
 	private int requiredExp;
-	public int currentLevel;
 	private Text balanceText;
 	private Upgrades upgrades;
 	Collider2D[] hitColliders;
