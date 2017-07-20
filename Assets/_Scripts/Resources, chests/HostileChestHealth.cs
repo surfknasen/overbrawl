@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 
-public class HostileChestHealth : NetworkBehaviour { // TODO: ADD ATTACK INTERFACE
+public class HostileChestHealth : NetworkBehaviour {
 
 	public Slider healthBar;
 	[SyncVar (hook = "OnChangeMaxHealth")] 
@@ -24,7 +24,7 @@ public class HostileChestHealth : NetworkBehaviour { // TODO: ADD ATTACK INTERFA
 	{
 		if (!isServer) return;
 
-		currentHealth -= (maxHealth * amount) / 400;
+		currentHealth -= amount;
 		print((maxHealth * amount) / 400);
 		if (currentHealth <= 0) 
 		{

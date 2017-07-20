@@ -2,24 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class Chest : NetworkBehaviour {
 
-	Collider2D[] hitColliders;
+	public Color hostileColor;	
 	public GameObject chestText;
 	public GameObject hostileChest;
-	float lerpTime;
-	Vector3 direction;
-	bool attack;
-	string playerClass;
+	public Sprite chestOpen;
+	private string playerClass;
+	SpriteRenderer sprite;
+	private bool opened;
+	private bool tint;
 
 	void Start () 
 	{
 		chestText.SetActive(false);
+		sprite = GetComponent<SpriteRenderer>();
 	}
 	
 	void OnTriggerStay2D (Collider2D col) 
 	{
+		if(opened) return;
 
 		if(col.gameObject.CompareTag("Player"))
 		{
@@ -29,37 +33,68 @@ public class Chest : NetworkBehaviour {
 			
 			if(Input.GetKeyDown(KeyCode.E))
 			{
+				chestText.SetActive(false);
 				int num = Random.Range(0, 100);
+				num = 10;
 
 				if(num < 20)
 				{
-			//		StartCoroutine("SpawnHostileChest", col.gameObject);					
+					StartCoroutine("SpawnHostileChest", col.gameObject);
 				}
 				else
 				{
+					GetComponent<SpriteRenderer>().sprite = chestOpen;					
 					DecidePickupType(col.gameObject);
+					Destroy(gameObject, 3);
 				}
+				opened = true;
 			}
 		}
 	}	
 
+	void Update()
+	{
+		if(tint)
+		{
+			sprite.color = Color.Lerp(sprite.color, hostileColor, Time.deltaTime);
+		}
+	}
+
+	IEnumerator SpawnHostileChest(GameObject obj)
+	{
+		tint = true;
+		yield return new WaitForSeconds(1f);
+		obj.GetComponent<SpawnHostileChest>().Cmd_SpawnHostileChest(gameObject);
+	}
+	
+
+/*	[Command]
+	void Cmd_SpawnHostileChest(GameObject obj)
+	{
+		GameObject.Find("LevelText").GetComponent<Text>().text = "BOOP";
+		GameObject g = Instantiate(hostileChest, transform.position, transform.rotation);
+		NetworkServer.Spawn(g);
+		g.GetComponent<HostileChest>().StartCoroutine("BecomeHostile", obj);	
+		Destroy(gameObject);
+	}
+	*/
 
 	void DecidePickupType(GameObject player)
 	{
 		// 60% statboost
 		// 30% powerup
 		// 10% ultimate attack
-
+		Random.InitState(System.Environment.TickCount);
 		int num = Random.Range(0, 100);
-		if(num <= 70) // statboost
+		if(num <= 60) // statboost
 		{
 			StatBoost(player);
 			print("Statboost");
-		}else if(num < 90) // powerup
+		}else if(num < 80) // powerup
 		{
 			Powerup(player);
 			print("powerup");
-		}else if(num >= 90) // ultimate attack
+		}else if(num >= 80) // ultimate attack
 		{
 			UltimateAttack(player);
 			print("Ultimate attack");
@@ -224,15 +259,6 @@ public class Chest : NetworkBehaviour {
 	void UltimateAttack(GameObject player)
 	{
 		// give player its ultimate attack
-	}
-
-	IEnumerator SpawnHostileChest(GameObject obj)
-	{
-		yield return new WaitForSeconds(1.5f);
-		GameObject g = Instantiate(hostileChest, transform.position, transform.rotation);
-		g.GetComponent<HostileChest>().StartCoroutine("BecomeHostile", obj);
-		NetworkServer.Spawn(g);	
-		Destroy(gameObject);
 	}
 
 	void OnTriggerExit2D(Collider2D col)

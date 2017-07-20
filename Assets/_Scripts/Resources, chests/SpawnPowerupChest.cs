@@ -10,7 +10,8 @@ public class SpawnPowerupChest : NetworkBehaviour {
 	public GameObject chest;
 	private Animation broadcastAnim;
 	private bool spawnedRecently = true;
-	private int attemptSpawnDelay = 90;
+	private int attemptSpawnDelay = 1;
+	GameObject player;
 
 	// every x seconds two random numbers are generated
 	// if both are equal, broadcast a message that a powerup has been spawned
@@ -31,6 +32,7 @@ public class SpawnPowerupChest : NetworkBehaviour {
 	IEnumerator SpawnOrNot () 
 	{
 		yield return new WaitForSeconds (attemptSpawnDelay);
+		Random.InitState(System.Environment.TickCount);
 		int num = Random.Range(0, 100);
 
 		if(num < 25 && !spawnedRecently)
@@ -49,7 +51,7 @@ public class SpawnPowerupChest : NetworkBehaviour {
 	void SpawnChest()
 	{
 		Vector3 vector = new Vector3(Random.Range(-100, 100), Random.Range(-100, 100), 0);
-		Collider2D[] hitColliders = Physics2D.OverlapCircleAll(vector, 20);		
+		Collider2D[] hitColliders = Physics2D.OverlapCircleAll(vector, 40);		
 
 		for(int i = 0; i < hitColliders.Length; i++)
 		{
@@ -59,6 +61,16 @@ public class SpawnPowerupChest : NetworkBehaviour {
 				return;
 			}
 		}
+
+		/*GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+		for(int i = 0; i < players.Length; i++)
+		{
+			if(players[i].GetComponent<NetworkIdentity>().isLocalPlayer)
+			{
+				player = players[i];
+				break;
+			}
+		}*/
 
 		GameObject obj = Instantiate(chest, vector, transform.rotation);
 		NetworkServer.Spawn(obj);
