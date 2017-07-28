@@ -39,33 +39,37 @@ public class Projectile : NetworkBehaviour, Interface_Attack
 	{
 		
 		if(owner != null){
-			
+			Health ownerHealth = owner.GetComponent<Health>();
 			if(other.gameObject.CompareTag("HostileChest"))
 			{
 				Cmd_SpawnParticleSystem();
 
 				HostileChestHealth chestHealth = other.gameObject.GetComponent<HostileChestHealth>();
 				chestHealth.TakeDamage(damage);
-				owner.GetComponent<Health>().Cmd_AddHealth(lifeSteal);
+				ownerHealth.Cmd_ChangeCurrentHealth(ownerHealth.currentHealth + lifeSteal);
 				Destroy(gameObject);															
 			}
-			else if(other.gameObject != owner && !other.transform.IsChildOf(owner.transform) && !other.gameObject.CompareTag("Currency") && !other.gameObject.CompareTag("Chest")) 
+			else if(other.gameObject != owner && !other.transform.IsChildOf(owner.transform) && !other.gameObject.CompareTag("Currency")) 
 			{
-				Health health = other.gameObject.GetComponent<Health> ();
+				Health otherHealth = other.gameObject.GetComponent<Health> ();
 				
-				Cmd_SpawnParticleSystem();
-
-				if(health != null) 
+				if(otherHealth != null) 
 				{
-					health.TakeDamage (damage);
-					owner.GetComponent<Health>().Cmd_AddHealth(lifeSteal);
+					otherHealth.TakeDamage (damage);
+					Cmd_SpawnParticleSystem();					
+					ownerHealth.Cmd_ChangeCurrentHealth(ownerHealth.currentHealth + lifeSteal);
 				} 
 
 				if(other.isTrigger == false)
 				{
-					Destroy(gameObject);															
+					Destroy(gameObject);	
+					if(other.gameObject.CompareTag("Resource"))
+					{
+						ownerHealth.Cmd_ChangeCurrentHealth(ownerHealth.currentHealth + lifeSteal);
+						Cmd_SpawnParticleSystem();
+					}														
 				} 
-			} 
+			}
 		} 
 	 	
 	}

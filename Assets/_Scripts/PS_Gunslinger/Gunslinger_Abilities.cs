@@ -16,6 +16,7 @@ public class Gunslinger_Abilities : NetworkBehaviour
 	public Animator gunslingerGunsController;
 	public float damage;
 	public float attackSpeed;	
+	[SyncVar]
 	public float lifeSteal;
 	
 	void Start()
@@ -23,6 +24,12 @@ public class Gunslinger_Abilities : NetworkBehaviour
 		damage = 10;
 		attackSpeed = 0.2f;
 		gunslingerGunsController.speed = attackSpeed * 2;
+	}
+
+	[Command]
+	public void Cmd_SetLifeSteal(int amount)
+	{
+		lifeSteal = amount;
 	}
 
 	void Update () 
@@ -126,4 +133,5 @@ public class Gunslinger_Abilities : NetworkBehaviour
 
 		return direction;
 	}
+
 }

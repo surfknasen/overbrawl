@@ -25,11 +25,12 @@ public class SetupLocalPlayer_Gunslinger : NetworkBehaviour {
 			Health health = GetComponent<Health>();
 			health.Cmd_ChangeMaxHealth(150);
 			health.Cmd_ChangeCurrentHealth(150);
+			health.Cmd_SetRegenerateProperties(10, 5);
 
 			GetComponent<LevelHandler>().enabled = true; // ADDED RECENTLY 
-			GetComponent<Upgrades>().enabled = true; // ADDED RECENTLY
+			GetComponent<UpgradeCanvasHandler>().enabled = true; // ADDED RECENTLY
 			GetComponent<LevelHandler>().activeClass = this.activeClass;
-			GetComponent<Upgrades>().activeClass = this.activeClass;
+			GetComponent<UpgradeCanvasHandler>().activeClass = this.activeClass;
 			fillColor.color = new Color32(0,255, 0, 255); // green
 		}
 	}

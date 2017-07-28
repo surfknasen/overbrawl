@@ -72,16 +72,17 @@ public class LevelHandler : NetworkBehaviour
 		Destroy(currencyObj);
 	}
 
-	void LevelUp()
+	public void LevelUp()
 	{
-		requiredExp = (currentLevel * currentLevel + currentLevel + 3) * 20;
-		
+		requiredExp = currentLevel * 100;
+		requiredExp = 5;
+
 		if(balance >= requiredExp)
 		{
 			UpgradeStats();
 			currentLevel++;
 			levelText.text = "LEVEL " + currentLevel.ToString();
-			GetComponent<Upgrades>().ChooseRandomUpgrades();
+			GetComponent<UpgradeCanvasHandler>().CreateUpgradeCanvas();
 			expSlider.value = 0;
 			balance = 0;
 		} else
@@ -97,14 +98,13 @@ public class LevelHandler : NetworkBehaviour
 
 	void UpgradeStats()
 	{
-		IncreaseHealth(health.maxHealth / 5);
+		IncreaseHealth(health.maxHealth / 10);
 		IncreaseAttackDamage();
 	}
 
 	public void IncreaseHealth(float amount)
 	{
-		health.maxHealth += amount;
-		health.healthBar.maxValue += amount;
+		health.Cmd_ChangeMaxHealth(health.maxHealth + amount);
 	}
 
 	public void IncreaseAttackDamage()
@@ -114,10 +114,9 @@ public class LevelHandler : NetworkBehaviour
 			switch(activeClass)
 			{
 			case "Vanguard":
-				Vanguard_Abilities vanguard = GetComponent<Vanguard_Abilities>();					// shield projectile damage
-				Sword sword = GetComponentInChildren<Sword>(); 										// sword damage
+				Vanguard_Abilities vanguard = GetComponent<Vanguard_Abilities>();					
 				vanguard.shieldDamage += vanguard.shieldDamage / 100 * 3;
-				sword.damage += sword.damage / 100 * 3;
+				vanguard.swordDamage += vanguard.swordDamage / 100 * 3;
 			break;
 			case "Gunslinger":
 				Gunslinger_Abilities gunslinger = GetComponent<Gunslinger_Abilities>();
@@ -127,7 +126,6 @@ public class LevelHandler : NetworkBehaviour
 		}
 	}
 
-	// randomized upgrades
 
 	
 }

@@ -74,7 +74,7 @@ public class SpawnPowerupChest : NetworkBehaviour {
 
 		GameObject obj = Instantiate(chest, vector, transform.rotation);
 		NetworkServer.Spawn(obj);
-		Rpc_Broadcast();		
+		//Rpc_Broadcast();		
 
 	}
 

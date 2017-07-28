@@ -9,31 +9,45 @@ public class Sword : NetworkBehaviour, Interface_Attack
 	private Vanguard_Abilities vanguardAbilities;
 	[SyncVar]
 	public float damage;
+	[SyncVar]
 	public float lifeSteal;
 
 	void Start()
 	{
 		vanguardAbilities = GetComponentInParent<Vanguard_Abilities>();
-		//damage = 25;
+	}
+
+	[Command]
+	public void Cmd_SetLifesteal(int amount)
+	{
+		lifeSteal = amount;
 	}
 
 	void OnTriggerEnter2D(Collider2D other) 
 	{
+		Health otherHealth = other.gameObject.GetComponent<Health>();
+
 		if(other.gameObject.CompareTag("HostileChest"))
 		{
 				HostileChestHealth chestHealth = other.gameObject.GetComponent<HostileChestHealth>();
 				chestHealth.TakeDamage(damage);
-				GetComponentInParent<Health>().Cmd_AddHealth(lifeSteal);
-				return;
+				otherHealth.Cmd_ChangeCurrentHealth(otherHealth.currentHealth + lifeSteal);
 		}
-
-		Health health = other.gameObject.GetComponent<Health>();
-		if(health != null)
+		else if(otherHealth != null)
 		{
-			if(vanguardAbilities.AnimatorIsPlaying()) 
+			if(vanguardAbilities.AnimatorIsPlaying())
 			{
-				health.TakeDamage(damage);
-				GetComponentInParent<Health>().Cmd_AddHealth(lifeSteal);
+				otherHealth.TakeDamage(damage);
+				Health thisHealth = GetComponentInParent<Health>();
+				thisHealth.Cmd_ChangeCurrentHealth(thisHealth.currentHealth + lifeSteal);
+			}
+
+		} else if(other.gameObject.CompareTag("Resource"))
+		{
+			if(vanguardAbilities.AnimatorIsPlaying())
+			{
+				Health thisHealth = GetComponentInParent<Health>();
+				thisHealth.Cmd_ChangeCurrentHealth(thisHealth.currentHealth + lifeSteal);
 			}
 		}
 	}

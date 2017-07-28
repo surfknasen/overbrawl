@@ -35,7 +35,6 @@ public class Chest : NetworkBehaviour {
 			{
 				chestText.SetActive(false);
 				int num = Random.Range(0, 100);
-				num = 10;
 
 				if(num < 20)
 				{
@@ -43,8 +42,9 @@ public class Chest : NetworkBehaviour {
 				}
 				else
 				{
-					GetComponent<SpriteRenderer>().sprite = chestOpen;					
-					DecidePickupType(col.gameObject);
+					GetComponent<SpriteRenderer>().sprite = chestOpen;		
+					GivePlayerExp(col.gameObject);			
+			//		DecidePickupType(col.gameObject);
 					Destroy(gameObject, 3);
 				}
 				opened = true;
@@ -60,37 +60,36 @@ public class Chest : NetworkBehaviour {
 		}
 	}
 
+
 	IEnumerator SpawnHostileChest(GameObject obj)
 	{
 		tint = true;
 		yield return new WaitForSeconds(1f);
 		obj.GetComponent<SpawnHostileChest>().Cmd_SpawnHostileChest(gameObject);
 	}
-	
 
-/*	[Command]
-	void Cmd_SpawnHostileChest(GameObject obj)
+	void GivePlayerExp(GameObject player)
 	{
-		GameObject.Find("LevelText").GetComponent<Text>().text = "BOOP";
-		GameObject g = Instantiate(hostileChest, transform.position, transform.rotation);
-		NetworkServer.Spawn(g);
-		g.GetComponent<HostileChest>().StartCoroutine("BecomeHostile", obj);	
-		Destroy(gameObject);
+		for(int i = 0; i < 4; i++)
+		{
+			player.GetComponent<LevelHandler>().balance += 5000;
+			player.GetComponent<LevelHandler>().LevelUp();
+		}	
 	}
-	*/
+
 
 	void DecidePickupType(GameObject player)
 	{
-		// 60% statboost
-		// 30% powerup
+		// 50% statboost
+		// 40% powerup
 		// 10% ultimate attack
 		Random.InitState(System.Environment.TickCount);
 		int num = Random.Range(0, 100);
-		if(num <= 60) // statboost
+		if(num <= 50) // statboost
 		{
 			StatBoost(player);
 			print("Statboost");
-		}else if(num < 80) // powerup
+		}else if(num > 50) // powerup
 		{
 			Powerup(player);
 			print("powerup");
@@ -130,7 +129,7 @@ public class Chest : NetworkBehaviour {
 				else if(num < 50) // health +100%, duration 45 sec ////////// WORKS
 				{
 					health.Cmd_ChangeMaxHealth(health.maxHealth * 2);
-					health.Cmd_AddHealth(health.maxHealth * 2);
+					health.Cmd_ChangeCurrentHealth(health.maxHealth * 2);
 					StartCoroutine(DisableStatBoost(45, "Health", player, health.maxHealth));
 					print("health +100%, duration 45 sec");
 				} else if(num < 75) // attackspeed 33%, duration 30 sec ////// SHOULD WORK
@@ -148,32 +147,29 @@ public class Chest : NetworkBehaviour {
 			case "Vanguard":
 				Vanguard_Abilities vanguardAbilities = player.GetComponent<Vanguard_Abilities>();
 
-				if(num < 20) // main attack damage +50%, duration: 30 sec ////////// WORKS
+				if(num < 25) // main attack damage +50%, duration: 30 sec ////////// WORKS
 				{
 					vanguardAbilities.swordDamage += vanguardAbilities.swordDamage / 2;
 					StartCoroutine(DisableStatBoost(30, "AttackDamage", player, vanguardAbilities.swordDamage / 2));
 					print("main attack damage +50%, duration: 30 sec");
 				}
-				else if(num < 40) // health +100%, duration 45 sec ////////// WORKS
+				else if(num < 50) // health +100%, duration 45 sec ////////// WORKS
 				{
 					health.Cmd_ChangeMaxHealth(health.maxHealth * 2);
 					health.Cmd_ChangeCurrentHealth(health.maxHealth * 2);
 					StartCoroutine(DisableStatBoost(45, "Health", player, health.maxHealth));
 					print("health +100%, duration 45 sec");
-				} else if(num < 60) // attackspeed 33%, duration 30 sec ////////// WORKS
+				} else if(num < 75) // attackspeed 33%, duration 30 sec ////////// WORKS
 				{
 					vanguardAbilities.Cmd_ChangeAttackSpeed(vanguardAbilities.attackSpeed + vanguardAbilities.attackSpeed / 3);
 					StartCoroutine(DisableStatBoost(30, "AttackSpeed", player, vanguardAbilities.attackSpeed / 3));
 					print("attackspeed 33%, duration 30 sec");
-				} else if(num < 80) // movespeed 33%, duration 30 sec ////////// WORKS
+				} else if(num < 100) // movespeed 33%, duration 30 sec ////////// WORKS
 				{
 					playerMovement.moveSpeed += playerMovement.moveSpeed / 3;
 					StartCoroutine(DisableStatBoost(30, "MoveSpeed", player, playerMovement.moveSpeed / 3));
 					print("movespeed 33%, duration 45 sec");
-				} else if(num < 100)
-				{
-					print("Nothing yet");
-				}
+				} 
 			break;
 		}
 	}
@@ -197,17 +193,15 @@ public class Chest : NetworkBehaviour {
 						print("Disabled AttackDamage");
 					break;
 					case "Health":
-						health.maxHealth -= health.maxHealth / 2;
-						health.currentHealth = health.maxHealth;
-						health.healthBar.maxValue = health.maxHealth;
+						health.Cmd_ChangeMaxHealth(health.maxHealth - amount);
 						print("Disabled Health");
 					break;
 					case "AttackSpeed":
-						gunslinger.attackSpeed -= gunslinger.attackSpeed / 3;
+						gunslinger.Cmd_ChangeAttackSpeed(gunslinger.attackSpeed - amount);
 						print("Disabled AttackSpeed");
 					break;
 					case "MoveSpeed":
-						playerMovement.moveSpeed -= playerMovement.moveSpeed / 3;
+						playerMovement.moveSpeed -= amount;
 						print("Disabled MoveSpeed");
 					break;
 				}
@@ -215,26 +209,24 @@ public class Chest : NetworkBehaviour {
 			case "Vanguard":
 
 				Vanguard_Abilities vanguard = player.GetComponent<Vanguard_Abilities>();
-				Sword sword = player.GetComponent<Sword>();
+			//	Sword sword = player.GetComponent<Sword>();
 
 				switch(stat)
 					{
 						case "AttackDamage":
-							sword.damage -= sword.damage / 2;
+							vanguard.swordDamage -= amount;
 							print("Disabled AttackDamage");
 						break;
 						case "Health":
-							health.maxHealth -= health.maxHealth / 2;
-							health.currentHealth = health.maxHealth;
-							health.healthBar.maxValue = health.maxHealth;
+							health.Cmd_ChangeMaxHealth(health.maxHealth - amount);
 							print("Disabled Health");
 						break;
 						case "AttackSpeed":
-							vanguard.attackSpeed -= vanguard.attackSpeed / 3;
+							vanguard.Cmd_ChangeAttackSpeed(vanguard.attackSpeed - amount);
 							print("Disabled AttackSpeed");
 						break;
 						case "MoveSpeed":
-							playerMovement.moveSpeed -= playerMovement.moveSpeed / 3;
+							playerMovement.moveSpeed -= amount;
 							print("Disabled MoveSpeed");
 						break;
 					}
@@ -245,6 +237,13 @@ public class Chest : NetworkBehaviour {
 	void Powerup(GameObject player)
 	{
 		// decide powerup
+		// 5 different powerups:
+		// immortality
+		// --
+		// --
+		// --
+		// --
+
 		int num = Random.Range(0, 100);
 
 		if(num < 50)
@@ -252,7 +251,7 @@ public class Chest : NetworkBehaviour {
 			player.AddComponent<Powerup_Immortal>();
 		} else if (num < 100)
 		{
-
+			
 		}
 	}
 

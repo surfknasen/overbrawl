@@ -10,16 +10,11 @@ public class HostileChest : NetworkBehaviour {
 	private bool attack = true;
 	private Vector3 direction;
 	public SpriteRenderer sprite;
+	bool open;
 
-	void Update()
+	void Start()
 	{
-		if(attack)
-		{
-			sprite.sprite = chestOpen;
-		} else
-		{
-			sprite.sprite = chestClosed;
-		}
+		StartCoroutine("OpenClose");
 	}
 
 	void FixedUpdate()
@@ -30,6 +25,18 @@ public class HostileChest : NetworkBehaviour {
 		}
 	}
 
+	public IEnumerator OpenClose()
+	{
+		if(attack == true)
+		{
+			sprite.sprite = chestOpen;			
+		}
+		yield return new WaitForSeconds(.1f);
+		sprite.sprite = chestClosed;
+		yield return new WaitForSeconds(.1f);
+		StartCoroutine("OpenClose");
+	}
+	
 	public IEnumerator BecomeHostile(GameObject target)
 	{
 		attack = true;
@@ -38,20 +45,20 @@ public class HostileChest : NetworkBehaviour {
 		transform.rotation = Quaternion.AngleAxis (angle, Vector3.forward);
 		transform.Rotate (0, 0, 90);
 		yield return new WaitForSeconds(.75f);
+		if(target == null) Destroy(gameObject);						
 		attack = false;
 		yield return new WaitForSeconds(.5f);
 		StartCoroutine("BecomeHostile", target);
 	}
 
-	void OnCollisionEnter2D(Collision2D col)
+	void OnCollisionStay2D(Collision2D col)
 	{
 		if(col.gameObject.CompareTag("Player"))
 		{
 			if(attack == true)
 			{
+				col.gameObject.GetComponent<Health>().TakeDamage(15);
 				attack = false;
-				float playerHealth = col.gameObject.GetComponent<Health>().maxHealth * 0.10f;
-				col.gameObject.GetComponent<Health>().TakeDamage(50);
 			} else
 			{
 				return;

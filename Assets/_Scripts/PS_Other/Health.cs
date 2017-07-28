@@ -11,27 +11,48 @@ public class Health : NetworkBehaviour { // TODO: ADD ATTACK INTERFACE
 	public float maxHealth;
 	[SyncVar (hook = "OnChangeCurrentHealth")] 
 	public float currentHealth;
-	public int regenDelay = 5;
 	public Text healthText;
-	public float regenValue;
-	
-	public IEnumerator RegenerateHealth()
-	{
-		if(!isServer) yield return null;
-		if(regenValue == 0) StopCoroutine("RegenerateHealth");
+	[SyncVar]
+	public float regenValue;	
+	[SyncVar]
+	public int regenDelay;		
 
+	void Start()
+	{
+		StartCoroutine("RegenerateHealthDelay");
+	}
+
+	[Command]
+	public void Cmd_SetRegenerateProperties(float regenValue, int regenDelay)
+	{
+		this.regenValue = regenValue;
+		this.regenDelay = regenDelay;
+	}
+
+	public IEnumerator RegenerateHealthDelay()
+	{
+		while(true)
+		{	
+			yield return new WaitForSeconds(regenDelay);
+			RegenerateHealth();
+		}
+							
+	}
+
+	void RegenerateHealth()
+	{
+		if(!isLocalPlayer) return;		
+		
 		if(currentHealth < maxHealth){
-			yield return new WaitForSeconds(regenDelay);					
-			currentHealth += regenValue;
+			Cmd_ChangeCurrentHealth(currentHealth + regenValue);
 			if(currentHealth > maxHealth)
 			{
-				currentHealth = maxHealth;
+				Cmd_ChangeCurrentHealth(currentHealth = maxHealth);
 			}
 		} else
 		{
-			yield return null;
+			return;
 		}
-		StartCoroutine("RegenerateHealth");
 	}
 
 	public void TakeDamage(float amount)
@@ -60,25 +81,27 @@ public class Health : NetworkBehaviour { // TODO: ADD ATTACK INTERFACE
 	[Command]
 	public void Cmd_ChangeMaxHealth(float health)
 	{
-		maxHealth = health;
+		maxHealth = (int)health;
+		currentHealth = maxHealth;
 	}	
 
 	[Command]
 	public void Cmd_ChangeCurrentHealth(float health)
 	{
-		currentHealth = health;
+		currentHealth = (int)health;
+		if(currentHealth > maxHealth) currentHealth = maxHealth;
 	}
 
 	void OnChangeCurrentHealth(float health)
 	{
-		currentHealth = health;
+		currentHealth = (int)health;
 		healthBar.value = currentHealth;
 		healthText.text = currentHealth + " / " + maxHealth;
 	}
 
 	void OnChangeMaxHealth(float health)
 	{
-		maxHealth = health;
+		maxHealth = (int)health;
 		healthBar.maxValue = maxHealth;
 		healthText.text = currentHealth + " / " + maxHealth;
 	}

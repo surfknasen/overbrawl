@@ -21,4 +21,6 @@ public class UpdateAllClients : NetworkBehaviour {
 			health.healthText.text = health.currentHealth + " / " + health.maxHealth;
 		}
 	}
+
+	
 }

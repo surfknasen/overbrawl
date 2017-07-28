@@ -6,14 +6,15 @@ using UnityEngine.UI;
 
 public class Upgrades : NetworkBehaviour 					// TODO: CHANGE VALUES (LVLs, Multiply percentage)
 {
+
 	public GameObject upgradeCanvas;
-	private Health health;
 	[HideInInspector]
 	public string activeClass;
 	public Button[] buttons;
 	public Text[] upgradesText;
 	private PlayerMovement playerMovement;
-	private LevelHandler levelHandler;		
+	private LevelHandler levelHandler;	
+	private Health health;		
 				
 	private Dictionary<string, int> tiers = new Dictionary<string, int>() //-------// Tiers to limit some upgrades
 	{
@@ -56,20 +57,16 @@ public class Upgrades : NetworkBehaviour 					// TODO: CHANGE VALUES (LVLs, Mult
 		generatedNumbers.Add(-1);
 		generatedNumbers.Add(-1);
 		generatedNumbers.Add(-1);
-		generatedNumbers.Add(-1);
-		generatedNumbers.Add(-1);
-		generatedNumbers.Add(-1);
-		generatedNumbers.Add(-1); //---------------//
 
 
 		//---------------// Here I generate 4 unique random numbers between a certain range
-		int i = 0;
+		/*int i = 0;
 		int buttonIndex = 0;
 
 		while(i < 8) //---------------// 8 is the amount of upgrades I have
 		{
 			print("Inside while loop");
-			int randomNumber = (int)Random.Range(0,8);
+			int randomNumber = Random.Range(0,8);
 			print("RandomNumber " + randomNumber);
 			if(!generatedNumbers.Contains(randomNumber)) 
 			{
@@ -83,6 +80,21 @@ public class Upgrades : NetworkBehaviour 					// TODO: CHANGE VALUES (LVLs, Mult
 				}
 			}
 		}
+		*/
+		
+		for(int i = 0; i < 4; i++)
+		{
+			int randomNumber = Random.Range(0, 9);
+			if(!generatedNumbers.Contains(randomNumber))
+			{
+				generatedNumbers[i] = randomNumber;
+				SelectUpgrades(randomNumber, i);
+			} else
+			{
+				i--;
+			}
+		}
+
 		upgradeCanvas.SetActive(true);
 		generatedNumbers.Clear();
 	}
@@ -126,7 +138,7 @@ public class Upgrades : NetworkBehaviour 					// TODO: CHANGE VALUES (LVLs, Mult
 				upgradesText[buttonIndex].text = "Damage";
 			break;
 			case 2: //---------------// INCREASED ATTACK SPEED //---------------// LVL LIMIT //---------------//
-				switch(tiers["IncreaseMoveSpeed"]) 
+				switch(tiers["IncreaseAttackSpeed"]) 
 				{	 										
 					case 1:
 						buttons[buttonIndex].onClick.AddListener(UG_IncreaseAttackSpeed);	
@@ -163,7 +175,7 @@ public class Upgrades : NetworkBehaviour 					// TODO: CHANGE VALUES (LVLs, Mult
 				switch(tiers["IncreaseHealthRegen"]) 
 				{	 										
 					case 1:
-						buttons[buttonIndex].onClick.AddListener(UG_IncreaseHealthRegen);	
+						buttons[buttonIndex].onClick.AddListener(UG_IncreaseHealthRegen);
 						upgradesText[buttonIndex].text = "Health Regen : Tier" + tiers["IncreaseHealthRegen"];
 					break;									
 					case 2:
@@ -230,7 +242,7 @@ public class Upgrades : NetworkBehaviour 					// TODO: CHANGE VALUES (LVLs, Mult
 		}
 	}
 
-	void UG_IncreaseMoveSpeed() 
+	void UG_IncreaseMoveSpeed()  //
 	{
 		switch(tiers["IncreaseMoveSpeed"]) 
 		{
@@ -253,6 +265,7 @@ public class Upgrades : NetworkBehaviour 					// TODO: CHANGE VALUES (LVLs, Mult
 			upgradesText[i].text = null;
 		}	
 		upgradeCanvas.SetActive(false);
+		print(tiers["IncreaseMoveSpeed"]);
 		tiers["IncreaseMoveSpeed"]++;
 	}
 
@@ -280,6 +293,7 @@ public class Upgrades : NetworkBehaviour 					// TODO: CHANGE VALUES (LVLs, Mult
 			upgradesText[i].text = null;
 		}
 		upgradeCanvas.SetActive(false);
+		print(tiers["IncreaseDamage"]);
 		tiers["IncreaseDamage"]++; // not exactly a tier
 		
 	}
@@ -295,15 +309,16 @@ public class Upgrades : NetworkBehaviour 					// TODO: CHANGE VALUES (LVLs, Mult
 				switch(tiers["IncreaseAttackSpeed"])
 				{
 					case 1:
-						vanguard.attackSpeed += vanguard.attackSpeed / 100 * 20;					// TEMPORARY VALUE // MODIFY //
+						vanguard.attackSpeed += vanguard.attackSpeed / 100 * 20;					
+						vanguard.Cmd_ChangeAttackSpeed(vanguard.attackSpeed + vanguard.attackSpeed * 0.20f);	// TEMPORARY VALUE // MODIFY //
 						print("Increased vanguard attack speed " + vanguard.attackSpeed);
 					break;
 					case 2:
-						vanguard.attackSpeed += vanguard.attackSpeed / 100 * 25;					// TEMPORARY VALUE // MODIFY //
+						vanguard.Cmd_ChangeAttackSpeed(vanguard.attackSpeed + vanguard.attackSpeed * 0.25f);	// TEMPORARY VALUE // MODIFY //
 						print("Increased vanguard attack speed " + vanguard.attackSpeed);
 					break;
 					case 3:
-						vanguard.attackSpeed += vanguard.attackSpeed / 100 * 30;					// TEMPORARY VALUE // MODIFY //
+						vanguard.Cmd_ChangeAttackSpeed(vanguard.attackSpeed + vanguard.attackSpeed * 0.30f);	// TEMPORARY VALUE // MODIFY //
 						print("Increased vanguard attack speed " + vanguard.attackSpeed);
 					break;
 				}
@@ -312,15 +327,16 @@ public class Upgrades : NetworkBehaviour 					// TODO: CHANGE VALUES (LVLs, Mult
 				switch(tiers["IncreaseAttackSpeed"])
 				{
 					case 1:
-						gunslinger.attackSpeed -= gunslinger.attackSpeed / 100 * 10;					// TEMPORARY VALUE // MODIFY //
+						gunslinger.attackSpeed -= gunslinger.attackSpeed / 100 * 10;					
+						gunslinger.Cmd_ChangeAttackSpeed(gunslinger.attackSpeed + gunslinger.attackSpeed * 0.10f);	// TEMPORARY VALUE // MODIFY //
 						print("Increased gunslinger attack speed " + gunslinger.attackSpeed);
 					break;
 					case 2:
-						gunslinger.attackSpeed -= gunslinger.attackSpeed / 100 * 15;					// TEMPORARY VALUE // MODIFY //
+						gunslinger.Cmd_ChangeAttackSpeed(gunslinger.attackSpeed + gunslinger.attackSpeed * 0.15f);	// TEMPORARY VALUE // MODIFY //
 						print("Increased gunslinger attack speed " + gunslinger.attackSpeed);
 					break;
 					case 3:
-						gunslinger.attackSpeed -= gunslinger.attackSpeed / 100 * 20;					// TEMPORARY VALUE // MODIFY //
+						gunslinger.Cmd_ChangeAttackSpeed(gunslinger.attackSpeed + gunslinger.attackSpeed * 0.20f);	// TEMPORARY VALUE // MODIFY //
 						print("Increased gunslinger attack speed " + gunslinger.attackSpeed);
 					break;
 				}
@@ -332,6 +348,7 @@ public class Upgrades : NetworkBehaviour 					// TODO: CHANGE VALUES (LVLs, Mult
 			upgradesText[i].text = null;
 		}
 		upgradeCanvas.SetActive(false);
+		print(tiers["IncreaseAttackSpeed"]);
 		tiers["IncreaseAttackSpeed"]++;
 
 	}
@@ -340,6 +357,7 @@ public class Upgrades : NetworkBehaviour 					// TODO: CHANGE VALUES (LVLs, Mult
 	{
 		Health health = GetComponent<Health>();
 		health.maxHealth += 50 * tiers["IncreaseHealth"];
+		health.Cmd_ChangeMaxHealth(health.maxHealth + 50 *tiers["IncreaseHealth"]);
 
 		for(int i = 0; i < upgradesText.Length; i++)
 		{
@@ -356,14 +374,13 @@ public class Upgrades : NetworkBehaviour 					// TODO: CHANGE VALUES (LVLs, Mult
 		switch(tiers["IncreaseHealthRegen"])
 		{
 			case 1:
-				health.regenDelay = 12;
-				print(health.regenDelay);
+				health.Cmd_SetRegenerateProperties(50, health.regenDelay);
 			break;
 			case 2:
-				health.regenDelay = 8;
+				health.Cmd_SetRegenerateProperties(100, health.regenDelay);
 			break;
 			case 3:
-				health.regenDelay = 4;
+				health.Cmd_SetRegenerateProperties(200, health.regenDelay);
 			break;
 		}
 
@@ -378,6 +395,7 @@ public class Upgrades : NetworkBehaviour 					// TODO: CHANGE VALUES (LVLs, Mult
 	void UG_Freeze() // TODO
 	{
 		print("Bullets now slow targets down");
+		
 		upgradeCanvas.SetActive(false);
 	}
 

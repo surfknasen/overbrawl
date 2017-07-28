@@ -9,6 +9,7 @@ public class SetupLocalPlayer_Vanguard : NetworkBehaviour {
 	public Image fillColor;
 	public GameObject body;
 	public Sprite thisSprite;
+	public Sword sword;
 	public NetworkAnimator networkAnimatorReinhardt;
 	private string activeClass = "Vanguard";
 
@@ -25,11 +26,12 @@ public class SetupLocalPlayer_Vanguard : NetworkBehaviour {
 			Health health = GetComponent<Health>();
 			health.Cmd_ChangeMaxHealth(200);
 			health.Cmd_ChangeCurrentHealth(200);
+			health.Cmd_SetRegenerateProperties(10, 5);
 
 			GetComponent<LevelHandler>().enabled = true;
-			GetComponent<Upgrades>().enabled = true;
+			GetComponent<UpgradeCanvasHandler>().enabled = true;
 			GetComponent<LevelHandler>().activeClass = this.activeClass;
-			GetComponent<Upgrades>().activeClass = this.activeClass;
+			GetComponent<UpgradeCanvasHandler>().activeClass = this.activeClass;
 			fillColor.color = new Color32(0,255, 0, 255); // green		
 
 		}
