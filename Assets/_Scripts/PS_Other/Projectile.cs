@@ -2,21 +2,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Networking;
 
 public class Projectile : NetworkBehaviour, Interface_Attack
 {
-	private GameObject owner;
 	public ParticleSystem hitParticle;	
-	[HideInInspector]
+	private bool freeze;	
+	private float freezeDuration;
+	private GameObject owner;
 	private float damage;
 	private float lifeSteal;
 
-	public void SetProjectileProperties(GameObject obj, float lS, float dmg)
+	public void SetProjectileProperties(GameObject obj, float lS, float dmg, bool freezeUpgrade, float freezeDur)
 	{
 		owner = obj;
 		lifeSteal = lS;
 		damage = dmg;
+		freeze = freezeUpgrade;
+		freezeDuration = freezeDur;
 	}
 
 	[Command]
@@ -58,6 +62,12 @@ public class Projectile : NetworkBehaviour, Interface_Attack
 					otherHealth.TakeDamage (damage);
 					Cmd_SpawnParticleSystem();					
 					ownerHealth.Cmd_ChangeCurrentHealth(ownerHealth.currentHealth + lifeSteal);
+					
+					if(freeze)
+					{			
+						PlayerMovement otherPlayerMovement = other.gameObject.GetComponent<PlayerMovement>();	
+						otherPlayerMovement.StartCoroutine(otherPlayerMovement.FreezePlayer(other.gameObject, freezeDuration));		
+					}
 				} 
 
 				if(other.isTrigger == false)
@@ -74,6 +84,20 @@ public class Projectile : NetworkBehaviour, Interface_Attack
 	 	
 	}
 
+/*	IEnumerator FreezePlayer(GameObject playerToFreeze)
+	{
+		PlayerMovement otherPlayerMovement = playerToFreeze.GetComponent<PlayerMovement>();
+		otherPlayerMovement.Cmd_ChangeMoveSpeed(otherPlayerMovement.moveSpeed - otherPlayerMovement.moveSpeed * 0.30f);
+		float revertSpeed = otherPlayerMovement.moveSpeed * 0.30f;
+		
+		yield return new WaitForSeconds(freezeDuration);
+
+		if(otherPlayerMovement != null)
+		{
+			otherPlayerMovement.Cmd_ChangeMoveSpeed(otherPlayerMovement.moveSpeed + revertSpeed);
+		}
+	}
+*/
     public float getDamage()
     {
         return damage;

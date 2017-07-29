@@ -10,7 +10,7 @@ public class SpawnPowerupChest : NetworkBehaviour {
 	public GameObject chest;
 	private Animation broadcastAnim;
 	private bool spawnedRecently = true;
-	private int attemptSpawnDelay = 1;
+	private int attemptSpawnDelay = 60;
 	GameObject player;
 
 	// every x seconds two random numbers are generated

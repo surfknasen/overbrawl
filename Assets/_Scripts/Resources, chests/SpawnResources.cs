@@ -12,18 +12,19 @@ public class SpawnResources : NetworkBehaviour {
 	void Start () 
 	{
 		if(!isServer) return;
-		for (int i = 0; i < 100; i++) {
+		for (int i = 0; i < 150; i++) {
 			SpawningResources ();
 		}
-		StartCoroutine ("SpawningResourcesNumerator");
+		//StartCoroutine ("SpawningResourcesNumerator");
 	}
 
-	IEnumerator SpawningResourcesNumerator()
+	/*IEnumerator SpawningResourcesNumerator()
 	{
 		SpawningResources ();
-		yield return new WaitForSeconds (1f);
+		yield return new WaitForSeconds (3f);
 		StartCoroutine ("SpawningResourcesNumerator");
 	}
+	*/
 
 	void SpawningResources()
 	{

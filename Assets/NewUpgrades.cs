@@ -21,8 +21,9 @@ public class NewUpgrades : NetworkBehaviour
 	private List<int> selectedUpgrades = new List<int>();
 	private LevelHandler levelHandler;
 	private PlayerMovement playerMovement;
+	private UpgradeCanvasHandler upgradeHandler;
 
-	private Dictionary<string, int> tiers = new Dictionary<string, int>() //-------// Tiers to limit some upgrades
+	/*private Dictionary<string, int> tiers = new Dictionary<string, int>() //-------// Tiers to limit some upgrades
 	{
 		{"IncreaseMoveSpeed", 1},
 		{"IncreaseDamage", 1},
@@ -33,11 +34,13 @@ public class NewUpgrades : NetworkBehaviour
 		{"LifeSteal", 1},
 		{"Poison", 1}
 	};
+	*/
 
 	void Start()
 	{
-		levelHandler = GetComponent<LevelHandler>();
+		levelHandler = GetComponentInParent<LevelHandler>();
 		playerMovement = GetComponentInParent<PlayerMovement>();
+		upgradeHandler = GetComponentInParent<UpgradeCanvasHandler>();
 		SelectUpgrades();
 	}
 
@@ -56,7 +59,7 @@ public class NewUpgrades : NetworkBehaviour
 				switch(selectedUpgrades[i])
 				{
 					case 0:	// DONE -- WORKS SINGLEPLAYER // ??? MULTIPLAYER
-						switch(tiers["IncreaseMoveSpeed"])
+						switch(upgradeHandler.tiers["IncreaseMoveSpeed"])
 						{
 							case 1:
 								buttons[i].onClick.AddListener(UG_IncreaseMoveSpeed);
@@ -97,7 +100,7 @@ public class NewUpgrades : NetworkBehaviour
 						upgradeText[i].text = "Increase damage";
 					break;
 					case 2: // DONE -- WORKS SINGLEPLAYER // ??? MULTIPLAYER
-						switch(tiers["IncreaseAttackSpeed"])
+						switch(upgradeHandler.tiers["IncreaseAttackSpeed"])
 						{
 							case 1:
 								buttons[i].onClick.AddListener(UG_IncreaseAttackSpeed);
@@ -138,7 +141,7 @@ public class NewUpgrades : NetworkBehaviour
 						upgradeText[i].text = "Increase health";
 					break;
 					case 4: // DONE -- WORKS SINGLEPLAYER // ??? MULTIPLAYER
-						switch(tiers["IncreaseHealthRegen"])
+						switch(upgradeHandler.tiers["IncreaseHealthRegen"])
 						{
 							case 1:
 								buttons[i].onClick.AddListener(UG_IncreaseHealthRegen);
@@ -174,15 +177,17 @@ public class NewUpgrades : NetworkBehaviour
 						}
 					break;
 					case 5: // TODO
-						switch(tiers["Freeze"])
+						switch(upgradeHandler.tiers["Freeze"])
 						{
 							case 1:
+								buttons[i].onClick.AddListener(UG_Freeze);
 								upgradeIcons[i].sprite = S_Freeze;
 								upgradeText[i].text = "Freeze";
 							break;
 							case 2:
 								if(levelHandler.currentLevel >= 5)
 								{
+									buttons[i].onClick.AddListener(UG_Freeze);
 									upgradeIcons[i].sprite = S_Freeze;
 									upgradeText[i].text = "Freeze";
 								}
@@ -195,6 +200,7 @@ public class NewUpgrades : NetworkBehaviour
 							case 3:
 								if(levelHandler.currentLevel >= 10)
 								{
+									buttons[i].onClick.AddListener(UG_Freeze);
 									upgradeIcons[i].sprite = S_Freeze;
 									upgradeText[i].text = "Freeze";
 								}
@@ -207,7 +213,7 @@ public class NewUpgrades : NetworkBehaviour
 						}
 					break;
 					case 6:	// DONE --- WORKS SINGLEPLAYER // ??? MULTIPLAYER
-						switch(tiers["LifeSteal"])
+						switch(upgradeHandler.tiers["LifeSteal"])
 						{
 							case 1:
 								buttons[i].onClick.AddListener(UG_LifeSteal);
@@ -243,7 +249,7 @@ public class NewUpgrades : NetworkBehaviour
 						}
 					break;
 					case 7: // TODO
-						switch(tiers["Poison"])
+						switch(upgradeHandler.tiers["Poison"])
 						{
 							case 1:
 								upgradeIcons[i].sprite = S_Poison;
@@ -288,7 +294,7 @@ public class NewUpgrades : NetworkBehaviour
 
 	void UG_IncreaseMoveSpeed()
 	{
-		switch(tiers["IncreaseMoveSpeed"])
+		switch(upgradeHandler.tiers["IncreaseMoveSpeed"])
 		{
 			case 1:
 				playerMovement.moveSpeed += playerMovement.moveSpeed / 100 * 5;
@@ -301,9 +307,9 @@ public class NewUpgrades : NetworkBehaviour
 			break;
 		}
 
-		print("Increased movement speed, tier " + tiers["IncreaseMoveSpeed"]);		// ----------------------------------- PRINT
+		print("Increased movement speed, tier " + upgradeHandler.tiers["IncreaseMoveSpeed"]);		// ----------------------------------- PRINT
 
-		tiers["IncreaseMoveSpeed"]++;
+		upgradeHandler.tiers["IncreaseMoveSpeed"]++;
 		GetComponentInParent<UpgradeCanvasHandler>().RemoveLatestUpgradeCanvas(gameObject);
 		Destroy(gameObject);
 	}
@@ -314,18 +320,18 @@ public class NewUpgrades : NetworkBehaviour
 		{
 			case "Gunslinger":
 				Gunslinger_Abilities gunslinger = GetComponentInParent<Gunslinger_Abilities>();
-				gunslinger.damage += gunslinger.damage / 25 * tiers["IncreaseDamage"];
+				gunslinger.damage += gunslinger.damage / 25 * upgradeHandler.tiers["IncreaseDamage"];
 			break;
 			case "Vanguard":
 				Vanguard_Abilities vanguard = GetComponentInParent<Vanguard_Abilities>(); 
-				vanguard.swordDamage += vanguard.swordDamage / 25 * tiers["IncreaseDamage"];
-				vanguard.shieldDamage += vanguard.shieldDamage / 25 * tiers["IncreaseDamage"];
+				vanguard.swordDamage += vanguard.swordDamage / 25 * upgradeHandler.tiers["IncreaseDamage"];
+				vanguard.shieldDamage += vanguard.shieldDamage / 25 * upgradeHandler.tiers["IncreaseDamage"];
 			break;
 		}
 
-			print("Increased damage, tier " + tiers["IncreaseDamage"]); // ----------------------------------- PRINT
+			print("Increased damage, tier " + upgradeHandler.tiers["IncreaseDamage"]); // ----------------------------------- PRINT
 
-		tiers["IncreaseDamage"]++;
+		upgradeHandler.tiers["IncreaseDamage"]++;
 		GetComponentInParent<UpgradeCanvasHandler>().RemoveLatestUpgradeCanvas(gameObject);
 		Destroy(gameObject);
 	}
@@ -337,39 +343,40 @@ public class NewUpgrades : NetworkBehaviour
 			case "Gunslinger":
 				Gunslinger_Abilities gunslinger = GetComponentInParent<Gunslinger_Abilities>();
 
-				switch(tiers["IncreaseAttackSpeed"])
+				switch(upgradeHandler.tiers["IncreaseAttackSpeed"])
 				{
 					case 1:
-						gunslinger.Cmd_ChangeAttackSpeed(gunslinger.attackSpeed + gunslinger.attackSpeed * 0.20f);
+						gunslinger.Cmd_ChangeAttackSpeed(gunslinger.attackSpeed - gunslinger.attackSpeed * 0.20f);
+						print(gunslinger.attackSpeed);
 					break;
 					case 2:
-						gunslinger.Cmd_ChangeAttackSpeed(gunslinger.attackSpeed + gunslinger.attackSpeed * 0.25f);
+						gunslinger.Cmd_ChangeAttackSpeed(gunslinger.attackSpeed - gunslinger.attackSpeed * 0.25f);
 					break;
 					case 3:
-						gunslinger.Cmd_ChangeAttackSpeed(gunslinger.attackSpeed + gunslinger.attackSpeed * 0.25f);
+						gunslinger.Cmd_ChangeAttackSpeed(gunslinger.attackSpeed - gunslinger.attackSpeed * 0.25f);
 					break;
 				}
 			break;
 			case "Vanguard":
 				Vanguard_Abilities vanguard = GetComponentInParent<Vanguard_Abilities>();
 
-				switch(tiers["IncreaseAttackSpeed"])
+				switch(upgradeHandler.tiers["IncreaseAttackSpeed"])
 				{
 					case 1:
-						vanguard.Cmd_ChangeAttackSpeed(vanguard.attackSpeed + vanguard.attackSpeed * 0.20f);
+						vanguard.Cmd_ChangeAttackSpeed(vanguard.attackSpeed - vanguard.attackSpeed * 0.20f);
 					break;
 					case 2:
-						vanguard.Cmd_ChangeAttackSpeed(vanguard.attackSpeed + vanguard.attackSpeed * 0.25f);
+						vanguard.Cmd_ChangeAttackSpeed(vanguard.attackSpeed - vanguard.attackSpeed * 0.25f);
 					break;
 					case 3:
-						vanguard.Cmd_ChangeAttackSpeed(vanguard.attackSpeed + vanguard.attackSpeed * 0.30f);
+						vanguard.Cmd_ChangeAttackSpeed(vanguard.attackSpeed - vanguard.attackSpeed * 0.30f);
 					break;
 				}
 			break;
 		}
 
-		print("IncreaseAttackSpeed tier " + tiers["IncreaseAttackSpeed"]);  // ----------------------------------- PRINT
-		tiers["IncreaseAttackSpeed"]++;
+		print("IncreaseAttackSpeed tier " + upgradeHandler.tiers["IncreaseAttackSpeed"]);  // ----------------------------------- PRINT
+		upgradeHandler.tiers["IncreaseAttackSpeed"]++;
 		GetComponentInParent<UpgradeCanvasHandler>().RemoveLatestUpgradeCanvas(gameObject);
 		Destroy(gameObject);
 	}
@@ -377,10 +384,10 @@ public class NewUpgrades : NetworkBehaviour
 	void UG_IncreaseHealth()
 	{
 		Health health = GetComponentInParent<Health>();
-		health.Cmd_ChangeMaxHealth(health.maxHealth + health.maxHealth * tiers["IncreaseHealth"] / 2);
+		health.Cmd_ChangeMaxHealth(health.maxHealth + health.maxHealth * upgradeHandler.tiers["IncreaseHealth"] / 2);
 
-		print("Health tier " + tiers["IncreaseHealth"]); // ----------------------------------- PRINT
-		tiers["IncreaseHealth"]++;
+		print("Health tier " + upgradeHandler.tiers["IncreaseHealth"]); // ----------------------------------- PRINT
+		upgradeHandler.tiers["IncreaseHealth"]++;
 		GetComponentInParent<UpgradeCanvasHandler>().RemoveLatestUpgradeCanvas(gameObject);
 		Destroy(gameObject);
 	}
@@ -388,7 +395,7 @@ public class NewUpgrades : NetworkBehaviour
 	void UG_IncreaseHealthRegen()
 	{
 		Health health = GetComponentInParent<Health>();
-		switch(tiers["IncreaseHealthRegen"])
+		switch(upgradeHandler.tiers["IncreaseHealthRegen"])
 		{
 			case 1:
 				health.Cmd_SetRegenerateProperties(50, health.regenDelay);
@@ -401,13 +408,54 @@ public class NewUpgrades : NetworkBehaviour
 			break;
 		}
 
-		tiers["IncreaseHealthRegen"]++;
+		upgradeHandler.tiers["IncreaseHealthRegen"]++;
 		GetComponentInParent<UpgradeCanvasHandler>().RemoveLatestUpgradeCanvas(gameObject);
 		Destroy(gameObject);
 	}
 
-	void UG_Freeze()
+	void UG_Freeze() // DOES NOT WORK ON THE SWORD FOR VANGUARD
 	{
+		switch(activeClass)
+		{
+			case "Gunslinger":
+				Gunslinger_Abilities gunslinger = GetComponentInParent<Gunslinger_Abilities>();
+
+				switch(upgradeHandler.tiers["Freeze"])
+				{
+					case 1:
+						gunslinger.Cmd_FreezeUpgrade(true, 1);
+					break;
+					case 2:
+						gunslinger.Cmd_FreezeUpgrade(true, 2);
+					break;
+					case 3:
+						gunslinger.Cmd_FreezeUpgrade(true, 3);
+					break;
+				}
+			break;
+			case "Vanguard":
+				Vanguard_Abilities vanguard = GetComponentInParent<Vanguard_Abilities>();
+				Sword sword = transform.parent.GetComponentInChildren<Sword>();
+
+				switch(upgradeHandler.tiers["Freeze"])
+				{
+					case 1:
+						vanguard.Cmd_FreezeUpgrade(true, 1);
+						sword.Cmd_FreezeUpgrade(true, 1);
+					break;
+					case 2:
+						vanguard.Cmd_FreezeUpgrade(true, 2);
+						sword.Cmd_FreezeUpgrade(true, 2);
+					break;
+					case 3:
+						vanguard.Cmd_FreezeUpgrade(true, 3);
+						sword.Cmd_FreezeUpgrade(true, 3);
+					break;
+				}
+			break;
+		}
+
+		upgradeHandler.tiers["Freeze"]++;
 		GetComponentInParent<UpgradeCanvasHandler>().RemoveLatestUpgradeCanvas(gameObject);
 		Destroy(gameObject);
 	}
@@ -419,7 +467,7 @@ public class NewUpgrades : NetworkBehaviour
 			case "Gunslinger":
 				Gunslinger_Abilities gunslinger = GetComponentInParent<Gunslinger_Abilities>();
 
-				switch(tiers["LifeSteal"])
+				switch(upgradeHandler.tiers["LifeSteal"])
 				{
 					case 1:
 						gunslinger.Cmd_SetLifeSteal(2);
@@ -433,9 +481,9 @@ public class NewUpgrades : NetworkBehaviour
 				}
 			break;
 			case "Vanguard":
-				Sword sword = GetComponentInChildren<Sword>();
+				Sword sword = transform.parent.GetComponentInChildren<Sword>();
 
-				switch(tiers["LifeSteal"])
+				switch(upgradeHandler.tiers["LifeSteal"])
 				{
 					case 1:
 						sword.Cmd_SetLifesteal(5);
@@ -450,7 +498,7 @@ public class NewUpgrades : NetworkBehaviour
 			break;
 		}
 
-		tiers["LifeSteal"]++;
+		upgradeHandler.tiers["LifeSteal"]++;
 		GetComponentInParent<UpgradeCanvasHandler>().RemoveLatestUpgradeCanvas(gameObject);
 		Destroy(gameObject);
 	}
@@ -460,6 +508,40 @@ public class NewUpgrades : NetworkBehaviour
 		GetComponentInParent<UpgradeCanvasHandler>().RemoveLatestUpgradeCanvas(gameObject);
 		Destroy(gameObject);
 	}
-	
+
+
+	/*
+	 * UPGRADES THAT ARE ONLY CONSIDERED
+	 */
+	void UG_Invisibility() // needs its own script
+	{
+
+	}
+
+	void UG_ExtraDamageEveryXHit() // needs its own script
+	{
+
+	}
+
+	void UG_PassThroughWalls()
+	{
+
+	}
+
+	void UG_PickupRange()
+	{
+
+	}
+
+	void UG_IncreasedDamageOnResource()
+	{
+
+	}
+
+	void UG_IncreaseRangedAttackRange()
+	{
+
+	}	
+
 
 }

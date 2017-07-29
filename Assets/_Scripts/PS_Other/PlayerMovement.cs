@@ -5,7 +5,9 @@ using UnityEngine.Networking;
 
 public class PlayerMovement : NetworkBehaviour 
 {
+	[SyncVar]
 	public float moveSpeed;
+	bool alreadyFrozen;
 
 	void Start()
 	{
@@ -13,16 +15,37 @@ public class PlayerMovement : NetworkBehaviour
 		cameraMovement.CameraStart (gameObject);
 	}
 
+	[Command]
+	public void Cmd_ChangeMoveSpeed(float newValue)
+	{
+		moveSpeed = newValue;
+	}
+
+	public IEnumerator FreezePlayer(GameObject playerToFreeze, float freezeDuration)
+	{
+		if(alreadyFrozen) yield break;
+		alreadyFrozen = true;
+
+		float revertSpeed = moveSpeed;
+		moveSpeed = moveSpeed - moveSpeed * 0.30f;
+		yield return new WaitForSeconds(freezeDuration);
+		moveSpeed = revertSpeed;
+		
+		alreadyFrozen = false;
+	}
+
+
 	void FixedUpdate () 
 	{
 		MovePlayer ();
 		RotatePlayer (GetMouseDirection());
 	}
 
+	
 	void MovePlayer()
 	{
-		float x = Input.GetAxis("Horizontal") * Time.deltaTime * moveSpeed;
-		float y = Input.GetAxis ("Vertical") * Time.deltaTime * moveSpeed;
+		float x = Input.GetAxis("Horizontal");
+		float y = Input.GetAxis ("Vertical");
 		transform.position += new Vector3 (x, y, 0) * moveSpeed * Time.deltaTime;
 	}
 

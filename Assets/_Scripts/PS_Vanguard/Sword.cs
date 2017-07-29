@@ -11,6 +11,10 @@ public class Sword : NetworkBehaviour, Interface_Attack
 	public float damage;
 	[SyncVar]
 	public float lifeSteal;
+	[SyncVar]
+	public bool freeze;
+	[SyncVar]
+	public float freezeDuration;
 
 	void Start()
 	{
@@ -21,6 +25,13 @@ public class Sword : NetworkBehaviour, Interface_Attack
 	public void Cmd_SetLifesteal(int amount)
 	{
 		lifeSteal = amount;
+	}
+
+	[Command]
+	public void Cmd_FreezeUpgrade(bool freezeUpg, float freezeDur)
+	{
+		freeze = freezeUpg;
+		freezeDuration = freezeDur;
 	}
 
 	void OnTriggerEnter2D(Collider2D other) 
@@ -40,6 +51,11 @@ public class Sword : NetworkBehaviour, Interface_Attack
 				otherHealth.TakeDamage(damage);
 				Health thisHealth = GetComponentInParent<Health>();
 				thisHealth.Cmd_ChangeCurrentHealth(thisHealth.currentHealth + lifeSteal);
+				if(freeze)
+				{
+					PlayerMovement otherPlayerMovement = other.GetComponent<PlayerMovement>();
+					otherPlayerMovement.StartCoroutine(otherPlayerMovement.FreezePlayer(other.gameObject, freezeDuration));		
+				}
 			}
 
 		} else if(other.gameObject.CompareTag("Resource"))

@@ -7,6 +7,18 @@ public class UpgradeCanvasHandler : MonoBehaviour {
 	public GameObject upgradeCanvasObject;
 	public string activeClass;
 	public List<GameObject> upgradeCanvases = new List<GameObject>();
+
+	public Dictionary<string, int> tiers = new Dictionary<string, int>() //-------// Tiers to limit some upgrades
+	{
+		{"IncreaseMoveSpeed", 1},
+		{"IncreaseDamage", 1},
+		{"IncreaseAttackSpeed", 1},
+		{"IncreaseHealth", 1},
+		{"IncreaseHealthRegen", 1},
+		{"Freeze", 1},
+		{"LifeSteal", 1},
+		{"Poison", 1}
+	};
 	
 	public void CreateUpgradeCanvas () 
 	{

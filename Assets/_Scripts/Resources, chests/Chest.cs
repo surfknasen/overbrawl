@@ -91,11 +91,11 @@ public class Chest : NetworkBehaviour {
 			print("Statboost");
 		}else if(num > 50) // powerup
 		{
-			Powerup(player);
+//			Powerup(player);
 			print("powerup");
 		}else if(num >= 80) // ultimate attack
 		{
-			UltimateAttack(player);
+	//		UltimateAttack(player);
 			print("Ultimate attack");
 		}
 	}
@@ -234,7 +234,7 @@ public class Chest : NetworkBehaviour {
 		}
 	}
 
-	void Powerup(GameObject player)
+	/*void Powerup(GameObject player)
 	{
 		// decide powerup
 		// 5 different powerups:
@@ -259,7 +259,7 @@ public class Chest : NetworkBehaviour {
 	{
 		// give player its ultimate attack
 	}
-
+*/
 	void OnTriggerExit2D(Collider2D col)
 	{
 		if(col.gameObject.CompareTag("Player"))

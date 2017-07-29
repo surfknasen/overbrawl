@@ -18,6 +18,10 @@ public class Gunslinger_Abilities : NetworkBehaviour
 	public float attackSpeed;	
 	[SyncVar]
 	public float lifeSteal;
+	[SyncVar]
+	public bool freezeUpgrade;
+	[SyncVar]
+	public float freezeDuration;
 	
 	void Start()
 	{
@@ -30,6 +34,13 @@ public class Gunslinger_Abilities : NetworkBehaviour
 	public void Cmd_SetLifeSteal(int amount)
 	{
 		lifeSteal = amount;
+	}
+
+	[Command]
+	public void Cmd_FreezeUpgrade(bool freezeUpg, float freezeDur)
+	{
+		freezeUpgrade = freezeUpg;
+		freezeDuration = freezeDur;
 	}
 
 	void Update () 
@@ -65,7 +76,7 @@ public class Gunslinger_Abilities : NetworkBehaviour
 		for(int i = 0; i < 2; i++)
 		{
 			GameObject b = Instantiate (bullet, bulletSpawnPositions[i].transform.position, bullet.transform.rotation);	
-			b.GetComponent<Projectile>().SetProjectileProperties(gameObject, lifeSteal, dmg);		
+			b.GetComponent<Projectile>().SetProjectileProperties(gameObject, lifeSteal, dmg, freezeUpgrade, freezeDuration);		
 			Rigidbody2D r = b.GetComponent<Rigidbody2D> ();
 			r.velocity = dir * 30;
 			NetworkServer.Spawn (b);

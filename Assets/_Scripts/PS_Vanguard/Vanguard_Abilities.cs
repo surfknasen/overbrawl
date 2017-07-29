@@ -15,6 +15,10 @@ public class Vanguard_Abilities : NetworkBehaviour
 	public float attackSpeed;
 	public Sword sword;
 	public float swordDamage;
+	[SyncVar]
+	public bool freezeUpgrade;
+	[SyncVar]
+	public float freezeDuration;
 
 
 	void Start()
@@ -23,6 +27,13 @@ public class Vanguard_Abilities : NetworkBehaviour
 		swordDamage = 25f;
 		attackSpeed = 0.9f;
 		swordAttackController.speed = attackSpeed;
+	}
+
+	[Command]
+	public void Cmd_FreezeUpgrade(bool freezeUpg, float freezeDur)
+	{
+		freezeUpgrade = freezeUpg;
+		freezeDuration = freezeDur;
 	}
 
 	void Update () 
@@ -84,7 +95,7 @@ public class Vanguard_Abilities : NetworkBehaviour
 	public void Cmd_ShootProjectile(Vector3 dir, float dmg)
 	{
 		GameObject p = Instantiate (vanguardShieldProjectile, transform.position, transform.rotation);
-		p.GetComponent<Projectile> ().SetProjectileProperties(gameObject, 0, dmg);
+		p.GetComponent<Projectile> ().SetProjectileProperties(gameObject, 0, dmg, freezeUpgrade, freezeDuration);
 		Rigidbody2D r = p.GetComponent<Rigidbody2D> ();
 		r.velocity = dir * 7;
 		NetworkServer.Spawn (p);

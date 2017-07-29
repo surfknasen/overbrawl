@@ -20,6 +20,7 @@ public class SetupLocalPlayer_Vanguard : NetworkBehaviour {
 			Cmd_SetupSprite();
 			networkAnimatorReinhardt.SetParameterAutoSend(0,true);
 			GetComponent<PlayerMovement> ().enabled = true;
+			GetComponent<PlayerMovement>().moveSpeed = 10;
 			GetComponent<Vanguard_Abilities> ().enabled = true;
 			GetComponent<Health> ().enabled = true;
 

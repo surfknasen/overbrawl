@@ -48,12 +48,10 @@ public class ClassSelection : NetworkBehaviour
 			case "Tracer":
 			p.GetComponent<SetupLocalPlayer_Gunslinger>().enabled = true;
 			p.GetComponent<Gunslinger_Abilities>().enabled = true;
-			p.GetComponent<PlayerMovement>().moveSpeed = 20;
 			break;
 			case "Reinhardt":
 			p.GetComponent<SetupLocalPlayer_Vanguard>().enabled = true;
 			p.GetComponent<Vanguard_Abilities>().enabled = true;
-			p.GetComponent<PlayerMovement>().moveSpeed = 20;
 			break;
 		}
 	}

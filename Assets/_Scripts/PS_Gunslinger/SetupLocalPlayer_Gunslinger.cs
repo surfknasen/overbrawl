@@ -19,6 +19,7 @@ public class SetupLocalPlayer_Gunslinger : NetworkBehaviour {
 			Cmd_SetupSprite();
 			networkAnimatorGunslinger.SetParameterAutoSend(0,true);
 			GetComponent<PlayerMovement> ().enabled = true;
+			GetComponent<PlayerMovement>().moveSpeed = 8;
 			GetComponent<Gunslinger_Abilities> ().enabled = true;
 			GetComponent<Health>().enabled = true;
 
