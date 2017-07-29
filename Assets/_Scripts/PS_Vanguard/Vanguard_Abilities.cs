@@ -10,6 +10,7 @@ public class Vanguard_Abilities : NetworkBehaviour
 	private bool teleporting;
 	public GameObject vanguardShieldProjectile;
 	private bool shieldProjectileShooting;
+	private PlayerMovement playerMovement;
 	private bool animationPlaying;
 	public float shieldDamage;
 	public float attackSpeed;
@@ -23,6 +24,7 @@ public class Vanguard_Abilities : NetworkBehaviour
 
 	void Start()
 	{
+		PlayerMovement playerMovement = GetComponent<PlayerMovement>();
 		shieldDamage = 100f;
 		swordDamage = 25f;
 		attackSpeed = 0.9f;
@@ -67,6 +69,7 @@ public class Vanguard_Abilities : NetworkBehaviour
 		if(!attack)
 		{
 			sword.damage = damage;
+			sword.FreezeUpgrade(freezeUpgrade, freezeDuration);
 			swordAttackController.SetTrigger("Attack");
 			Rpc_SwordAttack();
 		}

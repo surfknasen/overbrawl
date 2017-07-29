@@ -435,21 +435,17 @@ public class NewUpgrades : NetworkBehaviour
 			break;
 			case "Vanguard":
 				Vanguard_Abilities vanguard = GetComponentInParent<Vanguard_Abilities>();
-				Sword sword = transform.parent.GetComponentInChildren<Sword>();
 
 				switch(upgradeHandler.tiers["Freeze"])
 				{
 					case 1:
 						vanguard.Cmd_FreezeUpgrade(true, 1);
-						sword.Cmd_FreezeUpgrade(true, 1);
 					break;
 					case 2:
 						vanguard.Cmd_FreezeUpgrade(true, 2);
-						sword.Cmd_FreezeUpgrade(true, 2);
 					break;
 					case 3:
 						vanguard.Cmd_FreezeUpgrade(true, 3);
-						sword.Cmd_FreezeUpgrade(true, 3);
 					break;
 				}
 			break;

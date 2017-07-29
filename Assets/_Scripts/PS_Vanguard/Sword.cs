@@ -27,8 +27,7 @@ public class Sword : NetworkBehaviour, Interface_Attack
 		lifeSteal = amount;
 	}
 
-	[Command]
-	public void Cmd_FreezeUpgrade(bool freezeUpg, float freezeDur)
+	public void FreezeUpgrade(bool freezeUpg, float freezeDur)
 	{
 		freeze = freezeUpg;
 		freezeDuration = freezeDur;

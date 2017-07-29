@@ -17,14 +17,14 @@ Platform assembly: C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\
 Loading C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
 Platform assembly: C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
 Loading C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-- Completed reload, in  0.074 seconds
+- Completed reload, in  0.077 seconds
 Platform assembly: C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\System.dll (this message is harmless)
 desktop: 1440x900 60Hz; virtual: 1440x900 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 1.677310 ms
+UnloadTime: 7.746040 ms
 The prefab 'ResourceObject' has multiple NetworkIdentity components. There can only be one NetworkIdentity on a prefab, and it must be on the root object.
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
@@ -33,6 +33,75 @@ The prefab 'TestMimicChest' has multiple NetworkIdentity components. There can o
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
+Increased damage, tier 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Health tier 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Increased movement speed, tier 1
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Trying to send command for object without authority.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Trying to send command for object without authority.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+Trying to send command for object without authority.
+ 
+(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
+
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: b2c -> priority: 1 
-  Thread -> id: b30 -> priority: 1 
+  Thread -> id: f8c -> priority: 1 
+  Thread -> id: 2318 -> priority: 1 
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
+reactor filed to acomplish request with code {1234}, bytesReceived {0}
