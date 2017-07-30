@@ -15,7 +15,8 @@ public class Health : NetworkBehaviour { // TODO: ADD ATTACK INTERFACE
 	[SyncVar]
 	public float regenValue;	
 	[SyncVar]
-	public int regenDelay;		
+	public int regenDelay;	
+	private bool alreadyPosioned;
 
 	void Start()
 	{
@@ -104,6 +105,19 @@ public class Health : NetworkBehaviour { // TODO: ADD ATTACK INTERFACE
 		maxHealth = (int)health;
 		healthBar.maxValue = maxHealth;
 		healthText.text = currentHealth + " / " + maxHealth;
+	}
+
+	public IEnumerator PoisonTarget(GameObject other, float poisonAmount)
+	{
+		if(alreadyPosioned) yield break;
+		alreadyPosioned = true;
+		for(int i = 0; i < 6; i++)
+		{
+			currentHealth -= poisonAmount;
+			yield return new WaitForSeconds(1);		
+		}
+		alreadyPosioned = false;
+		
 	}
 
 }

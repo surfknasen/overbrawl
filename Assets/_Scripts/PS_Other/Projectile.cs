@@ -10,17 +10,23 @@ public class Projectile : NetworkBehaviour, Interface_Attack
 	public ParticleSystem hitParticle;	
 	private bool freeze;	
 	private float freezeDuration;
+	private bool poison;
+	private float poisonAmount;
 	private GameObject owner;
 	private float damage;
 	private float lifeSteal;
 
-	public void SetProjectileProperties(GameObject obj, float lS, float dmg, bool freezeUpgrade, float freezeDur)
+	public void SetProjectileProperties(GameObject obj, float lS, float dmg, bool _freeze, float _freezeDuration, bool _poison, float _poisonAmount)
 	{
 		owner = obj;
 		lifeSteal = lS;
 		damage = dmg;
-		freeze = freezeUpgrade;
-		freezeDuration = freezeDur;
+
+		//upgrades:
+		this.freeze = _freeze;
+		this.freezeDuration = _freezeDuration;
+		this.poison = _poison;
+		this.poisonAmount = _poisonAmount;
 	}
 
 	[Command]
@@ -67,6 +73,10 @@ public class Projectile : NetworkBehaviour, Interface_Attack
 					{			
 						PlayerMovement otherPlayerMovement = other.gameObject.GetComponent<PlayerMovement>();	
 						otherPlayerMovement.StartCoroutine(otherPlayerMovement.FreezePlayer(other.gameObject, freezeDuration));		
+					}
+					if(poison)
+					{
+						otherHealth.StartCoroutine(otherHealth.PoisonTarget(other.gameObject, poisonAmount));
 					}
 				} 
 

@@ -15,6 +15,10 @@ public class Sword : NetworkBehaviour, Interface_Attack
 	public bool freeze;
 	[SyncVar]
 	public float freezeDuration;
+	[SyncVar]
+	public bool poison;
+	[SyncVar]
+	public float poisonAmount;
 
 	void Start()
 	{
@@ -31,6 +35,12 @@ public class Sword : NetworkBehaviour, Interface_Attack
 	{
 		freeze = freezeUpg;
 		freezeDuration = freezeDur;
+	}
+
+	public void PoisonUpgrade(bool poisonUpg, float _poisonAmount)
+	{
+		poison = poisonUpg;
+		poisonAmount = _poisonAmount;
 	}
 
 	void OnTriggerEnter2D(Collider2D other) 
@@ -54,6 +64,11 @@ public class Sword : NetworkBehaviour, Interface_Attack
 				{
 					PlayerMovement otherPlayerMovement = other.GetComponent<PlayerMovement>();
 					otherPlayerMovement.StartCoroutine(otherPlayerMovement.FreezePlayer(other.gameObject, freezeDuration));		
+				}
+
+				if(poison)
+				{
+					otherHealth.StartCoroutine(otherHealth.PoisonTarget(other.gameObject, poisonAmount));
 				}
 			}
 

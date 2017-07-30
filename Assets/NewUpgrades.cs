@@ -252,12 +252,14 @@ public class NewUpgrades : NetworkBehaviour
 						switch(upgradeHandler.tiers["Poison"])
 						{
 							case 1:
+								buttons[i].onClick.AddListener(UG_Poison);
 								upgradeIcons[i].sprite = S_Poison;
 								upgradeText[i].text = "Poison";
 							break;
 							case 2:
 								if(levelHandler.currentLevel >= 5)
 								{
+									buttons[i].onClick.AddListener(UG_Poison);
 									upgradeIcons[i].sprite = S_Poison;
 									upgradeText[i].text = "Poison";
 								}
@@ -270,6 +272,7 @@ public class NewUpgrades : NetworkBehaviour
 							case 3:
 								if(levelHandler.currentLevel >= 10)
 								{
+									buttons[i].onClick.AddListener(UG_Poison);
 									upgradeIcons[i].sprite = S_Poison;
 									upgradeText[i].text = "Poison";
 								}
@@ -413,7 +416,7 @@ public class NewUpgrades : NetworkBehaviour
 		Destroy(gameObject);
 	}
 
-	void UG_Freeze() // DOES NOT WORK ON THE SWORD FOR VANGUARD
+	void UG_Freeze()
 	{
 		switch(activeClass)
 		{
@@ -501,6 +504,43 @@ public class NewUpgrades : NetworkBehaviour
 
 	void UG_Poison()
 	{	
+		switch(activeClass)
+		{
+			case "Gunslinger":
+				Gunslinger_Abilities gunslinger = GetComponentInParent<Gunslinger_Abilities>();
+
+				switch(upgradeHandler.tiers["Poison"])
+				{
+					case 1:
+						gunslinger.Cmd_PoisonUpgrade(true, 10);
+					break;
+					case 2:
+						gunslinger.Cmd_PoisonUpgrade(true, 20);
+					break;
+					case 3:
+						gunslinger.Cmd_PoisonUpgrade(true, 30);
+					break;
+				}
+			break;
+			case "Vanguard":
+				Vanguard_Abilities vanguard = GetComponentInParent<Vanguard_Abilities>();
+
+				switch(upgradeHandler.tiers["Poison"])
+				{
+					case 1:
+						vanguard.Cmd_PoisonUpgrade(true, 10);
+					break;
+					case 2:
+						vanguard.Cmd_PoisonUpgrade(true, 20);
+					break;
+					case 3:
+						vanguard.Cmd_PoisonUpgrade(true, 30);
+					break;
+				}
+			break;
+		}
+
+		upgradeHandler.tiers["Poison"]++;
 		GetComponentInParent<UpgradeCanvasHandler>().RemoveLatestUpgradeCanvas(gameObject);
 		Destroy(gameObject);
 	}
