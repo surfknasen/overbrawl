@@ -17,7 +17,9 @@ public class UpgradeCanvasHandler : MonoBehaviour {
 		{"IncreaseHealthRegen", 1},
 		{"Freeze", 1},
 		{"LifeSteal", 1},
-		{"Poison", 1}
+		{"Poison", 1},
+		{"IncreaseRange", 1},
+		{"CriticalHit", 1}
 	};
 	
 	public void CreateUpgradeCanvas () 

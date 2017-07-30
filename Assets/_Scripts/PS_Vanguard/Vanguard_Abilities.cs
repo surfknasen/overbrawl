@@ -24,6 +24,8 @@ public class Vanguard_Abilities : NetworkBehaviour
 	public bool poisonUpgrade;
 	[SyncVar]
 	public float poisonAmount;
+	public float attackRange;
+	private bool mouseOverPlayer;
 
 
 	void Start()
@@ -32,6 +34,7 @@ public class Vanguard_Abilities : NetworkBehaviour
 		shieldDamage = 100f;
 		swordDamage = 25f;
 		attackSpeed = 0.9f;
+		attackRange = 4;
 		swordAttackController.speed = attackSpeed;
 	}
 
@@ -53,15 +56,15 @@ public class Vanguard_Abilities : NetworkBehaviour
 	{
 		if(!isLocalPlayer) return;
 
-		if(Input.GetMouseButton(0))
+		if(Input.GetMouseButton(0) && !mouseOverPlayer)
 		{
 			Cmd_SwordAttack(swordDamage, AnimatorIsPlaying());
 		}
-		else if(Input.GetMouseButton(1) && !shieldProjectileShooting)
+		else if(Input.GetMouseButton(1) && !shieldProjectileShooting && !mouseOverPlayer)
 		{
-			Cmd_ShootProjectile(GetMouseDirection(), shieldDamage);
+			Cmd_ShootProjectile(GetMouseDirection(), shieldDamage, attackRange);
 			StartCoroutine("ProjectileCooldown");
-		} else if(Input.GetMouseButton(2) && !teleporting)
+		} else if(Input.GetMouseButton(2) && !teleporting && !mouseOverPlayer)
 		{
 			StartCoroutine("Teleport", GetMouseDirection());
 		}
@@ -97,7 +100,16 @@ public class Vanguard_Abilities : NetworkBehaviour
 	{
 		return swordAttackController.GetCurrentAnimatorStateInfo(0).IsName("VanguardDefaultAttack");
 	}
- 
+
+	void OnMouseEnter()
+	{
+		mouseOverPlayer = true;
+	}
+
+	void OnMouseExit()
+	{
+		mouseOverPlayer = false;
+	}
 
 	IEnumerator ProjectileCooldown()
 	{
@@ -107,14 +119,14 @@ public class Vanguard_Abilities : NetworkBehaviour
 	}
 
 	[Command]
-	public void Cmd_ShootProjectile(Vector3 dir, float dmg)
+	public void Cmd_ShootProjectile(Vector3 dir, float dmg, float _attackRange)
 	{
 		GameObject p = Instantiate (vanguardShieldProjectile, transform.position, transform.rotation);
 		p.GetComponent<Projectile> ().SetProjectileProperties(gameObject, 0, dmg, freezeUpgrade, freezeDuration, poisonUpgrade, poisonAmount);
 		Rigidbody2D r = p.GetComponent<Rigidbody2D> ();
 		r.velocity = dir * 7;
 		NetworkServer.Spawn (p);
-		Destroy (p, 4f);
+		Destroy (p, _attackRange);
 	}
 
 	IEnumerator Teleport(Vector3 dir)

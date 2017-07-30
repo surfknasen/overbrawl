@@ -8,6 +8,7 @@ using UnityEngine.Networking;
 public class Projectile : NetworkBehaviour, Interface_Attack
 {
 	public ParticleSystem hitParticle;	
+	private float critical;
 	private bool freeze;	
 	private float freezeDuration;
 	private bool poison;
@@ -65,7 +66,7 @@ public class Projectile : NetworkBehaviour, Interface_Attack
 				
 				if(otherHealth != null) 
 				{
-					otherHealth.TakeDamage (damage);
+					otherHealth.TakeDamage (damage, owner);
 					Cmd_SpawnParticleSystem();					
 					ownerHealth.Cmd_ChangeCurrentHealth(ownerHealth.currentHealth + lifeSteal);
 					

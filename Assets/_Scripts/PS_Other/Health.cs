@@ -56,14 +56,14 @@ public class Health : NetworkBehaviour { // TODO: ADD ATTACK INTERFACE
 		}
 	}
 
-	public void TakeDamage(float amount)
+	public void TakeDamage(float amount, GameObject attacker)
 	{
 		if (!isServer) return;
 		currentHealth -= amount;
 
 		if (currentHealth <= 0) 
 		{
-			currentHealth = 0;
+			attacker.GetComponent<LevelHandler>().Cmd_AddToBalance(500);
 			Destroy (gameObject);
 		}
 	}

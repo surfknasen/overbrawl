@@ -7,6 +7,7 @@ using UnityEngine.Networking;
 public class LevelHandler : NetworkBehaviour
 {
 
+	[SyncVar (hook = "OnChangeBalance")]
 	public int balance;
 	public int currentLevel;	
 	private int requiredExp;
@@ -31,6 +32,18 @@ public class LevelHandler : NetworkBehaviour
 		levelText = GameObject.Find("LevelText").GetComponent<Text>();
 		balanceText = GameObject.Find("CurrencyText").GetComponent<Text>();
 		currentLevel = 1;
+	}
+
+	[Command]
+	public void Cmd_AddToBalance(int amount)
+	{
+		balance += amount;
+	}
+
+	void OnChangeBalance(int bal)
+	{
+		balance = bal;
+		LevelUp();
 	}
 
 	void Update()
@@ -74,8 +87,8 @@ public class LevelHandler : NetworkBehaviour
 
 	public void LevelUp()
 	{
+		if(!isLocalPlayer) return;
 		requiredExp = currentLevel * 100;
-		requiredExp = 5;
 
 		if(balance >= requiredExp)
 		{
@@ -84,7 +97,8 @@ public class LevelHandler : NetworkBehaviour
 			levelText.text = "LEVEL " + currentLevel.ToString();
 			GetComponent<UpgradeCanvasHandler>().CreateUpgradeCanvas();
 			expSlider.value = 0;
-			balance = 0;
+			balance = balance - requiredExp;
+			LevelUp();
 		} else
 		{
 			UpdateExpSlider();
@@ -106,6 +120,7 @@ public class LevelHandler : NetworkBehaviour
 	{
 		health.Cmd_ChangeMaxHealth(health.maxHealth + amount);
 	}
+
 
 	public void IncreaseAttackDamage()
 	{

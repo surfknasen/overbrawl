@@ -17,14 +17,14 @@ Platform assembly: C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\
 Loading C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
 Platform assembly: C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
 Loading C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-- Completed reload, in  0.065 seconds
+- Completed reload, in  0.075 seconds
 Platform assembly: C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\System.dll (this message is harmless)
 desktop: 1440x900 60Hz; virtual: 1440x900 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
 <RI> Initialized touch support.
-UnloadTime: 1.880062 ms
+UnloadTime: 3.366396 ms
 The prefab 'ResourceObject' has multiple NetworkIdentity components. There can only be one NetworkIdentity on a prefab, and it must be on the root object.
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
@@ -33,14 +33,6 @@ The prefab 'TestMimicChest' has multiple NetworkIdentity components. There can o
  
 (Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
 
-Increased movement speed, tier 1
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-IncreaseAttackSpeed tier 1
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
 Setting up 2 worker threads for Enlighten.
-  Thread -> id: 1a5c -> priority: 1 
-  Thread -> id: 8fc -> priority: 1 
+  Thread -> id: 1640 -> priority: 1 
+  Thread -> id: 12bc -> priority: 1 

@@ -57,8 +57,8 @@ public class Sword : NetworkBehaviour, Interface_Attack
 		{
 			if(vanguardAbilities.AnimatorIsPlaying())
 			{
-				otherHealth.TakeDamage(damage);
-				Health thisHealth = GetComponentInParent<Health>();
+				Health thisHealth = GetComponentInParent<Health>();				
+				otherHealth.TakeDamage(damage, thisHealth.gameObject);
 				thisHealth.Cmd_ChangeCurrentHealth(thisHealth.currentHealth + lifeSteal);
 				if(freeze)
 				{

@@ -20,21 +20,24 @@ public class Gunslinger_Abilities : NetworkBehaviour
 	public float lifeSteal;
 	[SyncVar]
 	public bool freezeUpgrade;
-	[SyncVar]
+	[SyncVar] 
 	public float freezeDuration;
 	[SyncVar]
 	public bool poisonUpgrade;
 	[SyncVar]
 	public float poisonAmount;
+	public float attackRange;
+	public float critical;
 	
 	void Start()
 	{
 		damage = 10;
 		attackSpeed = 0.2f;
+		attackRange = 1f;
 		gunslingerGunsController.speed = attackSpeed * 2;
 	}
 
-	[Command]
+	[Command] // THESE COMMANDS DO NOT HAVE TO BE SET, THEY CAN BE PASSED IN TO THE SHOOT COMMAND
 	public void Cmd_SetLifeSteal(int amount)
 	{
 		lifeSteal = amount;
@@ -63,7 +66,7 @@ public class Gunslinger_Abilities : NetworkBehaviour
 			if(!shootingBullet)
 			{
 				StartCoroutine ("ShootBulletNumerator");
-				Cmd_ShootBullet (GetMouseDirection(), damage);
+				Cmd_ShootBullet (GetMouseDirection(), damage, attackRange, critical);
 				Cmd_GunAnimation();	
 			}
 
@@ -82,7 +85,7 @@ public class Gunslinger_Abilities : NetworkBehaviour
 	}
 
 	[Command]
-	public void Cmd_ShootBullet(Vector3 dir, float dmg)
+	public void Cmd_ShootBullet(Vector3 dir, float dmg, float _attackRange, float _critical)
 	{
 		for(int i = 0; i < 2; i++)
 		{
@@ -91,8 +94,7 @@ public class Gunslinger_Abilities : NetworkBehaviour
 			Rigidbody2D r = b.GetComponent<Rigidbody2D> ();
 			r.velocity = dir * 30;
 			NetworkServer.Spawn (b);
-			Destroy (b, 1f);
-
+			Destroy (b, _attackRange);
 		}
 	}
 

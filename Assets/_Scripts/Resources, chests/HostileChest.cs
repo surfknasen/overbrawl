@@ -57,7 +57,7 @@ public class HostileChest : NetworkBehaviour {
 		{
 			if(attack == true)
 			{
-				col.gameObject.GetComponent<Health>().TakeDamage(15);
+				col.gameObject.GetComponent<Health>().TakeDamage(15, null);
 				attack = false;
 			} else
 			{

@@ -10,7 +10,7 @@ public class NewUpgrades : NetworkBehaviour
 	//loop through button array and add a random upgrade
 	// if the upgrade already exists
 	public Sprite S_IncreaseMoveSpeed, S_IncreaseDamage, S_IncreaseAttackSpeed, S_IncreaseHealth, S_IncreaseHealthRegen,
-	S_Freeze, S_LifeSteal, S_Poison;
+	S_Freeze, S_LifeSteal, S_Poison, S_IncreaseRange;
 	public Button[] buttons;
 	public Image[] upgradeIcons;
 	public Text[] upgradeText;
@@ -50,7 +50,7 @@ public class NewUpgrades : NetworkBehaviour
 
 		for(int i = 0; i < 4; i++) // four upgrade buttons
 		{
-			int rand = Random.Range(0, 8); // 8 different upgrades so far
+			int rand = Random.Range(0, 9); // 9 different upgrades so far
 
 			if(!selectedUpgrades.Contains(rand))
 			{
@@ -58,7 +58,7 @@ public class NewUpgrades : NetworkBehaviour
 
 				switch(selectedUpgrades[i])
 				{
-					case 0:	// DONE -- WORKS SINGLEPLAYER // ??? MULTIPLAYER
+					case 0:	
 						switch(upgradeHandler.tiers["IncreaseMoveSpeed"])
 						{
 							case 1:
@@ -94,12 +94,12 @@ public class NewUpgrades : NetworkBehaviour
 							break;
 						}
 					break;
-					case 1: // DONE -- WORKS SINGLEPLAYER // ??? MULTIPLAYER
+					case 1: 
 						buttons[i].onClick.AddListener(UG_IncreaseDamage);
 						upgradeIcons[i].sprite = S_IncreaseDamage;
 						upgradeText[i].text = "Increase damage";
 					break;
-					case 2: // DONE -- WORKS SINGLEPLAYER // ??? MULTIPLAYER
+					case 2:
 						switch(upgradeHandler.tiers["IncreaseAttackSpeed"])
 						{
 							case 1:
@@ -135,12 +135,12 @@ public class NewUpgrades : NetworkBehaviour
 							break;
 						}
 					break;
-					case 3: // DONE -- WORKS SINGLEPLAYER // ??? MULTIPLAYER
+					case 3: 
 						buttons[i].onClick.AddListener(UG_IncreaseHealth);
 						upgradeIcons[i].sprite = S_IncreaseHealth;
 						upgradeText[i].text = "Increase health";
 					break;
-					case 4: // DONE -- WORKS SINGLEPLAYER // ??? MULTIPLAYER
+					case 4: 
 						switch(upgradeHandler.tiers["IncreaseHealthRegen"])
 						{
 							case 1:
@@ -176,7 +176,7 @@ public class NewUpgrades : NetworkBehaviour
 							break;
 						}
 					break;
-					case 5: // TODO
+					case 5: 
 						switch(upgradeHandler.tiers["Freeze"])
 						{
 							case 1:
@@ -212,7 +212,7 @@ public class NewUpgrades : NetworkBehaviour
 							break;
 						}
 					break;
-					case 6:	// DONE --- WORKS SINGLEPLAYER // ??? MULTIPLAYER
+					case 6:	
 						switch(upgradeHandler.tiers["LifeSteal"])
 						{
 							case 1:
@@ -248,7 +248,7 @@ public class NewUpgrades : NetworkBehaviour
 							break;
 						}
 					break;
-					case 7: // TODO
+					case 7: 
 						switch(upgradeHandler.tiers["Poison"])
 						{
 							case 1:
@@ -275,6 +275,42 @@ public class NewUpgrades : NetworkBehaviour
 									buttons[i].onClick.AddListener(UG_Poison);
 									upgradeIcons[i].sprite = S_Poison;
 									upgradeText[i].text = "Poison";
+								}
+								else
+								{
+									selectedUpgrades.Remove(rand);
+									i--;
+								}
+							break;
+						}
+					break;
+					case 8:
+						switch(upgradeHandler.tiers["IncreaseRange"])
+						{
+							case 1:
+								buttons[i].onClick.AddListener(UG_IncreaseRangedAttackRange);
+								upgradeIcons[i].sprite = S_IncreaseRange;
+								upgradeText[i].text = "Increase range";
+							break;
+							case 2:
+								if(levelHandler.currentLevel >= 5)
+								{
+									buttons[i].onClick.AddListener(UG_IncreaseRangedAttackRange);
+									upgradeIcons[i].sprite = S_IncreaseRange;
+									upgradeText[i].text = "Increase range";
+								}
+								else
+								{
+									selectedUpgrades.Remove(rand); 
+									i--;
+								}
+							break;
+							case 3:
+								if(levelHandler.currentLevel >= 10)
+								{
+									buttons[i].onClick.AddListener(UG_IncreaseRangedAttackRange);
+									upgradeIcons[i].sprite = S_IncreaseRange;
+									upgradeText[i].text = "Increase range";
 								}
 								else
 								{
@@ -350,7 +386,6 @@ public class NewUpgrades : NetworkBehaviour
 				{
 					case 1:
 						gunslinger.Cmd_ChangeAttackSpeed(gunslinger.attackSpeed - gunslinger.attackSpeed * 0.20f);
-						print(gunslinger.attackSpeed);
 					break;
 					case 2:
 						gunslinger.Cmd_ChangeAttackSpeed(gunslinger.attackSpeed - gunslinger.attackSpeed * 0.25f);
@@ -512,6 +547,7 @@ public class NewUpgrades : NetworkBehaviour
 				switch(upgradeHandler.tiers["Poison"])
 				{
 					case 1:
+						gunslinger.attackRange = 3;
 						gunslinger.Cmd_PoisonUpgrade(true, 10);
 					break;
 					case 2:
@@ -545,39 +581,48 @@ public class NewUpgrades : NetworkBehaviour
 		Destroy(gameObject);
 	}
 
-
-	/*
-	 * UPGRADES THAT ARE ONLY CONSIDERED
-	 */
-	void UG_Invisibility() // needs its own script
-	{
-
-	}
-
-	void UG_ExtraDamageEveryXHit() // needs its own script
-	{
-
-	}
-
-	void UG_PassThroughWalls()
-	{
-
-	}
-
-	void UG_PickupRange()
-	{
-
-	}
-
-	void UG_IncreasedDamageOnResource()
-	{
-
-	}
-
 	void UG_IncreaseRangedAttackRange()
 	{
+		switch(activeClass)
+		{
+			case "Gunslinger":
+				Gunslinger_Abilities gunslinger = GetComponentInParent<Gunslinger_Abilities>();
+				
+				switch(upgradeHandler.tiers["IncreaseRange"])
+				{
+					case 1:
+						gunslinger.attackRange = 1.5f;
+					break;
+					case 2:
+						gunslinger.attackRange = 2f;
+					break;
+					case 3:
+						gunslinger.attackRange = 2.5f;
+					break;
+				}
+			break;
+			case "Vanguard":
+				Vanguard_Abilities vanguard = GetComponentInParent<Vanguard_Abilities>();
 
-	}	
+				switch(upgradeHandler.tiers["IncreaseRange"])
+				{
+					case 1:
+						vanguard.attackRange = 5;
+					break;
+					case 2:
+						vanguard.attackRange = 6;
+					break;
+					case 3:
+						vanguard.attackRange = 7;
+					break;
+				}
+			break;
+		}
 
+		upgradeHandler.tiers["IncreaseRange"]++;
+		GetComponentInParent<UpgradeCanvasHandler>().RemoveLatestUpgradeCanvas(gameObject);
+		Destroy(gameObject);
+
+	}
 
 }
