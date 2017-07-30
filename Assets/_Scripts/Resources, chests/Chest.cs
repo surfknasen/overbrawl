@@ -70,11 +70,7 @@ public class Chest : NetworkBehaviour {
 
 	void GivePlayerExp(GameObject player)
 	{
-		for(int i = 0; i < 4; i++)
-		{
-			player.GetComponent<LevelHandler>().balance += 5000;
-			player.GetComponent<LevelHandler>().LevelUp();
-		}	
+		player.GetComponent<LevelHandler>().Cmd_AddToBalance(600);
 	}
 
 

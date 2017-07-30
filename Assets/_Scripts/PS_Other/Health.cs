@@ -63,10 +63,10 @@ public class Health : NetworkBehaviour { // TODO: ADD ATTACK INTERFACE
 
 		if (currentHealth <= 0) 
 		{
-			attacker.GetComponent<LevelHandler>().Cmd_AddToBalance(500);
+			attacker.GetComponent<LevelHandler>().Cmd_AddToBalance(600);
 			Destroy (gameObject);
 		}
-	}
+	}	
 
 	[Command]
 	public void Cmd_AddHealth(float amount)

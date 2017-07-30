@@ -7,7 +7,7 @@ using UnityEngine.Networking;
 public class LevelHandler : NetworkBehaviour
 {
 
-	[SyncVar (hook = "OnChangeBalance")]
+	[SyncVar]
 	public int balance;
 	public int currentLevel;	
 	private int requiredExp;
@@ -32,18 +32,13 @@ public class LevelHandler : NetworkBehaviour
 		levelText = GameObject.Find("LevelText").GetComponent<Text>();
 		balanceText = GameObject.Find("CurrencyText").GetComponent<Text>();
 		currentLevel = 1;
+		StartCoroutine("LevelUpNumerator");
 	}
 
 	[Command]
 	public void Cmd_AddToBalance(int amount)
 	{
-		balance += amount;
-	}
-
-	void OnChangeBalance(int bal)
-	{
-		balance = bal;
-		LevelUp();
+		balance += amount;	
 	}
 
 	void Update()
@@ -85,29 +80,38 @@ public class LevelHandler : NetworkBehaviour
 		Destroy(currencyObj);
 	}
 
+	IEnumerator LevelUpNumerator()
+	{
+		LevelUp();
+		yield return new WaitForSeconds(0.2f);
+		StartCoroutine("LevelUpNumerator");
+	}
+
 	public void LevelUp()
 	{
 		if(!isLocalPlayer) return;
-		requiredExp = currentLevel * 100;
-
+		requiredExp = currentLevel * 300;
+		
 		if(balance >= requiredExp)
 		{
 			UpgradeStats();
 			currentLevel++;
 			levelText.text = "LEVEL " + currentLevel.ToString();
 			GetComponent<UpgradeCanvasHandler>().CreateUpgradeCanvas();
-			expSlider.value = 0;
-			balance = balance - requiredExp;
+			balance -= requiredExp;
+			UpdateExpUI();			
 			LevelUp();
 		} else
 		{
-			UpdateExpSlider();
+			UpdateExpUI();
 		}
 	}
 
-	void UpdateExpSlider()
+
+	void UpdateExpUI()
 	{
 		expSlider.value = (float)balance / requiredExp * 100;
+		balanceText.text = balance.ToString();		
 	}
 
 	void UpgradeStats()

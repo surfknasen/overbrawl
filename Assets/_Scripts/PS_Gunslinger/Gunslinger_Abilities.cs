@@ -10,6 +10,7 @@ public class Gunslinger_Abilities : NetworkBehaviour
 	private bool shootingBullet;
 	private bool teleporting;
 	private bool mouseOverPlayer;
+	private bool ultimateAttackActive;
 	[SerializeField]
 	private GameObject[] bulletSpawnPositions;
 	private int bulletsFired;
@@ -60,6 +61,7 @@ public class Gunslinger_Abilities : NetworkBehaviour
 	void Update () 
 	{
 		if(!isLocalPlayer) return;
+		if(ultimateAttackActive) return;
 
 		if (Input.GetMouseButton (0) && !mouseOverPlayer) 
 		{
@@ -73,9 +75,22 @@ public class Gunslinger_Abilities : NetworkBehaviour
 		} else if (Input.GetMouseButton (1) && !teleporting) 
 		{
 			StartCoroutine (Teleport(GetMouseDirection()));
+		} else if(Input.GetKeyDown(KeyCode.R))
+		{
+			StartCoroutine("InitiateUltimateAttack");
 		}
 	}
 	
+	IEnumerator InitiateUltimateAttack()
+	{
+		ultimateAttackActive = true;
+		for(int i = 0; i < 60; i++)
+		{
+			Cmd_ShootBullet(GetMouseDirection(), damage, attackRange, critical);
+			yield return new WaitForSeconds(0.1f);
+		}
+		ultimateAttackActive = false;
+	}
 
 	IEnumerator ShootBulletNumerator()
 	{
