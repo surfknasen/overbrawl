@@ -17,26 +17,9 @@ Platform assembly: C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\
 Loading C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
 Platform assembly: C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
 Loading C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-- Completed reload, in  0.079 seconds
+- Completed reload, in  0.066 seconds
 Platform assembly: C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Casper\Documents\Overbrawl.io git\Game_Data\Managed\System.dll (this message is harmless)
 desktop: 1440x900 60Hz; virtual: 1440x900 at 0,0
 <RI> Initializing input.
 <RI> Input initialized.
-<RI> Initialized touch support.
-UnloadTime: 7.879159 ms
-The prefab 'ResourceObject' has multiple NetworkIdentity components. There can only be one NetworkIdentity on a prefab, and it must be on the root object.
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-The prefab 'TestMimicChest' has multiple NetworkIdentity components. There can only be one NetworkIdentity on a prefab, and it must be on the root object.
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Health tier 1
- 
-(Filename: C:/buildslave/unity/build/artifacts/generated/common/runtime/DebugBindings.gen.cpp Line: 51)
-
-Setting up 2 worker threads for Enlighten.
-  Thread -> id: 1340 -> priority: 1 
-  Thread -> id: 1a9c -> priority: 1 

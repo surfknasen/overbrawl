@@ -5,37 +5,46 @@ using UnityEngine.Networking;
 
 public class Gunslinger_Abilities : NetworkBehaviour 
 {
-	[SerializeField]
-	private GameObject bullet;
+	public Animator gunslingerGunsController;
+	[HideInInspector]
+	public float damage;
+	[HideInInspector]
+	public float attackSpeed;	
+	[SyncVar] [HideInInspector]
+	public float lifeSteal;
+	[SyncVar] [HideInInspector]
+	public bool freezeUpgrade;
+	[SyncVar] [HideInInspector]
+	public float freezeDuration;
+	[SyncVar] [HideInInspector]
+	public bool poisonUpgrade;
+	[SyncVar] [HideInInspector]
+	public float poisonAmount;
+	[HideInInspector]
+	public float attackRange;
+	[HideInInspector]
+	public GameObject bullet;
+	public GameObject laserBullet;
 	private bool shootingBullet;
-	private bool teleporting;
+	private bool speedBoostActive;
 	private bool mouseOverPlayer;
+	private bool laserBeamReady;
 	private bool ultimateAttackActive;
+	private bool ultimateAttackReady;
 	[SerializeField]
 	private GameObject[] bulletSpawnPositions;
 	private int bulletsFired;
-	public Animator gunslingerGunsController;
-	public float damage;
-	public float attackSpeed;	
-	[SyncVar]
-	public float lifeSteal;
-	[SyncVar]
-	public bool freezeUpgrade;
-	[SyncVar] 
-	public float freezeDuration;
-	[SyncVar]
-	public bool poisonUpgrade;
-	[SyncVar]
-	public float poisonAmount;
-	public float attackRange;
-	public float critical;
+	
+
 	
 	void Start()
 	{
-		damage = 10;
+		damage = 8;
 		attackSpeed = 0.2f;
 		attackRange = 1f;
-		gunslingerGunsController.speed = attackSpeed * 2;
+		gunslingerGunsController.speed = attackSpeed * 4;
+		ultimateAttackReady = true;
+		laserBeamReady = true;
 	}
 
 	[Command] // THESE COMMANDS DO NOT HAVE TO BE SET, THEY CAN BE PASSED IN TO THE SHOOT COMMAND
@@ -61,35 +70,79 @@ public class Gunslinger_Abilities : NetworkBehaviour
 	void Update () 
 	{
 		if(!isLocalPlayer) return;
-		if(ultimateAttackActive) return;
 
-		if (Input.GetMouseButton (0) && !mouseOverPlayer) 
+		if (Input.GetMouseButton (0) && !mouseOverPlayer && !ultimateAttackActive) 
 		{
 			if(!shootingBullet)
 			{
 				StartCoroutine ("ShootBulletNumerator");
-				Cmd_ShootBullet (GetMouseDirection(), damage, attackRange, critical);
+				Cmd_ShootBullet (GetMouseDirection(), damage, attackRange);
 				Cmd_GunAnimation();	
 			}
 
-		} else if (Input.GetMouseButton (1) && !teleporting) 
+		} else if (Input.GetMouseButton (2) && !speedBoostActive) 
 		{
-			StartCoroutine (Teleport(GetMouseDirection()));
-		} else if(Input.GetKeyDown(KeyCode.R))
+			StartCoroutine("SpeedBoost");
+		} else if(Input.GetMouseButton(1) && laserBeamReady)
+		{
+			StartCoroutine("LaserBeam");
+		}else if(Input.GetKeyDown(KeyCode.R) && ultimateAttackReady)
 		{
 			StartCoroutine("InitiateUltimateAttack");
+			StartCoroutine("UltimateAttackCooldown");			
 		}
+	}
+
+	IEnumerator SpeedBoost()
+	{
+		speedBoostActive = true;
+		PlayerMovement playerMovement = GetComponent<PlayerMovement>();
+		playerMovement.Cmd_ChangeMoveSpeed(playerMovement.moveSpeed + 5);
+		yield return new WaitForSeconds(3);
+		playerMovement.Cmd_ChangeMoveSpeed(playerMovement.moveSpeed - 5);
+		speedBoostActive = false;
+	}
+
+	IEnumerator UltimateAttackCooldown()
+	{
+		ultimateAttackReady = false;
+		yield return new WaitForSeconds(90);
+		ultimateAttackReady = true;
 	}
 	
 	IEnumerator InitiateUltimateAttack()
 	{
 		ultimateAttackActive = true;
-		for(int i = 0; i < 60; i++)
+		for(int i = 0; i < 100; i++)
 		{
-			Cmd_ShootBullet(GetMouseDirection(), damage, attackRange, critical);
-			yield return new WaitForSeconds(0.1f);
+			Cmd_ShootBullet(GetMouseDirection(), damage, attackRange);
+			Cmd_GunAnimation();
+			yield return new WaitForSeconds(0.05f);
 		}
 		ultimateAttackActive = false;
+	}
+
+	IEnumerator LaserBeam()
+	{
+		laserBeamReady = false;
+		Cmd_LaserBeam(GetMouseDirection(), damage * 8);
+		Cmd_GunAnimation();
+		yield return new WaitForSeconds(10);
+		laserBeamReady = true;
+	}
+
+	[Command]
+	public void Cmd_LaserBeam(Vector3 dir, float dmg)
+	{
+		for(int i = 0; i < 2; i++)
+		{
+			GameObject b = Instantiate (laserBullet, bulletSpawnPositions[i].transform.position + -transform.up, bullet.transform.rotation);	
+			b.GetComponent<Projectile>().SetProjectileProperties(gameObject, lifeSteal, dmg, freezeUpgrade, freezeDuration, poisonUpgrade, poisonAmount);		
+			Rigidbody2D r = b.GetComponent<Rigidbody2D> ();
+			r.velocity = dir * 80;
+			NetworkServer.Spawn (b);
+			Destroy (b, .75f);
+		}
 	}
 
 	IEnumerator ShootBulletNumerator()
@@ -100,7 +153,7 @@ public class Gunslinger_Abilities : NetworkBehaviour
 	}
 
 	[Command]
-	public void Cmd_ShootBullet(Vector3 dir, float dmg, float _attackRange, float _critical)
+	public void Cmd_ShootBullet(Vector3 dir, float dmg, float _attackRange)
 	{
 		for(int i = 0; i < 2; i++)
 		{
@@ -117,7 +170,7 @@ public class Gunslinger_Abilities : NetworkBehaviour
 	public void Cmd_ChangeAttackSpeed(float newSpeed)
 	{
 		attackSpeed = newSpeed;
-		gunslingerGunsController.speed = attackSpeed * 2;
+		gunslingerGunsController.speed = attackSpeed * 4;
 	}
 
 
@@ -151,9 +204,9 @@ public class Gunslinger_Abilities : NetworkBehaviour
 		mouseOverPlayer = false;
 	}
 
-	IEnumerator Teleport(Vector3 dir)
+/*	IEnumerator Teleport(Vector3 dir)
 	{
-		teleporting = true;
+		moveSpeedBoostActive = true;
 
 		for (int i = 0; i < 4; i++) 
 		{
@@ -162,8 +215,9 @@ public class Gunslinger_Abilities : NetworkBehaviour
 			yield return new WaitForSeconds (0.01f);
 		}
 		yield return new WaitForSeconds(2f);
-		teleporting = false;
+		moveSpeedBoostActive = false;
 	}
+	*/
 
 	Vector3 GetMouseDirection()
 	{

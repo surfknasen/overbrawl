@@ -31,7 +31,7 @@ public class MineResource : NetworkBehaviour {
 		} 
 	}
 	
-	void TakeDamage (float dmg) 
+	public void TakeDamage (float dmg) 
 	{
 		if(!isServer) return;
 

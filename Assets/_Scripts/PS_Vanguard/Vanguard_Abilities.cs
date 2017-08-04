@@ -5,28 +5,35 @@ using UnityEngine.Networking;
 
 public class Vanguard_Abilities : NetworkBehaviour 
 {
-	private bool buttonPressed;
-	public Animator swordAttackController;
-	private bool teleporting;
-	public GameObject vanguardShieldProjectile;
-	private bool shieldProjectileShooting;
-	private PlayerMovement playerMovement;
-	private bool animationPlaying;
+	[HideInInspector]
 	public float shieldDamage;
+	[HideInInspector]
 	public float attackSpeed;
 	public Sword sword;
+	[HideInInspector]
 	public float swordDamage;
-	[SyncVar]
+	[SyncVar] [HideInInspector]
 	public bool freezeUpgrade;
-	[SyncVar]
+	[SyncVar] [HideInInspector]
 	public float freezeDuration;
-	[SyncVar]
+	[SyncVar] [HideInInspector]
 	public bool poisonUpgrade;
-	[SyncVar]
+	[SyncVar] [HideInInspector]
 	public float poisonAmount;
+	[HideInInspector]
 	public float attackRange;
+	public Animator swordAttackController;	
+	public GameObject vanguardShieldProjectile;
+	private bool buttonPressed;
+	private bool teleporting;
+	private bool shieldProjectileShooting;
+	private PlayerMovement playerMovement;
+	private bool animationPlaying;	
 	private bool mouseOverPlayer;
+	private bool ultimateAttackReady;
 
+	//TEMPORARY STUFF:
+	public GameObject shockwave;
 
 	void Start()
 	{
@@ -36,9 +43,10 @@ public class Vanguard_Abilities : NetworkBehaviour
 		attackSpeed = 0.9f;
 		attackRange = 4;
 		swordAttackController.speed = attackSpeed;
+		ultimateAttackReady = true;
 	}
 
-	[Command]
+	[Command] // THESE COMMANDS DO NOT HAVE TO BE SET, THEY CAN BE PASSED IN TO THE SHOOT COMMAND
 	public void Cmd_FreezeUpgrade(bool freezeUpg, float freezeDur)
 	{
 		freezeUpgrade = freezeUpg;
@@ -67,7 +75,27 @@ public class Vanguard_Abilities : NetworkBehaviour
 		} else if(Input.GetMouseButton(2) && !teleporting && !mouseOverPlayer)
 		{
 			StartCoroutine("Teleport", GetMouseDirection());
+		} else if(Input.GetKeyDown(KeyCode.R) && ultimateAttackReady)
+		{
+			StartCoroutine("InitiateUltimateAttack");
+			StartCoroutine("UltimateAttackCooldown");
 		}
+	}
+
+	IEnumerator InitiateUltimateAttack()
+	{
+		for(int i = 0; i < 5; i++)
+		{
+			shockwave.GetComponent<Animation>().Play();
+			yield return new WaitForSeconds(1f);
+		}
+	}
+
+	IEnumerator UltimateAttackCooldown()
+	{
+		ultimateAttackReady = false;
+		yield return new WaitForSeconds(90f);
+		ultimateAttackReady = true;
 	}
 
 	[Command]

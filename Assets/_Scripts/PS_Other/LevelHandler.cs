@@ -90,7 +90,7 @@ public class LevelHandler : NetworkBehaviour
 	public void LevelUp()
 	{
 		if(!isLocalPlayer) return;
-		requiredExp = currentLevel * 300;
+		requiredExp = currentLevel * 100;
 		
 		if(balance >= requiredExp)
 		{

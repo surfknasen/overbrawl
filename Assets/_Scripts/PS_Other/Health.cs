@@ -63,7 +63,10 @@ public class Health : NetworkBehaviour { // TODO: ADD ATTACK INTERFACE
 
 		if (currentHealth <= 0) 
 		{
-			attacker.GetComponent<LevelHandler>().Cmd_AddToBalance(600);
+			if(attacker.gameObject.CompareTag("Player"))
+			{
+				attacker.GetComponent<LevelHandler>().Cmd_AddToBalance(300);
+			}
 			Destroy (gameObject);
 		}
 	}	
@@ -92,6 +95,7 @@ public class Health : NetworkBehaviour { // TODO: ADD ATTACK INTERFACE
 		currentHealth = (int)health;
 		if(currentHealth > maxHealth) currentHealth = maxHealth;
 	}
+
 
 	void OnChangeCurrentHealth(float health)
 	{
